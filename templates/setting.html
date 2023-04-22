@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Smart Farm</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed)
+     */
+    .row.content {
+      height: 1200px
+    }
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+
+      .row.content {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+
+
+<body style="">
+  <nav class=" nav navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="#">วิสาหกิจสวนยางกลางนา (พืชต้นแบบ) </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-user"></span> a </a>
+        </li>
+        <li>
+          <a href="logout.php">
+            <span class="glyphicon glyphicon-log-out"></span> Logout </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row content">
+      <div class=" content  col-sm-2 sidenav">
+        <img src="./img/iconuser.png" style="width:100%;padding-top: 10%;">
+        <hr />
+        <!-- <h4>ชื่อ : สวนยาง ฟาร์ม</h4> -->
+
+        <hr />
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active">
+            <a href="index.php">หน้าหลัก</a>
+          </li>
+
+
+
+          <li class="active">
+            <a href="" data-toggle="modal" data-target="#myModalProfile">ข้อมูลฟาร์ม</a>
+          </li>
+          <li class="active">
+            <a href="" data-toggle="modal" data-target="#myModalLog">การมีส่วนร่วมการใช้งาน</a>
+          </li>
+          <li class="active">
+            <a href="" data-toggle="modal" data-target="#myModalContact">ติดต่อบริษัท</a>
+          </li>
+          <li class="active">
+            <a href="graph.php?memberid=13&lock=">กราฟ</a>
+          </li>
+          <li class="active">
+            <a href="./control.php?memberid=13&location=&tapon=TapExport&lock=">รายงาน</a>
+          </li>
+
+
+          <li>
+            <u><b><a href="#"> วิสาหกิจสวนยางกลางนา (พืชต้นแบบ)</a></b></u>
+          </li>
+          <!-- //////////////////////////////////////////////  Modal run location (in lop) ////////////////////////////////////////////////////-->
+
+          <!-- Modal -->
+          <div id="myModalLocation1" class="modal fade">
+            <div class="modal-dialog modal-lg">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">วิสาหกิจสวนยางกลางนา (พืชต้นแบบ)</h4>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    <script
+                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIu7-Mh0mz6DtC00-fjSqp2eRgU6OMGbU&callback=myMap1"></script>
+                  <div id="googleMap1" style="width:100%;height:400px;"></div>
+
+                  <script>
+
+
+                    function myMap1() {
+                      var marker2 = null;
+
+                      var map = [];
+                      var info = null;
+
+                      var mapProp = {
+                        center: new google.maps.LatLng(15.146800041199, 100.06400299072),
+                        zoom: 15,
+                      };
+
+                      map = new google.maps.Map(document.getElementById("googleMap1"), mapProp);
+
+
+                      marker2 = new google.maps.Marker({
+                        position: { lat: 15.146800041199, lng: 100.06400299072 },
+                        map: map,
+
+                      });
+
+                    }
+
+                    myMap1();
+                  </script>
+                  <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIu7-Mh0mz6DtC00-fjSqp2eRgU6OMGbU&callback=myMap1"></script>
+
+
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- //////////////////////////////////////////////  End Modal run location (in lop) ////////////////////////////////////////////////////-->
+          <li>
+            <a href="./control.php?memberid=13&farmid=1&location=1&tapon=TapSTATUS&lock=">
+              <span class="glyphicon glyphicon-arrow-right"> </span> สถานะ </a>
+          </li>
+          <li>
+            <a href="./control.php?memberid=13&farmid=1&location=1&tapon=TapControl&lock=">
+              <span class="glyphicon glyphicon-arrow-right"> </span> ควบคุม </a>
+          </li>
+          <li>
+            <a href="./control.php?memberid=13&farmid=1&location=1&tapon=TapAuto&lock=">
+              <span class="glyphicon glyphicon-arrow-right"> </span> ตั้งค่าระบบ </a>
+          </li>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#myModalLocation1">
+              <span class="glyphicon glyphicon-arrow-right"> </span> แผนที่ </a>
+          </li>
+
+
+
+
+          <script>
+            myMap1();
+          </script>
+
+
+
+        </ul>
+        <br>
+      </div>
+
+
+      <!--##################################################################################  Modal report ################################################################################## -->
+
+      <div id="myModalreport" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">รายงานการประเมิน</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+              <div class="form-group">
+                <label for="redate">วันที่ :</label>
+                <input type="datetime-local" class="form-control redate" id="redate" name="redate">
+              </div>
+              <div class="form-group">
+                <label for="refarm">ฟาร์ม :</label>
+                <select class="form-control refarm" id="refarm" name="refarm">
+                  <option value="">--- เลือก ---</option>
+                  <option value="1">วิสาหกิจสวนยางกลางนา (พืชต้นแบบ)</option>
+
+
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rename">ชื่อผู้กรอกข้อมูล :</label>
+                <input type="text" class="form-control rename" id="rename" name="rename" value="สวนยาง ฟาร์ม" disabled>
+              </div>
+              <div class="form-group">
+                <label for="rePro">ความพึงพอใจของผลผลิต:</label>
+                <select class="form-control" id="rePro" name="rePro">
+                  <option value="0">--- เลือก ---</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="regrow">ความพึ่งพอใจการเจริญเติบโตของพืช :</label>
+                <select class="form-control" id="regrow" name="regrow">
+                  <option value="0">--- เลือก ---</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal"
+                onclick="submitReport()">ยืนยัน</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <style>
+        /* If the screen size is smaller than 1200px, set the font-size to 80px */
+        @media (max-width: 1199.98px) {
+          .responsive-font-example {
+            font-size: 15px;
+          }
+        }
+      </style>
+
+      <!-- ################################################################################## -->
+      <div class="col-sm-10">
+        <div class="container-fluid TapSTATUS" style="display:none;">
+          <h2 class="alert alert-success">
+            <small>สถานะ</small>
+          </h2>
+          <h5>
+            <span class="glyphicon glyphicon-time"></span> Time : 2023-03-11 14:50:19
+          </h5>
+
+          <div class="well col-sm-6">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="col-sm-3">
+                      <img src="./img/temp.png" style="width:100%;">
+                    </div>
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      อุณหภูมิอากาศ 36.2 C
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      อุณหภูมิดิน 45.35 C
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      ความชื้นอากาศ 52.6% RH
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      ความเข้มของแสง 41165 Lux
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <br><br>
+                    </h4>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="well col-sm-6">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="col-sm-3">
+                      <img src="./img/soil.png" style="width:100%;">
+                    </div>
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      ความชื้นดิน 11.15%
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      PH 5.2
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      ไนโตรเจน 1
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      ฟอสฟอรัส 48
+                    </h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      โพแทสเซียม 40
+                    </h4>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- ################################################################################## -->
+        <div class="container-fluid TapControl" style="display:none;">
+          <h2 class="alert alert-info">
+            <small>ควบคุม</small>
+            <h6 style="color:red;"> * หากมีการเปิดใช้งาน ปั๊มน้ำ , พัดลม , เครื่องพ่นหมอก อย่างใดอย่างหนึงระบบ
+              "ตั้งเวลาทำงาน" และ "ตั้งค่าการทำงานอัตโนมัติ" จะไม่ทำงาน <h6>
+          </h2>
+          <h5>
+            <span class="glyphicon glyphicon-time"></span> Time : 2023-03-11 14:50:19
+          </h5>
+          <div class="well col-sm-4">
+            <div class="col-sm-6">
+              <img src="./img/water.png" style="width:100%;">
+            </div>
+            <div class="col-sm-6">
+              <div class="col-sm-12">
+                <br>
+                <h3> ปั๊มน้ำ : ปิด/เปิด </h3>
+              </div>
+              <div class="col-sm-12">
+                <label class="switch">
+                  <input type="checkbox" id="StatusWater" name="StatusWater" class="StatusWater"
+                    onchange="submit('StatusWater','ปั๊มน้ำ')">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="well col-sm-4">
+            <div class="col-sm-6">
+              <img src="./img/fan.png" style="width:100%;">
+            </div>
+            <div class="col-sm-6">
+              <div class="col-sm-12">
+                <br>
+                <h3> พัดลม : ปิด/เปิด </h3>
+              </div>
+              <div class="col-sm-12">
+                <label class="switch">
+                  <input type="checkbox" id="StatusFan" name="StatusFan" class="StatusFan"
+                    onchange="submit('StatusFan','พัดลม')">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="well col-sm-4">
+            <div class="col-sm-6">
+              <img src="./img/air.png" style="width:100%;">
+            </div>
+            <div class="col-sm-6">
+              <div class="col-sm-12">
+                <h3> เครื่องพ่นหมอก : ปิด/เปิด </h3>
+              </div>
+              <div class="col-sm-12">
+                <label class="switch">
+                  <input type="checkbox" id="StatusAir" name="StatusAir" class="StatusAir"
+                    onchange="submit('StatusAir','เครื่องพ้นหมอก')">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- #################################################################### ตั้งค่าระบบ ############################################################################################################## -->
+        <div class="container-fluid TapAuto" style="display:none;">
+          <div class="col-sm-12">
+            <p>
+            <h4 class="col-sm-12 alert alert-danger">ตั้งค่าระบบ</h4>
+
+          </div>
+
+
+          <div class="well col-sm-6" style="background-color: #ffffff;">
+            <div class="col-sm-12">
+
+              <div class="col-sm-12">
+                <div class="col-sm-12 alert alert-danger">
+                  <h4 class="col-sm-9 " style=" padding-top: 10px;">ตั้งเวลาทำงาน</h4>
+
+                  <button type="button" class="col-sm-3  btn btn-primary container " data-toggle="modal"
+                    data-target="#myModalTS">+ เพิ่ม</button>
+                </div>
+              </div>
+
+
+              <div class="col-sm-12 ">
+                <div class="col-sm-12 alert alert-warning">
+                  <h4 class="col-sm-10">พัดลม : 1</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onSet1" name="onSet1" class="onSet1"
+                      onchange="AddTimeSetTable('75','3','2')">
+
+
+                    <span class="slider round"></span>
+                  </label>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="time" class="form-control" name="TS1" id="TS1" value="09:30:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="time" class="form-control" name="TE1" id="TE1" value="10:00:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('75','2','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#TS1').attr( 'disabled', false );$('#TE1').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEdittime('75',$('#TS1').val(),$('#TE1').val())">ยืนยัน</button>
+                  </div>
+
+                  <div class="form-group col-sm-1">
+                    จ.<input type="checkbox" id="Day1" name="Day1" class="Day1" onchange="DaySet('75','4','1','Monday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อ.<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                      onchange="DaySet('75','4','2','Tuesday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พ.<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                      onchange="DaySet('75','4','2','Wednesday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พฤ.<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                      onchange="DaySet('75','4','2','Thursday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ศ.<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                      onchange="DaySet('75','4','2','Friday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ส.<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                      onchange="DaySet('75','4','2','Saturday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อา.<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                      onchange="DaySet('75','4','2','Sunday')">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-12 ">
+                <div class="col-sm-12 alert alert-warning">
+                  <h4 class="col-sm-10">พัดลม : 2</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onSet2" name="onSet2" class="onSet2"
+                      onchange="AddTimeSetTable('82','3','2')">
+
+
+                    <span class="slider round"></span>
+                  </label>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="time" class="form-control" name="TS2" id="TS2" value="09:30:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="time" class="form-control" name="TE2" id="TE2" value="10:00:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('82','2','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#TS2').attr( 'disabled', false );$('#TE2').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEdittime('82',$('#TS2').val(),$('#TE2').val())">ยืนยัน</button>
+                  </div>
+
+                  <div class="form-group col-sm-1">
+                    จ.<input type="checkbox" id="Day2" name="Day2" class="Day2"
+                      onchange="DaySet('82','4','2','Monday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อ.<input type="checkbox" id="Day2" name="Day2" class="Day2"
+                      onchange="DaySet('82','4','2','Tuesday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พ.<input type="checkbox" id="Day2" name="Day2" class="Day2"
+                      onchange="DaySet('82','4','2','Wednesday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พฤ.<input type="checkbox" id="Day2" name="Day2" class="Day2"
+                      onchange="DaySet('82','4','2','Thursday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ศ.<input type="checkbox" id="Day2" name="Day2" class="Day2"
+                      onchange="DaySet('82','4','2','Friday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ส.<input type="checkbox" id="Day2" name="Day2" class="Day2"
+                      onchange="DaySet('82','4','2','Saturday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อา.<input type="checkbox" id="Day2" name="Day2" class="Day2"
+                      onchange="DaySet('82','4','2','Sunday')">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-12 ">
+                <div class="col-sm-12 alert alert-info">
+                  <h4 class="col-sm-10">ปั้มน้ำ : 1</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onSet3" name="onSet3" class="onSet3"
+                      onchange="AddTimeSetTable('2','3','2')">
+
+
+                    <span class="slider round"></span>
+                  </label>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="time" class="form-control" name="TS3" id="TS3" value="17:00:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="time" class="form-control" name="TE3" id="TE3" value="17:05:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('2','2','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#TS3').attr( 'disabled', false );$('#TE3').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEdittime('2',$('#TS3').val(),$('#TE3').val())">ยืนยัน</button>
+                  </div>
+
+                  <div class="form-group col-sm-1">
+                    จ.<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Monday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อ.<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Tuesday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พ.<input type="checkbox" id="Day3" name="Day3" class="Day3"
+                      onchange="DaySet('2','4','1','Wednesday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พฤ.<input type="checkbox" id="Day3" name="Day3" class="Day3"
+                      onchange="DaySet('2','4','1','Thursday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ศ.<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Friday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ส.<input type="checkbox" id="Day3" name="Day3" class="Day3"
+                      onchange="DaySet('2','4','1','Saturday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อา.<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Sunday')"
+                      checked>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-12 ">
+                <div class="col-sm-12 alert alert-info">
+                  <h4 class="col-sm-10">ปั้มน้ำ : 2</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onSet4" name="onSet4" class="onSet4"
+                      onchange="AddTimeSetTable('70','3','2')">
+
+
+                    <span class="slider round"></span>
+                  </label>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="time" class="form-control" name="TS4" id="TS4" value="07:56:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="time" class="form-control" name="TE4" id="TE4" value="08:00:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('70','2','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#TS4').attr( 'disabled', false );$('#TE4').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEdittime('70',$('#TS4').val(),$('#TE4').val())">ยืนยัน</button>
+                  </div>
+
+                  <div class="form-group col-sm-1">
+                    จ.<input type="checkbox" id="Day4" name="Day4" class="Day4" onchange="DaySet('70','4','1','Monday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อ.<input type="checkbox" id="Day4" name="Day4" class="Day4"
+                      onchange="DaySet('70','4','1','Tuesday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พ.<input type="checkbox" id="Day4" name="Day4" class="Day4"
+                      onchange="DaySet('70','4','1','Wednesday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พฤ.<input type="checkbox" id="Day4" name="Day4" class="Day4"
+                      onchange="DaySet('70','4','1','Thursday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ศ.<input type="checkbox" id="Day4" name="Day4" class="Day4" onchange="DaySet('70','4','1','Friday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ส.<input type="checkbox" id="Day4" name="Day4" class="Day4"
+                      onchange="DaySet('70','4','1','Saturday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อา.<input type="checkbox" id="Day4" name="Day4" class="Day4"
+                      onchange="DaySet('70','4','1','Sunday')" checked>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-12 ">
+                <div class="col-sm-12 alert alert-info">
+                  <h4 class="col-sm-10">ปั้มน้ำ : 3</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onSet5" name="onSet5" class="onSet5"
+                      onchange="AddTimeSetTable('83','3','2')">
+
+
+                    <span class="slider round"></span>
+                  </label>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="time" class="form-control" name="TS5" id="TS5" value="09:30:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="time" class="form-control" name="TE5" id="TE5" value="10:00:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('83','2','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#TS5').attr( 'disabled', false );$('#TE5').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEdittime('83',$('#TS5').val(),$('#TE5').val())">ยืนยัน</button>
+                  </div>
+
+                  <div class="form-group col-sm-1">
+                    จ.<input type="checkbox" id="Day5" name="Day5" class="Day5"
+                      onchange="DaySet('83','4','2','Monday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อ.<input type="checkbox" id="Day5" name="Day5" class="Day5"
+                      onchange="DaySet('83','4','2','Tuesday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พ.<input type="checkbox" id="Day5" name="Day5" class="Day5"
+                      onchange="DaySet('83','4','2','Wednesday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พฤ.<input type="checkbox" id="Day5" name="Day5" class="Day5"
+                      onchange="DaySet('83','4','2','Thursday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ศ.<input type="checkbox" id="Day5" name="Day5" class="Day5"
+                      onchange="DaySet('83','4','2','Friday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ส.<input type="checkbox" id="Day5" name="Day5" class="Day5"
+                      onchange="DaySet('83','4','2','Saturday')">
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อา.<input type="checkbox" id="Day5" name="Day5" class="Day5"
+                      onchange="DaySet('83','4','2','Sunday')">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-12 ">
+                <div class="col-sm-12 alert alert-success">
+                  <h4 class="col-sm-10">เครื่องพ้นหมอก : 1</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onSet6" name="onSet6" class="onSet6"
+                      onchange="AddTimeSetTable('3','3','2')">
+
+
+                    <span class="slider round"></span>
+                  </label>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="time" class="form-control" name="TS6" id="TS6" value="09:00:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="time" class="form-control" name="TE6" id="TE6" value="09:10:00" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('3','2','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#TS6').attr( 'disabled', false );$('#TE6').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEdittime('3',$('#TS6').val(),$('#TE6').val())">ยืนยัน</button>
+                  </div>
+
+                  <div class="form-group col-sm-1">
+                    จ.<input type="checkbox" id="Day6" name="Day6" class="Day6" onchange="DaySet('3','4','1','Monday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อ.<input type="checkbox" id="Day6" name="Day6" class="Day6" onchange="DaySet('3','4','1','Tuesday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พ.<input type="checkbox" id="Day6" name="Day6" class="Day6"
+                      onchange="DaySet('3','4','1','Wednesday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    พฤ.<input type="checkbox" id="Day6" name="Day6" class="Day6"
+                      onchange="DaySet('3','4','1','Thursday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ศ.<input type="checkbox" id="Day6" name="Day6" class="Day6" onchange="DaySet('3','4','1','Friday')"
+                      checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    ส.<input type="checkbox" id="Day6" name="Day6" class="Day6"
+                      onchange="DaySet('3','4','1','Saturday')" checked>
+                  </div>
+                  <div class="form-group col-sm-1">
+                    อา.<input type="checkbox" id="Day6" name="Day6" class="Day6" onchange="DaySet('3','4','1','Sunday')"
+                      checked>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+
+          <!-- #################################################################### ตั้งค่าการทำงานอัตโนมัติ ##################################################################################################### -->
+
+
+
+          <div class="well col-sm-6" style="background-color: #ffffff;">
+
+            <div class="col-sm-12">
+
+              <div class="col-sm-12">
+                <div class="col-sm-12 alert alert-danger">
+                  <h4 class="col-sm-6 " style=" padding-top: 10px;">ตั้งค่าการทำงานอัตโนมัติ</h4>
+                  <button type="button" class="col-sm-3  btn btn-warning container " data-toggle="modal"
+                    data-target="#myModal2">แนะนำ</button>
+                  <button type="button" class="col-sm-3  btn btn-primary container " data-toggle="modal"
+                    data-target="#myModal">+ เพิ่ม</button>
+                </div>
+                <h6 style="color:red;"> * ค่าเริ่มต้นจะเป็นค่าที่มากกว่าค่าสิ้นสุดเสมอ ยกเว้นกรณี ค่าความชื้นในดิน และ
+                  ค่าความชื้นในอากาศ <h6>
+              </div>
+
+              <div class="col-sm-12">
+
+
+                <h4 class="col-sm-10">ชุดที่ 1</h4>
+
+
+                <div class=" col-sm-12 alert alert-info">
+                  <h4 class="col-sm-10">(ชุดที่ 1) : เงื่อนไข อุณหภูมิในอากาศ</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onoff1" name="onoff1" class="onoff1"
+                      onchange="submitEditSwitchAuto('1','')">
+
+                    <span class="slider round"></span>
+                  </label>
+
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="number" class="form-control SAuto1" name="SAuto1" id="SAuto1" value="33" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="number" class="form-control EAuto1" name="EAuto1" id="EAuto1" value="31" disabled>
+                  </div>
+
+
+
+                  <div class="form-group col-sm-4">
+                    <button type="button" class="btn btn-danger" onclick="submitDelAuto('1','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#SAuto1').attr( 'disabled', false );$('#EAuto1').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEditAuto('1','\'118\',\'119\',\'120\'')">ยืนยัน</button>
+
+                  </div>
+
+                  <div class="form-group col-sm-8">
+
+                    <label class="checkbox-inline col-sm-4">
+                      <input type="checkbox" id="onoffW1" name="onoffW1" class="onoffW1" value=""
+                        onchange="submitEditElectricAuto('onoffW1','119','')">ปั๊มน้ำ
+                    </label>
+
+                    <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+                      <input type="checkbox" id="onoffF1" name="onoffF1" class="onoffF1" value="" checked
+                        onchange="submitEditElectricAuto('onoffF1','118','checked')">พัดลม
+                    </label>
+
+                    <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+                      <input type="checkbox" id="onoffA1" name="onoffA1" class="onoffA1" value="" checked
+                        onchange="submitEditElectricAuto('onoffA1','120','checked')">เครื่องพ่นหมอก
+                    </label>
+
+                  </div>
+
+                  <input type="hidden" name="arrid1" id="arrid1" class="arrid1" value="\'118\',\'119\',\'120\'">
+
+
+
+                </div>
+
+
+
+
+                <h4 class="col-sm-10">ชุดที่ 2</h4>
+
+
+                <div class=" col-sm-12 alert alert-success">
+                  <h4 class="col-sm-10">(ชุดที่ 2) : เงื่อนไข ความชื้นในดิน</h4>
+                  <label class="switch col-sm-2">
+                    <input type="checkbox" id="onoff2" name="onoff2" class="onoff2"
+                      onchange="submitEditSwitchAuto('2','')">
+
+                    <span class="slider round"></span>
+                  </label>
+
+                  <div class="form-group col-sm-12">
+                    <label for="usr">เริ่ม:</label>
+                    <input type="number" class="form-control SAuto2" name="SAuto2" id="SAuto2" value="30" disabled>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <label for="usr">สิ้นสุด:</label>
+                    <input type="number" class="form-control EAuto2" name="EAuto2" id="EAuto2" value="40" disabled>
+                  </div>
+
+
+
+                  <div class="form-group col-sm-4">
+                    <button type="button" class="btn btn-danger" onclick="submitDelAuto('2','')">ลบ</button>
+                    <button type="button" class="btn btn-warning"
+                      onclick=" $('#SAuto2').attr( 'disabled', false );$('#EAuto2').attr( 'disabled', false );">แก้ไข
+                    </button>
+                    <button type="button" class="btn btn-success"
+                      onclick="submitEditAuto('2','\'145\',\'146\',\'147\'')">ยืนยัน</button>
+
+                  </div>
+
+                  <div class="form-group col-sm-8">
+
+                    <label class="checkbox-inline col-sm-4">
+                      <input type="checkbox" id="onoffW2" name="onoffW2" class="onoffW2" value=""
+                        onchange="submitEditElectricAuto('onoffW2','146','')">ปั๊มน้ำ
+                    </label>
+
+                    <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+                      <input type="checkbox" id="onoffF2" name="onoffF2" class="onoffF2" value=""
+                        onchange="submitEditElectricAuto('onoffF2','145','')">พัดลม
+                    </label>
+
+                    <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+                      <input type="checkbox" id="onoffA2" name="onoffA2" class="onoffA2" value=""
+                        onchange="submitEditElectricAuto('onoffA2','147','')">เครื่องพ่นหมอก
+                    </label>
+
+                  </div>
+
+                  <input type="hidden" name="arrid2" id="arrid2" class="arrid2" value="\'145\',\'146\',\'147\'">
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+          <!-- <div id="map" style="width:100%;height:580px;">-->
+        </div>
+        <!-- ///////////////////////////////////////////////////////////////////////////////  page  report ////////////////////////////////////////////////////////////////////////-->
+        <br>
+        <div class=" col-sm-12 TapExport" style="background-color: #ffffff;display:none;">
+          <form action="./control.php?memberid=13&farmid=&location=&tapon=TapExport" method="post" id="form1">
+            <div class="col-sm-12 alert alert-danger">
+              <h4 class="col-sm-9 " style=" padding-top: 10px;">Export Report</h4>
+
+              <button type="button" class="col-sm-3  btn btn-primary container " data-toggle="modal"
+                data-target="#myModalreport">บันทึก</button>
+            </div>
+            <div class="col-sm-12">
+
+
+
+
+
+              <div class="form-group col-sm-10">
+                <label for="reStartDate">ฟาร์ม : </label>
+                <select class="form-control schrefarm" id="schrefarm" name="schrefarm">
+                  <option value="">--- เลือก ---</option>
+                  <option value="1">วิสาหกิจสวนยางกลางนา (พืชต้นแบบ)</option>
+                </select>
+              </div>
+
+
+
+              <div class="form-group col-sm-10">
+                <label for="reStartDate">ช่วงเวลา : </label>
+                <input type="date" class="form-control reStartDate" id="reStartDate" name="reStartDate">
+              </div>
+              <div class="form-group col-sm-10">
+                <label for="reEndDate">ถึง : </label>
+                <input type="date" class="form-control reEndDate" id="reEndDate" name="reEndDate">
+              </div>
+
+              <div class="form-group col-sm-2">
+                <br>
+                <input type="submit" class="btn btn-success" style="width:100%;" value="ค้นหา">
+              </div>
+
+
+              <figure class="highcharts-figure col-sm-12">
+                <div id="chartreport"></div>
+
+              </figure>
+
+            </div>
+          </form>
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>
+<style>
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked+.slider {
+    background-color: #2196F3;
+  }
+
+  input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+</style>
+
+
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Modal settime-->
+
+
+
+<div id="myModalTS" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">เพิ่มตั้งค่าการทำงานอัตโนมัติ</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>
+        <div class="form-group">
+          <label for="ddlgroup">เลือกอุปกรณ์ที่ต้องการเพิ่ม :</label>
+          <select name="ddlgroupTs" id="ddlgroupTs" class="ddlgroupTs form-control">
+
+            <option value="4">พัดลม</option>
+            <option value="5">ปั้มน้ำ</option>
+            <option value="6">เครื่องพ้นหมอก</option>
+
+
+
+          </select>
+        </div>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"
+          onclick="AddTimeSetTable($('#ddlgroupTs').val(),'1','')">ยืนยัน</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////  Modal ////////////////////////////////////////////////////////////////////////-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">เพิ่มตั้งค่าการทำงานอัตโนมัติ</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>
+        <div class="form-group">
+          <label for="ddlgroup">เลือกชุดที่ต้องการจะเพิ่ม :</label>
+          <select name="ddlgroup" id="ddlgroup" class="ddlgroup form-control">
+            <option value="">-----กรุณาเลือกชุด-----</option>
+            <option value="1">ชุดที่่ 1</option>
+            <option value="2">ชุดที่่ 2</option>
+
+
+            <option value="New">เพิ่มชุดใหม่</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ddlcondi">เงื่อนไข :</label>
+          <select name="ddlcondi" id="ddlcondi" class="ddlcondi form-control">
+            <option value="">-----กรุณาเลือกเงื่อนไข-----</option>
+            <option value="7">ความชื้นในดิน</option>
+            <option value="8">ความชื้นในอากาศ</option>
+            <option value="9">อุณหภูมิในดิน</option>
+            <option value="10">อุณหภูมิในอากาศ</option>
+            <option value="11">ความเข้มแสง</option>
+            <option value="12">ค่า PH</option>
+            <option value="15">n</option>
+            <option value="16">p</option>
+            <option value="17">k</option>
+
+          </select>
+        </div>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"
+          onclick="AddAutoTable($('#ddlgroup').val(),$('#ddlcondi').val())">ยืนยัน</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Modal2 content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">แนะนำ</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>
+
+        <div class="form-group">
+          <label for="ddlgroup">เลือกสวน :</label>
+          <select name="ddlFruit" id="ddlFruit" class="ddlFruit form-control"
+            onchange=" hideddl() ; $('.'+ $('#ddlFruit').val()).show()">
+            <option value="">-----กรุณาเลือกสวน-----</option>
+
+            <option value="h-1">มะม่วง</option>
+
+            <option value="h-2">เมล่อน</option>
+
+          </select>
+        </div>
+
+
+        <div class=" col-sm-12 alert alert-success h-1">
+          <h4 class="col-sm-10"> มะม่วง : (ความชื้นในดิน)</h4>
+
+
+          <div class="form-group col-sm-12">
+            <label for="usr">เริ่ม:</label>
+            <input type="number" class="form-control SAutodexx" name="SAutodexx" id="SAutodexx" value="40" disabled>
+          </div>
+          <div class="form-group col-sm-12">
+            <label for="usr">สิ้นสุด:</label>
+            <input type="number" class="form-control EAutodexx" name="EAutodexx" id="EAutodexx" value="50" disabled>
+          </div>
+
+
+          <div class="form-group col-sm-12">
+
+            <label class="checkbox-inline col-sm-4">
+              <input type="checkbox" id="onoffWdexx" name="onoffWdexx" class="onoffWdexx" value="" disabled>ปั๊มน้ำ
+            </label>
+
+            <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+              <input type="checkbox" id="onoffFdexx" name="onoffFdexx" class="onoffFdexx" value="" checked
+                disabled>พัดลม
+            </label>
+
+            <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+              <input type="checkbox" id="onoffAdexx" name="onoffAdexx" class="onoffAdexx" value="" checked
+                disabled>เครื่องพ่นหมอก
+            </label>
+
+          </div>
+        </div>
+
+
+        <div class=" col-sm-12 alert alert-success h-2">
+          <h4 class="col-sm-10"> เมล่อน : (ความชื้นในอากาศ)</h4>
+
+
+          <div class="form-group col-sm-12">
+            <label for="usr">เริ่ม:</label>
+            <input type="number" class="form-control SAutodexx" name="SAutodexx" id="SAutodexx" value="40" disabled>
+          </div>
+          <div class="form-group col-sm-12">
+            <label for="usr">สิ้นสุด:</label>
+            <input type="number" class="form-control EAutodexx" name="EAutodexx" id="EAutodexx" value="50" disabled>
+          </div>
+
+
+          <div class="form-group col-sm-12">
+
+            <label class="checkbox-inline col-sm-4">
+              <input type="checkbox" id="onoffWdexx" name="onoffWdexx" class="onoffWdexx" value="" disabled>ปั๊มน้ำ
+            </label>
+
+            <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+              <input type="checkbox" id="onoffFdexx" name="onoffFdexx" class="onoffFdexx" value="" checked
+                disabled>พัดลม
+            </label>
+
+            <label class="checkbox-inline col-sm-4" style="margin-left: 0px;">
+              <input type="checkbox" id="onoffAdexx" name="onoffAdexx" class="onoffAdexx" value="" checked
+                disabled>เครื่องพ่นหมอก
+            </label>
+
+          </div>
+        </div>
+
+
+
+
+
+        </p>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ModalProfile content-->
+<div id="myModalProfile" class="modal fade">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Profile</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>
+
+
+        <div class="container col-sm-12  ">
+
+          <div class="list-group">
+            <a href="#" class="list-group-item active">วิสาหกิจสวนยางกลางนา (พืชต้นแบบ)</a>
+            <a href="#" class="list-group-item"><b>ชื่อ : <b>นาง ฉลอม สงล่า</a>
+            <a href="#" class="list-group-item"><b>ที่อยู่ :<b>224 หมู่7 ตำบลนางลือ อำเภอเมือง จังหวัดชัยนาท 17000</a>
+            <a href="#" class="list-group-item"><b>เบอร์ติดต่อ : <b>0894915147</a>
+            <a href="#" class="list-group-item"><b>รายละเอียด :
+                <b>มาตรฐานทางการเกษตรของจังหวัดชัยนาทสู่การเป็นมาตรการเกษตรของประเทศไทย
+                  และก้าวสู่การเป็นต้นแบบด้านการท่องเที่ยวเชิงการเกษตรเพื่อสุขภาพ</a>
+            <a href="#" class="list-group-item"><b>ที่มาและความสำคัญ :
+                <b>แหล่งรวมชุมชนทางการเกษตรเพื่อความเป็นหนึ่งเดียวทั้งอ้อย ข้าว ส้มโอ ผักปลอดสารพิษ เมล่อน
+                  มุ่งสู่การพัฒนาผลผลิตและคุณภาพทางการเกษตรให้ดียิ่งขึ้น</a>
+            <a href="#" class="list-group-item"><b>ข่าวสารที่อยากนำเสนอ : <b></a>
+
+
+          </div>
+        </div>
+
+        </p>
+        <hr>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Modal contact -->
+
+<!-- Modal -->
+
+<div id="myModalContact" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">ติดต่อ Admin</h4>
+      </div>
+      <div class="modal-body">
+        <div class="list-group">
+          <a href="#" class="list-group-item active">ข้อมูลบริษัท</a>
+          <a href="#" class="list-group-item "><b>ชื่อบริษัท : <b>บริษัท ทอร์ค ไอที จำกัด</a>
+          <a href="#" class="list-group-item"><b>ที่อยู่บริษัท : <b>19/21 หมู่ที่ 2 ต.คลองเกลือ อ.ปากเกร็ด จ.นนทบุรี
+                11120</a>
+          <a href="#" class="list-group-item"><b>อีเมล์ : <b>SmartFarm@gmail.com</a>
+          <a href="#" class="list-group-item"><b>เบอร์โทร : <b>020020965</a>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ModalLog -->
+<div id="myModalLog" class="modal fade">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Log sign in</h4>
+      </div>
+      <div class="modal-body">
+
+        <table class="table table-hover">
+          <thead>
+            <tr class="active">
+              <th class="text-center">ชื่อผู้ใช้งาน</th>
+              <th class="text-center">จำนวนการเข้าใช้งาน</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>สวนยาง ฟาร์ม</td>
+              <td class="text-center"> 27</td>
+            </tr>
+            <tr>
+              <td>เกษตรกร สวนยาง</td>
+              <td class="text-center"> 1</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <hr>
+
+        <figure class="highcharts-figure col-sm-12">
+          <div class="col-sm-12" id="containerLog" style="height:300px;"></div>
+        </figure>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<!-- /////////////////////////////////////////// chart login ////////////////////////////////////////////////////// -->
+<script type="text/javascript">
+  Highcharts.chart('containerLog', {
+    chart: {
+      type: 'column'
+    },
+
+    title: {
+      text: 'แผนภาพการเข้าใช้งาน'
+    },
+
+    subtitle: {
+      text: ''
+    },
+
+    yAxis: {
+      title: {
+        text: 'จำนวนการเข้าระบบ'
+      }
+    },
+
+    xAxis: {
+      categories: ['สวนยาง ฟาร์ม', 'เกษตรกร สวนยาง']
+    },
+
+    legend: {
+      enabled: false
+    },
+
+
+
+
+
+    series: [{
+      name: 'จำนวนการเข้าระบบ : ',
+      data: [27, 1]
+    }],
+
+    responsive: {
+      rules: [{
+        condition: {
+          maxWidth: 500
+        },
+        chartOptions: {
+          legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+          }
+        }
+      }]
+    }
+
+  });
+</script>
+<!-- /////////////////////////////////////////// chart report ////////////////////////////////////////////////////// -->
+
+
+
+
+<script type="text/javascript">
+  Highcharts.chart('chartreport', {
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: 'ผลการประเมิน'
+    },
+    subtitle: {
+      text: ''
+    },
+    xAxis: {
+      categories: [],
+      crosshair: true
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'คะแนน'
+      }
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },
+    series: [{
+      name: 'ความพึงพอใจของผลผลิต',
+      data: []
+
+    }, {
+      name: 'ความพึงพอใจการเจริญเติบโตของพืช',
+      data: []
+
+    }]
+  });
+</script>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx end ModalLog content-->
+<script>
+  for (let i = 0; i < 100; i++) {
+
+    $('.h-' + i.toString()).hide();
+
+  }
+  function hideddl() {
+
+    for (let i = 0; i < 100; i++) {
+
+      $('.h-' + i.toString()).hide();
+
+    }
+
+    return "";
+  }
+</script>
+<script>
+  var StatusWater = '2';
+  var StatusFan = '2';
+  var StatusAir = '2';
+
+  var onSetWater = '2';
+  var onSetFan = '2';
+  var onSetAir = '2';
+
+
+
+  if (StatusWater == '1') {
+    $('#StatusWater').attr('checked', true);
+  } else {
+    $('#StatusWater').attr('checked', false);
+  }
+  if (StatusFan == '1') {
+    $('#StatusFan').attr('checked', true);
+  } else {
+    $('#StatusFan').attr('checked', false);
+  }
+  if (StatusAir == '1') {
+    $('#StatusAir').attr('checked', true);
+  } else {
+    $('#StatusAir').attr('checked', false);
+  }
+
+  if (onSetWater == '1') {
+    $('#onSetWater').attr('checked', true);
+  } else {
+    $('#onSetWater').attr('checked', false);
+  }
+  if (onSetFan == '1') {
+    $('#onSetFan').attr('checked', true);
+  } else {
+    $('#onSetFan').attr('checked', false);
+  }
+  if (onSetAir == '1') {
+    $('#onSetAir').attr('checked', true);
+  } else {
+    $('#onSetAir').attr('checked', false);
+  }
+
+
+
+
+
+</script>
+
+<script>
+
+  //////////////////////////////////////////////////////////////// //switch on/off
+  let submit = (id, txt) => {
+    var Elet = "";
+    var tswitch = $('.' + id + ':checked').val();
+    var tstatus = "";
+    var Pstatus = "";
+
+    if (tswitch == 'on') {
+      tstatus = "เปิด";
+      Pstatus = "1"
+
+    } else {
+      tstatus = "ปิด";
+      Pstatus = "2"
+    }
+
+    if (id == "StatusWater") {
+      Elet = "5"
+    } else if (id == "StatusFan") {
+      Elet = "4"
+    } else {
+      Elet = "6"
+    }
+    //alert('Pstatus' + " : " + Elet);
+    //alert('FarmId' + " : " + '1');
+    //alert('LocationId' + " : " +'1');
+    //alert('status' + " : " +Pstatus);
+    if (confirm('คุณต้องการ' + tstatus + txt + ' หรือไม่')) {
+
+      $.ajax({
+        url: "./switch.php?switch=1",
+        type: "POST",
+        data: {
+          EletricId: Elet,
+          FarmId: '1',
+          LocationId: '1',
+          status: Pstatus
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+          //alert(dataResult.statusCode);		
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+  let AddAutoTable = (Sgroup, Scondi) => {
+
+    if (confirm('คุณต้องการเพิ่มการตั้งค่าหรือไม่')) {
+
+      $.ajax({
+        url: "./AddAuto.php?switch=1",
+        type: "POST",
+        data: {
+          FarmId: '1',
+          LocationId: '1',
+          Sgroup: Sgroup,
+          Scondi: Scondi
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ (**ไม่สามารถเลือกเงื่อนไขซ้ำกันในกลุ่มได้) !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+  let AddTimeSetTable = (Sgroup, x, Ss) => {
+
+
+    var texts = "";
+    if (x == 1) {
+      texts = "คุณต้องการเพิ่มการตั้งค่าหรือไม่";
+    }
+    if (x == 2) {
+      texts = "คุณต้องการลบตั้งค่าหรือไม่";
+    }
+    if (x == 3) {
+      texts = "คุณต้องการแก้ไขตั้งค่าหรือไม่";
+    }
+
+    if (confirm(texts)) {
+
+      $.ajax({
+        url: "./AddTimeSetTable.php?switch=" + x,
+        type: "POST",
+        data: {
+          FarmId: '1',
+          LocationId: '1',
+          Sgroup: Sgroup,
+          Status: Ss
+
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+
+
+
+  let DaySet = (Sgroup, x, Ss, tSDats) => {
+
+
+    var texts = "";
+
+    texts = "คุณต้องการแก้ไขตั้งค่าหรือไม่";
+
+
+    if (confirm(texts)) {
+
+      $.ajax({
+        url: "./DaySet.php?switch=" + x,
+        type: "POST",
+        data: {
+          FarmId: '1',
+          LocationId: '1',
+          Sgroup: Sgroup,
+          Status: Ss,
+          SDats: tSDats
+
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+  //////////////switch Edit set time
+  let submitEdittime = (id, tstart, tend) => {
+
+
+
+    if (confirm('คุณต้องการแก้ไขเวลาหรือไม่')) {
+
+      $.ajax({
+        url: "./switch.php?switch=3",
+        type: "POST",
+        data: {
+          Id: id,
+          FarmId: '1',
+          LocationId: '1',
+          tstart: tstart,
+          tend: tend
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+          //alert(dataResult.statusCode);
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+
+
+
+  /////////////////////////////////// //switch Edit set time Autooooooooooooooooooooooooo
+  let submitEditAuto = (id, txt) => {
+
+    var tStart = $('#SAuto' + id).val();
+    var tEnd = $('#EAuto' + id).val();
+    var tAllId = $('#arrid' + id).val();
+    if (confirm('คุณต้องการแก้ไขเวลาหรือไม่')) {
+
+      $.ajax({
+        url: "./switchAuto.php?switch=1",
+        type: "POST",
+        data: {
+          FarmId: '1',
+          LocationId: '1',
+          VariableId: txt,
+          tstart: tStart,
+          tend: tEnd,
+          tAllId: tAllId,
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+  /////////////////////////////////// //switch del set time Autooooooooooooooooooooooooo
+  let submitDelAuto = (id, txt) => {
+
+
+    var tAllId = $('#arrid' + id).val();
+    if (confirm('คุณต้องการลบการตั้งค่าหรือไม่')) {
+
+      $.ajax({
+        url: "./switchAuto.php?switch=del",
+        type: "POST",
+        data: {
+          tAllId: tAllId
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+  /////////////////////////////////// //switch Edit switch Autooooooooooooooooooooooooo
+  let submitEditSwitchAuto = (id, txt) => {
+
+
+    var tAllId = $('#arrid' + id).val();
+
+
+    var tswitch = $('.onoff' + id + ':checked').val();
+    if (tswitch == 'on') {
+      tstatus = "เปิดการใช้งาน";
+      Pstatus = "1"
+
+    } else {
+      tstatus = "ปิดการใช้งาน";
+      Pstatus = "2"
+    }
+
+
+
+
+    if (confirm('คุณต้องการ' + tstatus + 'หรือไม่')) {
+
+      $.ajax({
+        url: "./switchAuto.php?switch=2",
+        type: "POST",
+        data: {
+          tAllId: tAllId,
+          status: Pstatus
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+
+  };
+
+
+
+  /////////////////////////////////// //switch Edit switch Electric Autooooooooooooooooooooooooo
+  let submitEditElectricAuto = (id, txt, vals) => {
+
+    //alert(id);
+    //alert(txt);
+    //alert(vals);
+
+
+    if (vals == '') {
+      tstatus = "เปิดการใช้งาน";
+      Pstatus = "1";
+
+    } else {
+      tstatus = "ปิดการใช้งาน";
+      Pstatus = "2";
+    }
+
+    //  alert('คุณต้องการ' + tstatus + 'หรือไม่');
+
+
+    if (confirm('คุณต้องการ' + tstatus + 'หรือไม่')) {
+
+      $.ajax({
+        url: "./switchAuto.php?switch=3",
+        type: "POST",
+        data: {
+          tAllId: txt,
+          status: Pstatus
+        },
+        cache: false,
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+            location.reload();
+
+          }
+          else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+
+  };
+
+
+  let submitReport = () => {
+
+
+    if (confirm('คุณต้องการส่งแบบประเมินหรือไม่')) {
+
+      $.ajax({
+        url: "./saveReport.php",
+        type: "POST",
+        data: {
+          FarmId: $('#refarm').val(),
+          LocationId: '1',
+          sDate: $('#redate').val(),
+          tname: $('#rename').val(),
+          ScoreProduct: ($('#rePro').val()),
+          ScoreGrow: ($('#regrow').val())
+        },
+        cache: false,
+        success: function (dataResult) {
+
+          var dataResult = JSON.parse(dataResult);
+
+          if (dataResult.statusCode == 200) {
+            alert("ดำเนินการสำเร็จ");
+            $('#rePro').val(0);
+            $('#regrow').val(0);
+            $('#redate').val("");
+            $('#refarm').val("");
+
+            location.reload();
+
+          } else {
+            alert("ไม่สามารถดำเนินการได้ !!");
+            location.reload();
+          }
+
+        }
+      });
+
+    } else {
+
+      location.reload();
+    }
+  };
+
+</script>
+<script>
+  /*
+          function init() {
+            var map = new longdo.Map({
+              placeholder: document.getElementById('map')
+            });
+            map = new longdo.Map({
+              placeholder: document.getElementById('map')
+            });
+            map.location({ lon:100.06400299072266, lat:15.14680004119873 }, true); // go to 100, 16 when created map
+            map.zoom(20, true);
+          }
+          */
+</script>
+
+
+<script>
+
+
+  var tapon = 'TapAuto';
+  if (tapon == 'TapSTATUS') {
+    $('.TapSTATUS').show();
+  }
+  if (tapon == 'TapControl') {
+    $('.TapControl').show();
+  }
+  if (tapon == 'TapAuto') {
+    $('.TapAuto').show();
+  }
+  if (tapon == 'TapExport') {
+    $('.TapExport').show();
+  }
+  if (tapon == '') {
+    $('.TapSTATUS').show();
+  }
+         // alert(tapon);
+
+</script>
