@@ -3,18 +3,10 @@ from PIL import Image, ImageOps  # Install pillow instead of PIL
 import numpy as np
 
 import os
-path = 'C:/xampp/htdocs/smartFarm/ImageNhanDien'
-from flask import Flask, request, render_template
+path = 'C:/xampp/htdocs/smartFarm'
 
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return render_template('NhanDienSauBenh.php')
-
-@app.route('/process_data', methods=['POST'])
 def NhanDien(url):
-    url = path . request.form['name']
+
     # Disable scientific notation for clarity
     np.set_printoptions(suppress=True)
 
@@ -51,9 +43,30 @@ def NhanDien(url):
     class_name = class_names[index]
     confidence_score = prediction[0][index]
     rs = class_name[2:]
-    return rs[:len(rs)-1]
+    return rs[:len(rs)-1], confidence_score
 
 
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5500)
+def DoChinhXac():
+    folder_path = "C:/xampp/htdocs/smartFarm/data/Test"
+
+    # Lấy danh sách các tệp tin trong thư mục
+    file_list = os.listdir(folder_path)
+    sum = 0
+    # Duyệt qua từng tệp tin và đọc nội dung
+    for file_name in file_list:
+        # Tạo đường dẫn đầy đủ đến tệp tin
+        file_path = os.path.join(folder_path, file_name)
+        
+        # Kiểm tra xem đây có phải là một tệp tin không
+        if os.path.isfile(file_path):
+            rs, DoChinhXacFile = (NhanDien(file_path))
+            #just get file name
+            file_name_without_ext, file_ext = os.path.splitext(file_name)
+            if (rs in file_name_without_ext):
+                sum = sum + 1
+    return (sum/len(file_list)*100)
+print(DoChinhXac())
+
+
+
