@@ -1,4 +1,17 @@
-<html lang="vi" class="translated-ltr">
+<?php
+include("config/config.php");
+include("config/firebaseRDB.php");
+$db = new firebaseRDB($databaseURL);
+
+if(isset($_GET['id_system'])){
+  $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
+  $data = json_decode($data, 1);
+}
+else{
+}
+?>
+
+ <html lang="vi" class="translated-ltr">
 
 <head>
   <title>trang trại thông minh</title>
@@ -39,13 +52,7 @@
           <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Vườn cây thông minh(
               <?php
-                require("config/database.php");
-                require("config/helper.php");
-                session_start();
-                $id_user = $_SESSION['id_user'];
-                $data = get_one('system', 'name_system', 'id_user', $id_user);
-                echo $data['name_system'] ?? '';
-                
+                echo $data['name_system']
               ?>
             )</font>
           </font>
@@ -206,27 +213,7 @@
                         <font style="vertical-align: inherit;">
                           Nhiệt độ không khí: 
                           <span id="humidity"></span> 
-                          <script>
-                              // Lấy dữ liệu ban đầu
-                              getData();
-                              // Sau mỗi 5 giây lấy dữ liệu mới nhất
-                              setInterval(getData, 5000);
-
-                              function getData() {
-                                  $.ajax({
-                                      url: 'get_data_status.php',
-                                      type: 'GET',
-                                      dataType: 'json',
-                                      success: function(data) {
-                                          $('#humidity').html(data.humidity);
-                                      },
-                                      error: function() {
-                                          console.log('Lỗi khi lấy dữ liệu');
-                                      }
-                                  });
-                              }
-                          </script>
-                           C
+                          <?php echo $data['hummidity'] ?> C
                         
                         </font>
                       </font>
@@ -244,27 +231,8 @@
                          <font style="vertical-align: inherit;">
                             Độ ẩm của đất:
                             <span id="temparature"></span> 
-                            <script>
-                              // Lấy dữ liệu ban đầu
-                              getData();
-                              // Sau mỗi 5 giây lấy dữ liệu mới nhất
-                              setInterval(getData, 5000);
+                            <?php echo $data['temparature'] ?> %
 
-                              function getData() {
-                                  $.ajax({
-                                      url: 'get_data_status.php',
-                                      type: 'GET',
-                                      dataType: 'json',
-                                      success: function(data) {
-                                          $('#temparature').html(data.temparature);
-                                      },
-                                      error: function() {
-                                          console.log('Lỗi khi lấy dữ liệu');
-                                      }
-                                  });
-                              }
-                          </script>
-                            %
                         </font>
                         </font>
                     </h4>
@@ -281,26 +249,8 @@
                         <font style="vertical-align: inherit;">
                         Cường độ sáng: 
                         <span id="light"></span> 
-                            <script>
-                              // Lấy dữ liệu ban đầu
-                              getData();
-                              // Sau mỗi 5 giây lấy dữ liệu mới nhất
-                              setInterval(getData, 5000);
+                          <?php echo $data['light'] ?>
 
-                              function getData() {
-                                  $.ajax({
-                                      url: 'get_data_status.php',
-                                      type: 'GET',
-                                      dataType: 'json',
-                                      success: function(data) {
-                                          $('#light').html(data.light);
-                                      },
-                                      error: function() {
-                                          console.log('Lỗi khi lấy dữ liệu');
-                                      }
-                                  });
-                              }
-                          </script>
                          Lux
                         </font>
                       </font>
@@ -492,4 +442,4 @@
   <script src="./js.firebase.js"></script>
   
 </body>
-</html>
+</html> 
