@@ -75,9 +75,9 @@
         <hr>
         <ul class="nav nav-pills nav-stacked">
           <li class="active">
-            <a href="home.html">
+          <a href="NhanDienSauBenh.php">
               <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Trang chính</font>
+                <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
               </font>
             </a>
           </li>
@@ -92,79 +92,37 @@
             </a>
           </li>
 
-          <li>
-            <u><b><a href="#">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Vườn cây thông minh</font>
-                  </font>
-                </a></b></u>
-          </li>
-          <!-- //////////////////////////////////////////////  Modal run location (in lop) ////////////////////////////////////////////////////-->
-
-          <!-- Modal -->
-          <div id="myModalLocation1" class="modal fade">
-            <div class="modal-dialog modal-lg">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">
-                    <font style="vertical-align: inherit;">
-                      <font style="vertical-align: inherit;">×</font>
-                    </font>
-                  </button>
-                  <h4 class="modal-title">
-                    <font style="vertical-align: inherit;">
-                      <font style="vertical-align: inherit;">Vườn cây thông minh</font>
-                    </font>
-                  </h4>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">
-                    <font style="vertical-align: inherit;">
-                      <font style="vertical-align: inherit;">Tắt</font>
-                    </font>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <!-- //////////////////////////////////////////////  End Modal run location (in lop) ////////////////////////////////////////////////////-->
-          <li>
+          <li class="active">
             <a href="./status.php">
-              <span class="glyphicon glyphicon-arrow-right"> </span>
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Trạng thái</font>
               </font>
             </a>
           </li>
-          <li>
+
+          <li class="active">
             <a href="./control.php">
-              <span class="glyphicon glyphicon-arrow-right"> </span>
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Điều khiển</font>
               </font>
             </a>
           </li>
-          <li>
+
+          <li class="active">
             <a href="./system.php">
-              <span class="glyphicon glyphicon-arrow-right"> </span>
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Cài đặt hệ thống</font>
               </font>
             </a>
           </li>
-          <li>
-            <a href="./NhanDienSauBenh.php">
-              <span class="glyphicon glyphicon-arrow-right"> </span>
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
-              </font>
-            </a>
-          </li>
+
+          <!-- //////////////////////////////////////////////  Modal run location (in lop) ////////////////////////////////////////////////////-->
+        
+          <!-- Modal -->
+          
         </ul>
       </div>
+      
       <div class="col-sm-10">
         <div class="container-fluid TapSTATUS" style="">
           <h2 class="alert alert-success">
@@ -178,18 +136,18 @@
             
             <br><input type="file" name="fileImg" id="fileImg">
             <a href="" data-toggle="modal" data-target="#myModalContact">
-            <br> <button type="button" class="btn btn-default" data-dismiss="modal">Sử dụng camera</button>
+            <!-- <br> <button type="button" class="btn btn-default" data-dismiss="modal">Sử dụng camera</button> -->
             </a>
             <br><br><br>
             <label id="result">Kết quả: </label>
-            <?php 
+            <?php
               echo (isset($_SESSION['rsNhanDien']))?$_SESSION['rsNhanDien']:"";
               unset($_SESSION['rsNhanDien']);
             ?>
             <br><br><br>
                         <button type="submit" class="btn btn-default" name="NhanDienAnh" id="NhanDienAnh" >Nhận diện   </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-                    </b></b></b>  
+                    </b></b></b>
               </div><b><b><b>
             
            

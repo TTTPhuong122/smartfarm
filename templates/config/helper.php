@@ -93,5 +93,12 @@ function check_register($email){
 function alert($msg) {
     echo "<script type='text/javascript'>alert('$msg');</script>";
 }
-
+function get_user_name($email){
+	$data = get_one('user','user_name','email',$email);
+	if($data){
+		return $data;
+	}else{
+		return FALSE;
+	}
+}
 ?>

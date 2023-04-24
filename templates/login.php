@@ -2,10 +2,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<?php
-    ob_start();
-    session_start();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -32,7 +28,7 @@
                     <h4>Đăng nhập</h4>
                 </div>
 
-                <form action="phplogin.php" method="post">
+                <form action="./phplogin.php" method="post">
                     <div class="card-body">
 
                         <div id="dynamic_container">
@@ -84,7 +80,7 @@
                             </div>
                             <div class="input-group  col-sm-6 mt-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text br-15" >Email </i>
+                                    <span class="input-group-text br-15">Email </i>
                                     </span>
                                 </div>
                                 <input type="text" class="form-control" id="rEmail" name="rEmail" required />
@@ -94,7 +90,7 @@
                                     <span class="input-group-text br-15">Mật khẩu </i>
                                     </span>
                                 </div>
-                                <input type="password" class="form-control" id="rPassword" name="rPassword" required />
+                                <input type="text" class="form-control" id="rPassword" name="rPassword" required />
                             </div>
                             <div class="input-group col-sm-6 mt-3">
                                 <select name="Sex" id="Sex" required>
@@ -134,6 +130,7 @@
             </div>
         </div>
     </div>
+    <script src="./js.firebase.js"></script>
 </body>
 
 </html>

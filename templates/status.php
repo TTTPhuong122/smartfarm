@@ -37,7 +37,17 @@
 
         <a class="navbar-brand" href="#">
           <font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">Vườn cây thông minh(Hướng Dương)</font>
+            <font style="vertical-align: inherit;">Vườn cây thông minh(
+              <?php
+                require("config/database.php");
+                require("config/helper.php");
+                session_start();
+                $id_user = $_SESSION['id_user'];
+                $data = get_one('system', 'name_system', 'id_user', $id_user);
+                echo $data['name_system'] ?? '';
+                
+              ?>
+            )</font>
           </font>
         </a>
       </div>
@@ -46,12 +56,16 @@
           <a href="#">
             <span class="glyphicon glyphicon-user"></span>
             <font style="vertical-align: inherit;">
-              <font style="vertical-align: inherit;">Một</font>
+              <font style="vertical-align: inherit;">
+              <?php
+              echo $_SESSION['user_name'] ?? '';
+              ?>
+            </font>
             </font>
           </a>
         </li>
         <li>
-          <a href="logout.php">
+          <a href="./phplogout.php">
             <span class="glyphicon glyphicon-log-out"></span>
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">Đăng xuất</font>
@@ -70,10 +84,10 @@
 
         <hr>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active">
-            <a href="home.html">
+        <li class="active">
+            <a href="NhanDienSauBenh.php">
               <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Trang chính</font>
+                <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
               </font>
             </a>
           </li>
@@ -88,12 +102,28 @@
             </a>
           </li>
 
-          <li>
-            <u><b><a href="#">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Vườn cây thông minh</font>
-                  </font>
-                </a></b></u>
+          <li class="active">
+            <a href="./status.php" >
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Trạng thái</font>
+              </font>
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="./control.php">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Điều khiển</font>
+              </font>
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="./system.php">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Cài đặt hệ thống</font>
+              </font>
+            </a>
           </li>
           <!-- //////////////////////////////////////////////  Modal run location (in lop) ////////////////////////////////////////////////////-->
 
@@ -126,33 +156,11 @@
 
             </div>
           </div>
-          <!-- //////////////////////////////////////////////  End Modal run location (in lop) ////////////////////////////////////////////////////-->
-          <li>
-            <a href="./status.php">
-              <span class="glyphicon glyphicon-arrow-right"> </span>
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Trạng thái</font>
-              </font>
-            </a>
-          </li>
-          <li>
-            <a href="./control.php">
-              <span class="glyphicon glyphicon-arrow-right"> </span>
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Điều khiển</font>
-              </font>
-            </a>
-          </li>
-          <li>
-            <a href="./system.php">
-              <span class="glyphicon glyphicon-arrow-right"> </span>
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Cài đặt hệ thống</font>
-              </font>
-            </a>
-          </li>
+          
         </ul>
       </div>
+      <!-- //////////////////////////////////////////////  Modal run location (in lop) ////////////////////////////////////////////////////-->
+
       <div class="col-sm-10">
         <div class="container-fluid TapSTATUS" style="">
           <h2 class="alert alert-success">
@@ -196,16 +204,29 @@
                       </a>
                       <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">
-                          Nhiệt độ không khí:
-                          <?php
-                          require("config/database.php");
-                          $sql = 'SELECT humidity, light, temparature FROM system WHERE id_user = 1';
-                          $result = mysqli_query($conn, $sql);
-                          while($row = mysqli_fetch_assoc($result))
-                          {
-                            echo "{$row['humidity']}";
-                          }
-                          ?> C
+                          Nhiệt độ không khí: 
+                          <span id="humidity"></span> 
+                          <script>
+                              // Lấy dữ liệu ban đầu
+                              getData();
+                              // Sau mỗi 5 giây lấy dữ liệu mới nhất
+                              setInterval(getData, 5000);
+
+                              function getData() {
+                                  $.ajax({
+                                      url: 'get_data_status.php',
+                                      type: 'GET',
+                                      dataType: 'json',
+                                      success: function(data) {
+                                          $('#humidity').html(data.humidity);
+                                      },
+                                      error: function() {
+                                          console.log('Lỗi khi lấy dữ liệu');
+                                      }
+                                  });
+                              }
+                          </script>
+                           C
                         
                         </font>
                       </font>
@@ -221,16 +242,29 @@
                       </a>
                         <font style="vertical-align: inherit;">
                          <font style="vertical-align: inherit;">
-                            Độ ẩm của đất: 
-                            <?php
-                          require("config/database.php");
-                          $sql = 'SELECT humidity, light, temparature FROM system WHERE id_user = 1';
-                          $result = mysqli_query($conn, $sql);
-                          while($row = mysqli_fetch_assoc($result))
-                          {
-                            echo "{$row['temparature']}";
-                          }
-                          ?> %
+                            Độ ẩm của đất:
+                            <span id="temparature"></span> 
+                            <script>
+                              // Lấy dữ liệu ban đầu
+                              getData();
+                              // Sau mỗi 5 giây lấy dữ liệu mới nhất
+                              setInterval(getData, 5000);
+
+                              function getData() {
+                                  $.ajax({
+                                      url: 'get_data_status.php',
+                                      type: 'GET',
+                                      dataType: 'json',
+                                      success: function(data) {
+                                          $('#temparature').html(data.temparature);
+                                      },
+                                      error: function() {
+                                          console.log('Lỗi khi lấy dữ liệu');
+                                      }
+                                  });
+                              }
+                          </script>
+                            %
                         </font>
                         </font>
                     </h4>
@@ -246,15 +280,28 @@
                       <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">
                         Cường độ sáng: 
-                        <?php
-                          require("config/database.php");
-                          $sql = 'SELECT humidity, light, temparature FROM system WHERE id_user = 1';
-                          $result = mysqli_query($conn, $sql);
-                          while($row = mysqli_fetch_assoc($result))
-                          {
-                            echo "{$row['temparature']}";
-                          }
-                          ?> Lux
+                        <span id="light"></span> 
+                            <script>
+                              // Lấy dữ liệu ban đầu
+                              getData();
+                              // Sau mỗi 5 giây lấy dữ liệu mới nhất
+                              setInterval(getData, 5000);
+
+                              function getData() {
+                                  $.ajax({
+                                      url: 'get_data_status.php',
+                                      type: 'GET',
+                                      dataType: 'json',
+                                      success: function(data) {
+                                          $('#light').html(data.light);
+                                      },
+                                      error: function() {
+                                          console.log('Lỗi khi lấy dữ liệu');
+                                      }
+                                  });
+                              }
+                          </script>
+                         Lux
                         </font>
                       </font>
                     </h4>
@@ -290,8 +337,159 @@
     </script> -->
 
       </div>
+      <div id="myModalProfile" class="modal fade" style="display: none;">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">×</font>
+            </font>
+          </button>
+          <h4 class="modal-title">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Thông tin vườn</font>
+            </font>
+          </h4>
+        </div>
+        <div class="modal-body">
+
+          <p>
+
+
+          </p>
+          <div class="container col-sm-12  ">
+
+            <div class="list-group">
+              <a href="#" class="list-group-item active">
+                <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">Vườn trồng cây thông minh</font>
+                </font>
+              </a>
+              <a href="#" class="list-group-item"><b>
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Chủ vườn : </font>
+                  </font><b>
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">
+                      <?php
+                          $id_user = $_SESSION['id_user'];
+                          $data = get_one('user', 'user_name', 'id_user', $id_user);
+                          echo $data['user_name'] ?? '';
+                          
+                          ?>
+                    </font>
+                    </font>
+                  </b>
+                </b></a><b><b>
+                  <a href="#" class="list-group-item"><b>
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Địa chỉ : </font>
+                      </font><b>
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;">
+                          <?php
+                            $id_user = $_SESSION['id_user'];
+                            $data = get_one('user', 'address', 'id_user', $id_user);
+                            echo $data['address'] ?? '';
+                            
+                            ?>
+                        
+                        </font>
+                        </font>
+                      </b>
+                    </b></a><b><b>
+                      <a href="#" class="list-group-item"><b>
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Số điện thoại liên hệ : </font>
+                          </font><b>
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                              <?php
+                                  $id_user = $_SESSION['id_user'];
+                                  $data = get_one('user', 'phone', 'id_user', $id_user);
+                                  echo $data['phone'] ?? '';
+                                  
+                                  ?>
+                            </font>
+                            </font>
+                          </b>
+                        </b></a><b><b>
+                          <a href="#" class="list-group-item"><b>
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Loại cây trồng : </font>
+                              </font><b>
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                  <?php
+                                    
+                                    $id_user = $_SESSION['id_user'];
+                                    $data = get_one('system', 'name_system', 'id_user', $id_user);
+                                    echo $data['name_system'] ?? '';
+                                    
+                                    ?></font>
+                                </font>
+                              </b>
+                            </b></a><b><b>
+                              <!-- <a href="#" class="list-group-item"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tin tức cần trình bày:</font></font><b></b></b></a><b><b> -->
+
+
+                            </b></b></b></b></b></b></b></b>
+            </div><b><b><b>
+                </b></b></b>
+          </div><b><b><b>
+
+                <p></p>
+                <hr>
+
+
+
+              </b></b></b>
+        </div><b><b><b>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Tắt</font>
+                  </font>
+                </button>
+              </div>
+            </b></b></b>
+      </div><b><b><b>
+
+          </b></b></b>
+    </div><b><b><b>
+        </b></b></b>
+  </div>
+  <div id="goog-gt-" class="skiptranslate VIpgJd-yAWNEb-L7lbkb" dir="ltr">
+    <div style="padding: 8px;">
+      <div>
+        <div class="VIpgJd-yAWNEb-l4eHX"><img
+            src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20"
+            alt="Google Translate"></div>
+      </div>
+    </div>
+    <div style="padding: 8px; float: left; width: 100%;">
+      <h1 class="VIpgJd-yAWNEb-r4nke VIpgJd-yAWNEb-mrxPge">Original text</h1>
+    </div>
+    <div style="padding: 8px;">
+      <div class="VIpgJd-yAWNEb-nVMfcd-fmcmS"></div>
+    </div>
+    <div class="VIpgJd-yAWNEb-cGMI2b" style="padding: 8px;">
+      <div class="VIpgJd-yAWNEb-Z0Arqf-PLDbbf"><span class="VIpgJd-yAWNEb-Z0Arqf-hSRGPd">Contribute a better
+          translation</span></div>
+      <div class="VIpgJd-yAWNEb-fw42Ze-Z0Arqf-haAclf">
+        <hr style="color: #ccc; background-color: #ccc; height: 1px; border: none;">
+        <div class="VIpgJd-yAWNEb-Z0Arqf-H9tDt"></div>
+      </div>
+    </div>
+    <div class="VIpgJd-yAWNEb-jOfkMb-Ne3sFf" style="display: none;"></div>
+  </div>
     </div>
     </div>
   </div>
+  <script src="./js.firebase.js"></script>
+  
 </body>
 </html>

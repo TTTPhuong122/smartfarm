@@ -1,4 +1,4 @@
 0 la khoe
-1 moc xam
-2 dom la
-3 suong mai
+1 suong mai
+2 moc xam
+3 dom la
