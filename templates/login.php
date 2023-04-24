@@ -4,7 +4,6 @@
 <!------ Include the above in your HEAD tag ---------->
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Đăng nhập vào Smart Farm</title>
@@ -28,7 +27,6 @@
                     <h4>Đăng nhập</h4>
                 </div>
 
-                <form action="./phplogin.php" method="post">
                     <div class="card-body">
 
                         <div id="dynamic_container">
@@ -57,10 +55,9 @@
                         <a class="btn btn-secondary btn-sm" id="add_more" onclick="$('.register').show(400);">
                             <i class="fas fa-plus-circle"></i> Đăng kí </a>
 
-                        <button type="submit" class="btn btn-success btn-sm float-right submit_btn">
+                        <button type="button" class="btn btn-success btn-sm float-right submit_btn" id="btnLogIn">
                             <i class="fas fa-arrow-alt-circle-right"></i> Đăng nhập </button>
                     </div>
-                </form>
 
 
                 <br>
@@ -130,7 +127,51 @@
             </div>
         </div>
     </div>
-    <script src="./js.firebase.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBhgjYth2xS9y09F5I7N6j1y4G2h1cLbGA",
+            authDomain: "smart-farm-feeb2.firebaseapp.com",
+            databaseURL: "https://smart-farm-feeb2-default-rtdb.firebaseio.com",
+            projectId: "smart-farm-feeb2",
+            storageBucket: "smart-farm-feeb2.appspot.com",
+            messagingSenderId: "419032023754",
+            appId: "1:419032023754:web:40855cd3b3406c3faf2a33",
+            measurementId: "G-27EG728Y3P"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        
+        document.getElementById("btnLogIn").addEventListener('click', function(){
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                window.location.assign('phplogin.php?userid=' + user["uid"]);
+               
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+
+            });
+        });
+        
+    </script>
+
 </body>
 
 </html>
