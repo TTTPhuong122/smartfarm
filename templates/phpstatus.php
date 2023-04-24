@@ -88,20 +88,6 @@
               </font>
             </a>
           </li>
-          <!-- <li class="active">
-              <a href="" data-toggle="modal" data-target="#myModalLog"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tham gia sử dụng</font></font></a>
-            </li> -->
-          <!-- <li class="active">
-              <a href="" data-toggle="modal" data-target="#myModalContact"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">liên hệ với công ty</font></font></a>
-            </li> -->
-          <!-- <li class="active">
-              <a href="graph.php?memberid=13&amp;lock="><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">đồ thị</font></font></a>
-            </li> -->
-          <!-- <li class="active">
-              <a href="./personal_farm.html&amp;location=&amp;tapon=TapExport&amp;lock="><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">báo cáo</font></font></a>
-            </li> -->
-
-
           <li>
             <u><b><a href="#">
                   <font style="vertical-align: inherit;">
@@ -133,7 +119,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">
                     <font style="vertical-align: inherit;">
-                      <font style="vertical-align: inherit;">tắt</font>
+                      <font style="vertical-align: inherit;">Tắt</font>
                     </font>
                   </button>
                 </div>
@@ -170,131 +156,9 @@
         <br>
       </div>
 
-
-      <!--##################################################################################  Modal report ################################################################################## -->
-
-      <div id="myModalreport" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">
-                <font style="vertical-align: inherit;">
-                  <font style="vertical-align: inherit;">×</font>
-                </font>
-              </button>
-              <h4 class="modal-title">
-                <font style="vertical-align: inherit;">
-                  <font style="vertical-align: inherit;">Báo cáo đánh giá</font>
-                </font>
-              </h4>
-            </div>
-            <div class="modal-body">
-              <p>
-              </p>
-              <div class="form-group">
-                <label for="redate">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">ngày :</font>
-                  </font>
-                </label>
-                <input type="datetime-local" class="form-control redate" id="redate" name="redate">
-              </div>
-              <div class="form-group">
-                <label for="refarm">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">nông trại :</font>
-                  </font>
-                </label>
-                <select class="form-control refarm" id="refarm" name="refarm">
-                  <option value="">--- chọn ---</option>
-                  <option value="1">Doanh nghiệp trồng cao su giữa đồng (cây mẫu)</option>
-
-
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="rename">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Tên người điền:</font>
-                  </font>
-                </label>
-                <input type="text" class="form-control rename" id="rename" name="rename" value="สวนยาง ฟาร์ม"
-                  disabled="">
-              </div>
-              <div class="form-group">
-                <label for="rePro">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Sự hài lòng về năng suất:</font>
-                  </font>
-                </label>
-                <select class="form-control" id="rePro" name="rePro">
-                  <option value="0">--- chọn ---</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">số 8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="regrow">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Sự hài lòng về tăng trưởng của cây trồng:</font>
-                  </font>
-                </label>
-                <select class="form-control" id="regrow" name="regrow">
-                  <option value="0">--- chọn ---</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">số 8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-
-              <p></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal" onclick="submitReport()">
-                <font style="vertical-align: inherit;">
-                  <font style="vertical-align: inherit;">xác nhận</font>
-                </font>
-              </button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">
-                <font style="vertical-align: inherit;">
-                  <font style="vertical-align: inherit;">tắt</font>
-                </font>
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <style>
-        /* If the screen size is smaller than 1200px, set the font-size to 80px */
-        @media (max-width: 1199.98px) {
-          .responsive-font-example {
-            font-size: 15px;
-          }
-        }
-      </style>
-
       <!-- ################################################################################## -->
       <div class="col-sm-10">
-      <div class="container-fluid TapSTATUS" style="display:none;">
+      <div class="container-fluid TapSTATUS" style="">
           <h2 class="alert alert-success">
             <small>
               <font style="vertical-align: inherit;">
@@ -345,7 +209,7 @@
                           {
                             echo "{$row['humidity']}";
                           }
-                          ?> 
+                          ?> C
                         
                         </font>
                       </font>
@@ -370,7 +234,7 @@
                           {
                             echo "{$row['temparature']}";
                           }
-                          ?> 
+                          ?> %
                         </font>
                         </font>
                     </h4>
@@ -394,7 +258,7 @@
                           {
                             echo "{$row['temparature']}";
                           }
-                          ?> 
+                          ?> Lux
                         </font>
                       </font>
                     </h4>
@@ -408,7 +272,7 @@
           
         </div>
         <!-- ################################################################################## -->
-        <div class="container-fluid TapControl" style="display:none;">
+        <div class="container-fluid TapControl" style="">
           <h2 class="alert alert-info">
             <small>
               <font style="vertical-align: inherit;">
@@ -744,10 +608,7 @@
           </div>
 
 
-          <!-- #################################################################### ตั้งค่าการทำงานอัตโนมัติ ##################################################################################################### -->
-
-
-
+          <!-- #################################################################### Thiết lập tự động hóa ##################################################################################################### -->
           <div class="well col-sm-6" style="background-color: #ffffff;">
 
             <div class="col-sm-12">
@@ -815,14 +676,7 @@
                   </div>
 
                   <input type="hidden" name="arrid1" id="arrid1" class="arrid1" value="\'118\',\'119\',\'120\'">
-
-
-
                 </div>
-
-
-
-
                 <h4 class="col-sm-10">Bộ 2</h4>
 
 
@@ -879,215 +733,6 @@
         </div>
         <!-- ///////////////////////////////////////////////////////////////////////////////  page  report ////////////////////////////////////////////////////////////////////////-->
         <br>
-        <div class=" col-sm-12 TapExport" style="background-color: rgb(255, 255, 255); display: none;">
-          <form action="./personal_farm.html&amp;farmid=&amp;location=&amp;tapon=TapExport" method="post" id="form1">
-            <div class="col-sm-12 alert alert-danger">
-              <h4 class="col-sm-9 " style=" padding-top: 10px;">Export Report</h4>
-
-              <button type="button" class="col-sm-3  btn btn-primary container " data-toggle="modal"
-                data-target="#myModalreport">บันทึก</button>
-            </div>
-            <div class="col-sm-12">
-
-
-
-
-
-              <div class="form-group col-sm-10">
-                <label for="reStartDate">ฟาร์ม : </label>
-                <select class="form-control schrefarm" id="schrefarm" name="schrefarm">
-                  <option value="">--- เลือก ---</option>
-                  <option value="1">วิสาหกิจสวนยางกลางนา (พืชต้นแบบ)</option>
-                </select>
-              </div>
-
-
-
-              <div class="form-group col-sm-10">
-                <label for="reStartDate">ช่วงเวลา : </label>
-                <input type="date" class="form-control reStartDate" id="reStartDate" name="reStartDate">
-              </div>
-              <div class="form-group col-sm-10">
-                <label for="reEndDate">ถึง : </label>
-                <input type="date" class="form-control reEndDate" id="reEndDate" name="reEndDate">
-              </div>
-
-              <div class="form-group col-sm-2">
-                <br>
-                <input type="submit" class="btn btn-success" style="width:100%;" value="ค้นหา">
-              </div>
-
-
-              <figure class="highcharts-figure col-sm-12">
-                <div id="chartreport" data-highcharts-chart="1" aria-hidden="false" role="region"
-                  aria-label="ผลการประเมิน. Highcharts interactive chart." style="overflow: hidden;">
-                  <div id="highcharts-screen-reader-region-before-1" aria-hidden="false" style="position: relative;">
-                    <div aria-hidden="false"
-                      style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;">
-                      <p>ผลการประเมิน</p>
-                      <div>Bar chart with 2 data series.</div>
-                      <div><button id="hc-linkto-highcharts-data-table-1" tabindex="-1" aria-expanded="false">View as
-                          data table, ผลการประเมิน</button></div>
-                      <div>The chart has 1 X axis displaying categories. </div>
-                      <div>The chart has 1 Y axis displaying คะแนน. Data ranges from 0 to 0.</div>
-                    </div>
-                  </div>
-                  <div aria-hidden="false" class="highcharts-announcer-container" style="position: relative;">
-                    <div aria-hidden="false" aria-live="polite"
-                      style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;">
-                    </div>
-                    <div aria-hidden="false" aria-live="assertive"
-                      style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;">
-                    </div>
-                    <div aria-hidden="false" aria-live="polite"
-                      style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;">
-                    </div>
-                  </div>
-                  <div id="highcharts-wd3d8xc-6" dir="ltr" class="highcharts-container "
-                    style="position: relative; overflow: hidden; width: 944px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); user-select: none; touch-action: manipulation; outline: none;"
-                    aria-hidden="false" tabindex="0">
-                    <div aria-hidden="false" class="highcharts-a11y-proxy-container-before"
-                      style="top: 0px; left: 0px; white-space: nowrap; position: absolute;"></div><svg version="1.1"
-                      class="highcharts-root"
-                      style="font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif; font-size: 12px;"
-                      xmlns="http://www.w3.org/2000/svg" width="944" height="400" viewBox="0 0 944 400"
-                      aria-hidden="false" aria-label="Interactive chart">
-                      <desc aria-hidden="true">Created with Highcharts 10.3.3</desc>
-                      <defs aria-hidden="true">
-                        <clipPath id="highcharts-wd3d8xc-7-">
-                          <rect x="0" y="0" width="896" height="294" fill="none"></rect>
-                        </clipPath>
-                        <clipPath id="highcharts-wd3d8xc-8-">
-                          <rect x="0" y="0" width="896" height="294" fill="none"></rect>
-                        </clipPath>
-                      </defs>
-                      <rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="944" height="400" rx="0"
-                        ry="0" aria-hidden="true"></rect>
-                      <rect fill="none" class="highcharts-plot-background" x="38" y="53" width="896" height="294"
-                        aria-hidden="true"></rect>
-                      <g class="highcharts-grid highcharts-xaxis-grid" data-z-index="1" aria-hidden="true"></g>
-                      <g class="highcharts-grid highcharts-yaxis-grid" data-z-index="1" aria-hidden="true"></g>
-                      <rect fill="none" class="highcharts-plot-border" data-z-index="1" stroke="#cccccc"
-                        stroke-width="0" x="38" y="53" width="896" height="294" aria-hidden="true"></rect>
-                      <g class="highcharts-axis highcharts-xaxis" data-z-index="2" aria-hidden="true">
-                        <path fill="none" class="highcharts-axis-line" stroke="#ccd6eb" stroke-width="1"
-                          data-z-index="7" d="M 38 347.5 L 934 347.5"></path>
-                      </g>
-                      <g class="highcharts-axis highcharts-yaxis" data-z-index="2" aria-hidden="true"><text
-                          x="25.86666488647461" data-z-index="7" text-anchor="middle"
-                          transform="translate(0,0) rotate(270 25.86666488647461 200)" class="highcharts-axis-title"
-                          style="color: rgb(102, 102, 102); fill: rgb(102, 102, 102);" y="200">คะแนน</text>
-                        <path fill="none" class="highcharts-axis-line" stroke="#ccd6eb" stroke-width="0"
-                          data-z-index="7" d="M 38 53 L 38 347"></path>
-                      </g>
-                      <g class="highcharts-series-group" data-z-index="3" aria-hidden="false">
-                        <g class="highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker"
-                          data-z-index="0.1" opacity="1" transform="translate(38,53) scale(1 1)"
-                          clip-path="url(#highcharts-wd3d8xc-8-)" aria-hidden="false" role="region" tabindex="-1"
-                          aria-label="ความพึงพอใจของผลผลิต, bar series 1 of 2 with 0 bars." style="outline: none;"></g>
-                        <g class="highcharts-markers highcharts-series-0 highcharts-column-series highcharts-color-0"
-                          data-z-index="0.1" opacity="1" transform="translate(38,53) scale(1 1)" clip-path="none"
-                          aria-hidden="true"></g>
-                        <g class="highcharts-series highcharts-series-1 highcharts-column-series highcharts-color-1 highcharts-tracker"
-                          data-z-index="0.1" opacity="1" transform="translate(38,53) scale(1 1)"
-                          clip-path="url(#highcharts-wd3d8xc-8-)" aria-hidden="false" role="region" tabindex="-1"
-                          aria-label="ความพึงพอใจการเจริญเติบโตของพืช, bar series 2 of 2 with 0 bars."
-                          style="outline: none;"></g>
-                        <g class="highcharts-markers highcharts-series-1 highcharts-column-series highcharts-color-1"
-                          data-z-index="0.1" opacity="1" transform="translate(38,53) scale(1 1)" clip-path="none"
-                          aria-hidden="true"></g>
-                      </g>
-                      <g class="highcharts-exporting-group" data-z-index="3" aria-hidden="true">
-                        <g class="highcharts-no-tooltip highcharts-button highcharts-contextbutton"
-                          stroke-linecap="round" style="cursor: pointer;" transform="translate(910,10)">
-                          <title>Chart context menu</title>
-                          <rect fill="#ffffff" class="highcharts-button-box" x="0.5" y="0.5" width="24" height="22"
-                            rx="2" ry="2" stroke="none" stroke-width="1"></rect>
-                          <path fill="#666666" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5"
-                            class="highcharts-button-symbol" data-z-index="1" stroke="#666666" stroke-width="3"></path>
-                          <text x="0" data-z-index="1" y="15.5"
-                            style="color: rgb(51, 51, 51); font-weight: normal; fill: rgb(51, 51, 51);"></text>
-                        </g>
-                      </g><text x="472" text-anchor="middle" class="highcharts-title" data-z-index="4"
-                        style="color: rgb(51, 51, 51); font-size: 18px; fill: rgb(51, 51, 51);" y="24"
-                        aria-hidden="true">ผลการประเมิน</text><text x="472" text-anchor="middle"
-                        class="highcharts-subtitle" data-z-index="4"
-                        style="color: rgb(102, 102, 102); fill: rgb(102, 102, 102);" y="52"
-                        aria-hidden="true"></text><text x="10" text-anchor="start" class="highcharts-caption"
-                        data-z-index="4" style="color: rgb(102, 102, 102); fill: rgb(102, 102, 102);" y="397"
-                        aria-hidden="true"></text>
-                      <g class="highcharts-legend highcharts-no-tooltip" data-z-index="7" transform="translate(263,359)"
-                        aria-hidden="true">
-                        <rect fill="none" class="highcharts-legend-box" rx="0" ry="0" stroke="#999999" stroke-width="0"
-                          x="0" y="0" width="418" height="26"></rect>
-                        <g data-z-index="1">
-                          <g>
-                            <g class="highcharts-legend-item highcharts-column-series highcharts-color-0 highcharts-series-0"
-                              data-z-index="1" transform="translate(8,3)"><text x="21" text-anchor="start"
-                                data-z-index="2" y="15"
-                                style="color: rgb(51, 51, 51); cursor: pointer; font-size: 12px; font-weight: bold; fill: rgb(51, 51, 51);">ความพึงพอใจของผลผลิต</text>
-                              <rect x="2" y="4" width="12" height="12" fill="#7cb5ec" rx="6" ry="6"
-                                class="highcharts-point" data-z-index="3"></rect>
-                            </g>
-                            <g class="highcharts-legend-item highcharts-column-series highcharts-color-1 highcharts-series-1"
-                              data-z-index="1" transform="translate(188.55482482910156,3)"><text x="21" y="15"
-                                text-anchor="start" data-z-index="2"
-                                style="color: rgb(51, 51, 51); cursor: pointer; font-size: 12px; font-weight: bold; fill: rgb(51, 51, 51);">ความพึงพอใจการเจริญเติบโตของพืช</text>
-                              <rect x="2" y="4" width="12" height="12" fill="#434348" rx="6" ry="6"
-                                class="highcharts-point" data-z-index="3"></rect>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                      <g class="highcharts-axis-labels highcharts-xaxis-labels" data-z-index="7" aria-hidden="true"></g>
-                      <g class="highcharts-axis-labels highcharts-yaxis-labels" data-z-index="7" aria-hidden="true"></g>
-                      <text x="934" class="highcharts-credits" text-anchor="end" data-z-index="8" y="395"
-                        style="cursor: pointer; color: rgb(153, 153, 153); font-size: 9px; fill: rgb(153, 153, 153);"
-                        aria-label="Chart credits: Highcharts.com" aria-hidden="false">Highcharts.com</text>
-                    </svg>
-                    <div aria-hidden="false" class="highcharts-a11y-proxy-container-after"
-                      style="top: 0px; left: 0px; white-space: nowrap; position: absolute;">
-                      <div class="highcharts-a11y-proxy-group highcharts-a11y-proxy-group-zoom"></div>
-                      <div class="highcharts-a11y-proxy-group highcharts-a11y-proxy-group-legend"
-                        aria-label="Toggle series visibility, ผลการประเมิน" role="region">
-                        <ul role="list">
-                          <li style="list-style: none;"><button class="highcharts-a11y-proxy-button"
-                              aria-label="Show ความพึงพอใจของผลผลิต" tabindex="-1" aria-pressed="true"
-                              style="border-width: 0px; background-color: transparent; cursor: pointer; outline: none; opacity: 0.001; z-index: 999; overflow: hidden; padding: 0px; margin: 0px; display: block; position: absolute; width: 158.555px; height: 18.1333px; left: 273px; top: 364px;"></button>
-                          </li>
-                          <li style="list-style: none;"><button class="highcharts-a11y-proxy-button"
-                              aria-label="Show ความพึงพอใจการเจริญเติบโตของพืช" tabindex="-1" aria-pressed="true"
-                              style="border-width: 0px; background-color: transparent; cursor: pointer; outline: none; opacity: 0.001; z-index: 999; overflow: hidden; padding: 0px; margin: 0px; display: block; position: absolute; width: 220.3px; height: 18.1333px; left: 454px; top: 364px;"></button>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="highcharts-a11y-proxy-group highcharts-a11y-proxy-group-chartMenu"><button
-                          class="highcharts-a11y-proxy-button highcharts-no-tooltip"
-                          aria-label="View chart menu, ผลการประเมิน" aria-expanded="false" title="Chart context menu"
-                          style="border-width: 0px; background-color: transparent; cursor: pointer; outline: none; opacity: 0.001; z-index: 999; overflow: hidden; padding: 0px; margin: 0px; display: block; position: absolute; width: 24px; height: 22px; left: 910px; top: 10px;"></button>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="highcharts-screen-reader-region-after-1" aria-hidden="false" style="position: relative;">
-                    <div aria-hidden="false"
-                      style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;">
-                      <div id="highcharts-end-of-chart-marker-1" class="highcharts-exit-anchor" tabindex="0"
-                        aria-hidden="false">End of interactive chart.</div>
-                    </div>
-                  </div>
-                </div>
-
-              </figure>
-
-            </div>
-          </form>
-        </div>
-
-
-
-
-
-
       </div>
     </div>
   </div>
@@ -1136,23 +781,6 @@
 
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- ///////////////////////////////////////////////////////////////////////////////  Modal ////////////////////////////////////////////////////////////////////////-->
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -1336,7 +964,7 @@
           </button>
           <h4 class="modal-title">
             <font style="vertical-align: inherit;">
-              <font style="vertical-align: inherit;">Hồ sơ</font>
+              <font style="vertical-align: inherit;">Thông tin vườn</font>
             </font>
           </h4>
         </div>
@@ -1351,12 +979,12 @@
             <div class="list-group">
               <a href="#" class="list-group-item active">
                 <font style="vertical-align: inherit;">
-                  <font style="vertical-align: inherit;">Doanh nghiệp trồng cao su giữa đồng (cây mẫu)</font>
+                  <font style="vertical-align: inherit;">Vườn trồng cây thông minh</font>
                 </font>
               </a>
               <a href="#" class="list-group-item"><b>
                   <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Tên : </font>
+                    <font style="vertical-align: inherit;">Chủ vườn : </font>
                   </font><b>
                     <font style="vertical-align: inherit;">
                       <font style="vertical-align: inherit;">Nguyễn Văn A</font>
@@ -1368,7 +996,7 @@
                         <font style="vertical-align: inherit;">Địa chỉ : </font>
                       </font><b>
                         <font style="vertical-align: inherit;">
-                          <font style="vertical-align: inherit;">###</font>
+                          <font style="vertical-align: inherit;">56 Nguyễn Lương Bằng, Hòa Khánh, Liên Chiểu</font>
                         </font>
                       </b>
                     </b></a><b><b>
@@ -1377,7 +1005,7 @@
                             <font style="vertical-align: inherit;">Số điện thoại liên hệ : </font>
                           </font><b>
                             <font style="vertical-align: inherit;">
-                              <font style="vertical-align: inherit;">012</font>
+                              <font style="vertical-align: inherit;">0123456790</font>
                             </font>
                           </b>
                         </b></a><b><b>
@@ -1386,7 +1014,7 @@
                                 <font style="vertical-align: inherit;">Loại cây trồng : </font>
                               </font><b>
                                 <font style="vertical-align: inherit;">
-                                  <font style="vertical-align: inherit;">####.</font>
+                                  <font style="vertical-align: inherit;">Hướng Dương</font>
                                 </font>
                               </b>
                             </b></a><b><b>
@@ -1408,7 +1036,7 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">tắt</font>
+                    <font style="vertical-align: inherit;">Tắt</font>
                   </font>
                 </button>
               </div>
@@ -1880,11 +1508,11 @@
                   var Pstatus = "";
 
                   if (tswitch == 'on') {
-                    tstatus = "เปิด";
+                    tstatus = "Bật";
                     Pstatus = "1"
 
                   } else {
-                    tstatus = "ปิด";
+                    tstatus = "Tắt";
                     Pstatus = "2"
                   }
 
@@ -2352,7 +1980,7 @@
               </script> -->
 
 
-              <script>
+              <!-- <script>
 
 
                 var tapon = '';
@@ -2373,7 +2001,7 @@
                 }
          // alert(tapon);
 
-              </script>
+              </script> -->
 
 
             </b></b></b>

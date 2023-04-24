@@ -1,0 +1,6 @@
+moc xam: 70
+suong mai: 55
+dom la: 80
+la khoe: 
+
+do chính xac: 66.67

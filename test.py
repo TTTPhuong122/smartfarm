@@ -11,10 +11,10 @@ def NhanDien(url):
     np.set_printoptions(suppress=True)
 
     # Load the model
-    model = load_model(os.path.join(path, "keras_model.h5"), compile=False)
+    model = load_model(os.path.join(path, "templates/kerasmodel.h5"), compile=False)
 
     # Load the labels
-    class_names = open(os.path.join(path, "labels.txt"), "r").readlines()
+    class_names = open(os.path.join(path, "templates/labels.txt"), "r").readlines()
 
     # Create the array of the right shape to feed into the keras model
     # The 'length' or number of images you can put into the array is
@@ -48,7 +48,7 @@ def NhanDien(url):
 
 
 def DoChinhXac():
-    folder_path = "C:/xampp/htdocs/smartFarm/data/Test"
+    folder_path = "D:/Subject Document/Semester6/PBL/code/AI/data/Test/la khoe/"
 
     # Lấy danh sách các tệp tin trong thư mục
     file_list = os.listdir(folder_path)
@@ -57,7 +57,6 @@ def DoChinhXac():
     for file_name in file_list:
         # Tạo đường dẫn đầy đủ đến tệp tin
         file_path = os.path.join(folder_path, file_name)
-        
         # Kiểm tra xem đây có phải là một tệp tin không
         if os.path.isfile(file_path):
             rs, DoChinhXacFile = (NhanDien(file_path))
@@ -65,8 +64,9 @@ def DoChinhXac():
             file_name_without_ext, file_ext = os.path.splitext(file_name)
             if (rs in file_name_without_ext):
                 sum = sum + 1
-    return (sum/len(file_list)*100)
-print(DoChinhXac())
+    return (sum/(len(file_list))*100)
+# print(DoChinhXac())
+DoChinhXac()
 
 
 
