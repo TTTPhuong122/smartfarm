@@ -2,10 +2,13 @@
 include("config/config.php");
 include("config/firebaseRDB.php");
 $db = new firebaseRDB($databaseURL);
+session_start();
 
 if(isset($_GET['id_system'])){
   $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
   $data = json_decode($data, 1);
+  // $user = $db->retrieve("system", "id_system", null, $_SESSION['userid']);
+  // $user = json_decode($data, 1);
 }
 else{
 }
@@ -92,7 +95,7 @@ else{
         <hr>
         <ul class="nav nav-pills nav-stacked">
         <li class="active">
-            <a href="NhanDienSauBenh.php">
+            <a href="NhanDienSauBenh.php?id_system=<?php echo $_GET['id_system']?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
               </font>
@@ -110,7 +113,7 @@ else{
           </li>
 
           <li class="active">
-            <a href="./status.php" >
+            <a href="./status.php?id_system=<?php echo $_GET['id_system'] ?>" >
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Trạng thái</font>
               </font>
@@ -118,7 +121,7 @@ else{
           </li>
 
           <li class="active">
-            <a href="./control.php">
+            <a href="./control.php?id_system=<?php echo $_GET['id_system'] ?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Điều khiển</font>
               </font>
@@ -126,7 +129,7 @@ else{
           </li>
 
           <li class="active">
-            <a href="./system.php">
+            <a href="./system.php?id_system=<?php echo $_GET['id_system'] ?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Cài đặt hệ thống</font>
               </font>

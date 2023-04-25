@@ -1,4 +1,17 @@
+<?php
+include("config/config.php");
+include("config/firebaseRDB.php");
+$db = new firebaseRDB($databaseURL);
 
+if(isset($_GET['id_system'])){
+  $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
+  $data = json_decode($data, 1);
+  // $user = $db->retrieve("system", "id_system", null, $_SESSION['userid']);
+  // $user = json_decode($data, 1);
+}
+else{
+}
+?>
 <html lang="vi" class="translated-ltr">
 
 <head>
@@ -41,7 +54,11 @@
 
         <a class="navbar-brand" href="#">
           <font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">Vườn cây thông minh(Hướng Dương)</font>
+            <font style="vertical-align: inherit;">Vườn cây thông minh(
+              <?php
+                echo $data['name_system']
+              ?>
+            )</font>
           </font>
         </a>
       </div>
@@ -50,12 +67,16 @@
           <a href="#">
             <span class="glyphicon glyphicon-user"></span>
             <font style="vertical-align: inherit;">
-              <font style="vertical-align: inherit;">Một</font>
+              <font style="vertical-align: inherit;">
+              <?php
+              echo $_SESSION['user_name'] ?? '';
+              ?>
+            </font>
             </font>
           </a>
         </li>
         <li>
-          <a href="logout.php">
+          <a href="./phplogout.php">
             <span class="glyphicon glyphicon-log-out"></span>
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">Đăng xuất</font>
@@ -67,15 +88,15 @@
   </nav>
   <div class="container-fluid">
     <div class="row content">
-      <div class=" content  col-sm-2 sidenav">
+    <div class=" content  col-sm-2 sidenav">
         <img src="./img/iconuser.png" style="width:100%;padding-top: 10%;">
         <hr>
         <!-- <h4>ชื่อ : สวนยาง ฟาร์ม</h4> -->
 
         <hr>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active">
-          <a href="NhanDienSauBenh.php">
+        <li class="active">
+            <a href="NhanDienSauBenh.php?id_system=<?php echo $_GET['id_system']?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
               </font>
@@ -93,7 +114,7 @@
           </li>
 
           <li class="active">
-            <a href="./status.php">
+            <a href="./status.php?id_system=<?php echo $_GET['id_system'] ?>" >
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Trạng thái</font>
               </font>
@@ -101,7 +122,7 @@
           </li>
 
           <li class="active">
-            <a href="./control.php">
+            <a href="./control.php?id_system=<?php echo $_GET['id_system'] ?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Điều khiển</font>
               </font>
@@ -109,16 +130,43 @@
           </li>
 
           <li class="active">
-            <a href="./system.php">
+            <a href="./system.php?id_system=<?php echo $_GET['id_system'] ?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Cài đặt hệ thống</font>
               </font>
             </a>
           </li>
-
           <!-- //////////////////////////////////////////////  Modal run location (in lop) ////////////////////////////////////////////////////-->
-        
+
           <!-- Modal -->
+          <div id="myModalLocation1" class="modal fade">
+            <div class="modal-dialog modal-lg">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">×</font>
+                    </font>
+                  </button>
+                  <h4 class="modal-title">
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">Vườn cây thông minh</font>
+                    </font>
+                  </h4>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">Tắt</font>
+                    </font>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
           
         </ul>
       </div>
@@ -163,7 +211,8 @@
   </div>
   <script>
     $('#formNhanDien').submit(function(event) {
-      const fileInput = document.getElementById('fileImg');
+      // event.preventDefault();
+
     
     });
   </script>

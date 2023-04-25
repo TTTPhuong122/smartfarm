@@ -2,8 +2,10 @@
 include("config/config.php");
 include("config/firebaseRDB.php");
 $db = new firebaseRDB($databaseURL);
+session_start();
 ?>
 <?php
+	$_SESSION['userid'] = $_GET['userid'];
    $data = $db->retrieve("system", "id_user", null, $_GET['userid']);
    $data = json_decode($data, 1);
    if(is_array($data)){
