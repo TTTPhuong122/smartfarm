@@ -2,7 +2,7 @@
 include("config/config.php");
 include("config/firebaseRDB.php");
 $db = new firebaseRDB($databaseURL);
-
+session_start();
 if(isset($_GET['id_system'])){
   $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
   $data = json_decode($data, 1);
@@ -11,6 +11,9 @@ if(isset($_GET['id_system'])){
 }
 else{
 }
+$id = $_SESSION['userid'];
+$data1 = $db->retrieve("user/$id");
+$data1 = json_decode($data1,1);
 ?>
 <html lang="vi" class="translated-ltr">
 
@@ -18,7 +21,6 @@ else{
   <title>trang trại thông minh</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php  session_start()?>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -69,7 +71,7 @@ else{
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">
               <?php
-              echo $_SESSION['user_name'] ?? '';
+                echo $data1['user_name'];
               ?>
             </font>
             </font>

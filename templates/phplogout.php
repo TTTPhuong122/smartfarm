@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if(isset($_SESSION['id_user'])) {
-    unset($_SESSION['id_user']);
-    unset($_SESSION['user_name']);
+if(isset($_SESSION['userid'])) {
+    unset($_SESSION['userid']);
+    unset($data1['user_name']);
     header('location:login.php');
 }
 else {

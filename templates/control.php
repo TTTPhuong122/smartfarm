@@ -2,7 +2,7 @@
 include("config/config.php");
 include("config/firebaseRDB.php");
 $db = new firebaseRDB($databaseURL);
-
+session_start();
 if(isset($_GET['id_system'])){
   $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
   $data = json_decode($data, 1);
@@ -11,6 +11,10 @@ if(isset($_GET['id_system'])){
 }
 else{
 }
+
+$id = $_SESSION['userid'];
+$data1 = $db->retrieve("user/$id");
+$data1 = json_decode($data1,1);
 ?>
 <html lang="vi" class="translated-ltr">
 
@@ -53,7 +57,7 @@ else{
           <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Vườn cây thông minh(
               <?php
-                echo $data['name_system']
+                echo $data1['name_system'] ?? '';
               ?>
             )</font>
           </font>
@@ -66,7 +70,7 @@ else{
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">
               <?php
-              echo $_SESSION['user_name'] ?? '';
+                echo $data1['user_name'] ?? '';
               ?>
             </font>
             </font>
@@ -282,10 +286,7 @@ else{
                     <font style="vertical-align: inherit;">
                       <font style="vertical-align: inherit;">
                       <?php
-                          $id_user = $_SESSION['id_user'];
-                          $data = get_one('user', 'user_name', 'id_user', $id_user);
-                          echo $data['user_name'] ?? '';
-                          
+                        echo $data1['user_name'] ?? '';
                           ?>
                     </font>
                     </font>
@@ -298,9 +299,7 @@ else{
                         <font style="vertical-align: inherit;">
                           <font style="vertical-align: inherit;">
                           <?php
-                            $id_user = $_SESSION['id_user'];
-                            $data = get_one('user', 'address', 'id_user', $id_user);
-                            echo $data['address'] ?? '';
+                            echo $data1['address'] ?? '';
                             
                             ?>
                         </font>
@@ -314,9 +313,7 @@ else{
                             <font style="vertical-align: inherit;">
                               <font style="vertical-align: inherit;">
                               <?php
-                                  $id_user = $_SESSION['id_user'];
-                                  $data = get_one('user', 'phone', 'id_user', $id_user);
-                                  echo $data['phone'] ?? '';
+                                  echo $data1['phone'] ?? '';
                                   
                                   ?>
                             </font>
@@ -330,9 +327,7 @@ else{
                                 <font style="vertical-align: inherit;">
                                   <font style="vertical-align: inherit;">
                                   <?php
-                                    $id_user = $_SESSION['id_user'];
-                                    $data = get_one('system', 'name_system', 'id_user', $id_user);
-                                    echo $data['name_system'] ?? '';
+                                    echo $data1['name_system'] ?? '';
                                     
                                     ?>
                                 </font>
@@ -396,122 +391,6 @@ else{
     </div>
   </div>
   <script type="text/javascript">
-                Highcharts.chart('containerLog', {
-                  chart: {
-                    type: 'column'
-                  },
-
-                  title: {
-                    text: 'แผนภาพการเข้าใช้งาน'
-                  },
-
-                  subtitle: {
-                    text: ''
-                  },
-
-                  yAxis: {
-                    title: {
-                      text: 'จำนวนการเข้าระบบ'
-                    }
-                  },
-
-                  xAxis: {
-                    categories: ['สวนยาง ฟาร์ม', 'เกษตรกร สวนยาง']
-                  },
-
-                  legend: {
-                    enabled: false
-                  },
-
-
-
-
-
-                  series: [{
-                    name: 'จำนวนการเข้าระบบ : ',
-                    data: [27, 1]
-                  }],
-
-                  responsive: {
-                    rules: [{
-                      condition: {
-                        maxWidth: 500
-                      },
-                      chartOptions: {
-                        legend: {
-                          layout: 'horizontal',
-                          align: 'center',
-                          verticalAlign: 'bottom'
-                        }
-                      }
-                    }]
-                  }
-
-                });
-              </script>
-              <script type="text/javascript">
-                Highcharts.chart('chartreport', {
-                  chart: {
-                    type: 'column'
-                  },
-                  title: {
-                    text: 'ผลการประเมิน'
-                  },
-                  subtitle: {
-                    text: ''
-                  },
-                  xAxis: {
-                    categories: [],
-                    crosshair: true
-                  },
-                  yAxis: {
-                    min: 0,
-                    title: {
-                      text: 'คะแนน'
-                    }
-                  },
-                  tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                      '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                  },
-                  plotOptions: {
-                    column: {
-                      pointPadding: 0.2,
-                      borderWidth: 0
-                    }
-                  },
-                  series: [{
-                    name: 'ความพึงพอใจของผลผลิต',
-                    data: []
-
-                  }, {
-                    name: 'ความพึงพอใจการเจริญเติบโตของพืช',
-                    data: []
-
-                  }]
-                });
-              </script>
-              <script>
-                for (let i = 0; i < 100; i++) {
-
-                  $('.h-' + i.toString()).hide();
-
-                }
-                function hideddl() {
-
-                  for (let i = 0; i < 100; i++) {
-
-                    $('.h-' + i.toString()).hide();
-
-                  }
-
-                  return "";
-                }
-              </script>
               <script>
                 var StatusWater = '2';
                 var StatusFan = '2';
@@ -520,8 +399,6 @@ else{
                 var onSetWater = '2';
                 var onSetFan = '2';
                 var onSetAir = '2';
-
-
 
                 if (StatusWater == '1') {
                   $('#StatusWater').attr('checked', true);
@@ -555,10 +432,6 @@ else{
                   $('#onSetAir').attr('checked', false);
                 }
 
-
-
-
-
               </script>
               <script>
 
@@ -570,11 +443,11 @@ let submit = (id, txt) => {
   var Pstatus = "";
 
   if (tswitch == 'on') {
-    tstatus = "เปิด";
+    tstatus = "bật ";
     Pstatus = "1"
 
   } else {
-    tstatus = "ปิด";
+    tstatus = "tắt ";
     Pstatus = "2"
   }
 
@@ -589,7 +462,7 @@ let submit = (id, txt) => {
   //alert('FarmId' + " : " + '1');
   //alert('LocationId' + " : " +'1');
   //alert('status' + " : " +Pstatus);
-  if (confirm('คุณต้องการ' + tstatus + txt + ' หรือไม่')) {
+  if (confirm('Bạn muốn ' + tstatus + txt + ' ?')) {
 
     $.ajax({
       url: "./switch.php?switch=1",
@@ -605,414 +478,12 @@ let submit = (id, txt) => {
         var dataResult = JSON.parse(dataResult);
         //alert(dataResult.statusCode);		
         if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
+          alert("Thực hiện thành công!!!");
 
 
         }
         else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-let AddAutoTable = (Sgroup, Scondi) => {
-
-  if (confirm('คุณต้องการเพิ่มการตั้งค่าหรือไม่')) {
-
-    $.ajax({
-      url: "./AddAuto.php?switch=1",
-      type: "POST",
-      data: {
-        FarmId: '1',
-        LocationId: '1',
-        Sgroup: Sgroup,
-        Scondi: Scondi
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ (**ไม่สามารถเลือกเงื่อนไขซ้ำกันในกลุ่มได้) !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-let AddTimeSetTable = (Sgroup, x, Ss) => {
-
-
-  var texts = "";
-  if (x == 1) {
-    texts = "คุณต้องการเพิ่มการตั้งค่าหรือไม่";
-  }
-  if (x == 2) {
-    texts = "คุณต้องการลบตั้งค่าหรือไม่";
-  }
-  if (x == 3) {
-    texts = "คุณต้องการแก้ไขตั้งค่าหรือไม่";
-  }
-
-  if (confirm(texts)) {
-
-    $.ajax({
-      url: "./AddTimeSetTable.php?switch=" + x,
-      type: "POST",
-      data: {
-        FarmId: '1',
-        LocationId: '1',
-        Sgroup: Sgroup,
-        Status: Ss
-
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-
-
-
-let DaySet = (Sgroup, x, Ss, tSDats) => {
-
-
-  var texts = "";
-
-  texts = "คุณต้องการแก้ไขตั้งค่าหรือไม่";
-
-
-  if (confirm(texts)) {
-
-    $.ajax({
-      url: "./DaySet.php?switch=" + x,
-      type: "POST",
-      data: {
-        FarmId: '1',
-        LocationId: '1',
-        Sgroup: Sgroup,
-        Status: Ss,
-        SDats: tSDats
-
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-//////////////switch Edit set time
-let submitEdittime = (id, tstart, tend) => {
-
-
-
-  if (confirm('คุณต้องการแก้ไขเวลาหรือไม่')) {
-
-    $.ajax({
-      url: "./switch.php?switch=3",
-      type: "POST",
-      data: {
-        Id: id,
-        FarmId: '1',
-        LocationId: '1',
-        tstart: tstart,
-        tend: tend
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-        //alert(dataResult.statusCode);
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-
-
-
-/////////////////////////////////// //switch Edit set time Autooooooooooooooooooooooooo
-let submitEditAuto = (id, txt) => {
-
-  var tStart = $('#SAuto' + id).val();
-  var tEnd = $('#EAuto' + id).val();
-  var tAllId = $('#arrid' + id).val();
-  if (confirm('คุณต้องการแก้ไขเวลาหรือไม่')) {
-
-    $.ajax({
-      url: "./switchAuto.php?switch=1",
-      type: "POST",
-      data: {
-        FarmId: '1',
-        LocationId: '1',
-        VariableId: txt,
-        tstart: tStart,
-        tend: tEnd,
-        tAllId: tAllId,
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-/////////////////////////////////// //switch del set time Autooooooooooooooooooooooooo
-let submitDelAuto = (id, txt) => {
-
-
-  var tAllId = $('#arrid' + id).val();
-  if (confirm('คุณต้องการลบการตั้งค่าหรือไม่')) {
-
-    $.ajax({
-      url: "./switchAuto.php?switch=del",
-      type: "POST",
-      data: {
-        tAllId: tAllId
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-/////////////////////////////////// //switch Edit switch Autooooooooooooooooooooooooo
-let submitEditSwitchAuto = (id, txt) => {
-
-
-  var tAllId = $('#arrid' + id).val();
-
-
-  var tswitch = $('.onoff' + id + ':checked').val();
-  if (tswitch == 'on') {
-    tstatus = "เปิดการใช้งาน";
-    Pstatus = "1"
-
-  } else {
-    tstatus = "ปิดการใช้งาน";
-    Pstatus = "2"
-  }
-
-
-
-
-  if (confirm('คุณต้องการ' + tstatus + 'หรือไม่')) {
-
-    $.ajax({
-      url: "./switchAuto.php?switch=2",
-      type: "POST",
-      data: {
-        tAllId: tAllId,
-        status: Pstatus
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-
-};
-
-
-
-/////////////////////////////////// //switch Edit switch Electric Autooooooooooooooooooooooooo
-let submitEditElectricAuto = (id, txt, vals) => {
-
-  //alert(id);
-  //alert(txt);
-  //alert(vals);
-
-
-  if (vals == '') {
-    tstatus = "เปิดการใช้งาน";
-    Pstatus = "1";
-
-  } else {
-    tstatus = "ปิดการใช้งาน";
-    Pstatus = "2";
-  }
-
-  //  alert('คุณต้องการ' + tstatus + 'หรือไม่');
-
-
-  if (confirm('คุณต้องการ' + tstatus + 'หรือไม่')) {
-
-    $.ajax({
-      url: "./switchAuto.php?switch=3",
-      type: "POST",
-      data: {
-        tAllId: txt,
-        status: Pstatus
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-          location.reload();
-
-        }
-        else {
-          alert("ไม่สามารถดำเนินการได้ !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-
-};
-
-
-let submitReport = () => {
-
-
-  if (confirm('คุณต้องการส่งแบบประเมินหรือไม่')) {
-
-    $.ajax({
-      url: "./saveReport.php",
-      type: "POST",
-      data: {
-        FarmId: $('#refarm').val(),
-        LocationId: '1',
-        sDate: $('#redate').val(),
-        tname: $('#rename').val(),
-        ScoreProduct: ($('#rePro').val()),
-        ScoreGrow: ($('#regrow').val())
-      },
-      cache: false,
-      success: function (dataResult) {
-
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("ดำเนินการสำเร็จ");
-          $('#rePro').val(0);
-          $('#regrow').val(0);
-          $('#redate').val("");
-          $('#refarm').val("");
-
-          location.reload();
-
-        } else {
-          alert("ไม่สามารถดำเนินการได้ !!");
+          alert("Không thể thực hiện !!");
           location.reload();
         }
 

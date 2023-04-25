@@ -2,7 +2,7 @@
 include("config/config.php");
 include("config/firebaseRDB.php");
 $db = new firebaseRDB($databaseURL);
-
+session_start();
 if(isset($_GET['id_system'])){
   $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
   $data = json_decode($data, 1);
@@ -11,6 +11,9 @@ if(isset($_GET['id_system'])){
 }
 else{
 }
+$id = $_SESSION['userid'];
+$data1 = $db->retrieve("user/$id");
+$data1 = json_decode($data1,1);
 ?>
 <html lang="vi" class="translated-ltr">
 
@@ -53,7 +56,7 @@ else{
           <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Vườn cây thông minh(
               <?php
-                echo $data['name_system']
+                echo $data1['name_system'] ?? '';
               ?>
             )</font>
           </font>
@@ -66,7 +69,7 @@ else{
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">
               <?php
-              echo $_SESSION['user_name'] ?? '';
+                echo $data1['user_name'] ?? '';
               ?>
             </font>
             </font>
@@ -192,8 +195,8 @@ else{
 
 
               <div class="col-sm-12 ">
-                <div class="col-sm-12 alert alert-warning">
-                  <h4 class="col-sm-10">Quạt : 1</h4>
+                <div class="col-sm-12 alert alert-info">
+                  <h4 class="col-sm-10">Quạt</h4>
                   <label class="switch col-sm-2">
                     <input type="checkbox" id="onSet1" name="onSet1" class="onSet1"
                       onchange="AddTimeSetTable('75','3','2')">
@@ -252,7 +255,7 @@ else{
 
               <div class="col-sm-12 ">
                 <div class="col-sm-12 alert alert-warning">
-                  <h4 class="col-sm-10">Quạt : 2</h4>
+                  <h4 class="col-sm-10">Máy bơm nước</h4>
                   <label class="switch col-sm-2">
                     <input type="checkbox" id="onSet2" name="onSet2" class="onSet2"
                       onchange="AddTimeSetTable('82','3','2')">
@@ -310,8 +313,8 @@ else{
               </div>
 
               <div class="col-sm-12 ">
-                <div class="col-sm-12 alert alert-info">
-                  <h4 class="col-sm-10">Máy bơm nước : 1</h4>
+                <div class="col-sm-12 alert alert-success">
+                  <h4 class="col-sm-10">Máy phun sương mù</h4>
                   <label class="switch col-sm-2">
                     <input type="checkbox" id="onSet3" name="onSet3" class="onSet3"
                       onchange="AddTimeSetTable('2','3','2')">
@@ -363,65 +366,6 @@ else{
                   <div class="form-group col-sm-1">
                     Chủ nhật<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Sunday')"
                       checked="">
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-sm-12 ">
-                <div class="col-sm-12 alert alert-info">
-                  <h4 class="col-sm-10">Máy bơm nước : 2</h4>
-                  <label class="switch col-sm-2">
-                    <input type="checkbox" id="onSet4" name="onSet4" class="onSet4"
-                      onchange="AddTimeSetTable('70','3','2')">
-
-
-                    <span class="slider round"></span>
-                  </label>
-                  <div class="form-group col-sm-12">
-                    <label for="usr">Bắt đầu:</label>
-                    <input type="time" class="form-control" name="TS4" id="TS4" value="07:56:00" disabled="">
-                  </div>
-                  <div class="form-group col-sm-12">
-                    <label for="usr">Dừng:</label>
-                    <input type="time" class="form-control" name="TE4" id="TE4" value="08:00:00" disabled="">
-                  </div>
-                  <div class="form-group col-sm-12">
-                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('70','2','')">Xóa bỏ</button>
-                    <button type="button" class="btn btn-warning"
-                      onclick=" $('#TS4').attr( 'disabled', false );$('#TE4').attr( 'disabled', false );">Thay đổi
-                    </button>
-                    <button type="button" class="btn btn-success"
-                      onclick="submitEdittime('70',$('#TS4').val(),$('#TE4').val())">Xác nhận</button>
-                  </div>
-
-                  <div class="form-group col-sm-1">
-                    Thứ 2<input type="checkbox" id="Day4" name="Day4" class="Day4" onchange="DaySet('70','4','1','Monday')"
-                      checked="">
-                  </div>
-                  <div class="form-group col-sm-1">
-                    THứ 3<input type="checkbox" id="Day4" name="Day4" class="Day4"
-                      onchange="DaySet('70','4','1','Tuesday')" checked="">
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 4<input type="checkbox" id="Day4" name="Day4" class="Day4"
-                      onchange="DaySet('70','4','1','Wednesday')" checked="">
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 5<input type="checkbox" id="Day4" name="Day4" class="Day4"
-                      onchange="DaySet('70','4','1','Thursday')" checked="">
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 6<input type="checkbox" id="Day4" name="Day4" class="Day4" onchange="DaySet('70','4','1','Friday')"
-                      checked="">
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 7<input type="checkbox" id="Day4" name="Day4" class="Day4"
-                      onchange="DaySet('70','4','1','Saturday')" checked="">
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Chủ nhật<input type="checkbox" id="Day4" name="Day4" class="Day4"
-                      onchange="DaySet('70','4','1','Sunday')" checked="">
                   </div>
 
                 </div>
@@ -607,10 +551,7 @@ else{
                     <font style="vertical-align: inherit;">
                       <font style="vertical-align: inherit;">
                       <?php
-                          $id_user = $_SESSION['id_user'];
-                          $data = get_one('user', 'user_name', 'id_user', $id_user);
-                          echo $data['user_name'] ?? '';
-                          
+                        echo $data1['user_name'] ?? '';
                           ?>
                     </font>
                     </font>
@@ -623,9 +564,7 @@ else{
                         <font style="vertical-align: inherit;">
                           <font style="vertical-align: inherit;">
                           <?php
-                            $id_user = $_SESSION['id_user'];
-                            $data = get_one('user', 'address', 'id_user', $id_user);
-                            echo $data['address'] ?? '';
+                            echo $data1['address'] ?? '';
                             
                             ?>
                         </font>
@@ -639,9 +578,7 @@ else{
                             <font style="vertical-align: inherit;">
                               <font style="vertical-align: inherit;">
                               <?php
-                                  $id_user = $_SESSION['id_user'];
-                                  $data = get_one('user', 'phone', 'id_user', $id_user);
-                                  echo $data['phone'] ?? '';
+                                  echo $data1['phone'] ?? '';
                                   
                                   ?>
                             </font>
@@ -655,9 +592,7 @@ else{
                                 <font style="vertical-align: inherit;">
                                   <font style="vertical-align: inherit;">
                                   <?php
-                                    $id_user = $_SESSION['id_user'];
-                                    $data = get_one('system', 'name_system', 'id_user', $id_user);
-                                    echo $data['name_system'] ?? '';
+                                    echo $data1['name_system'] ?? '';
                                     
                                     ?>
                                 </font>
@@ -717,5 +652,366 @@ else{
     </div>
     <div class="VIpgJd-yAWNEb-jOfkMb-Ne3sFf" style="display: none;"></div>
   </div>
+  <script>
+    let AddAutoTable = (Sgroup, Scondi) => {
+
+  if (confirm('Bạn có muốn thêm cài đặt không?')) {
+
+    $.ajax({
+      url: "./AddAuto.php?switch=1",
+      type: "POST",
+      data: {
+        FarmId: '1',
+        LocationId: '1',
+        Sgroup: Sgroup,
+        Scondi: Scondi
+      },
+      cache: false,
+      success: function (dataResult) {
+        var dataResult = JSON.parse(dataResult);
+
+        if (dataResult.statusCode == 200) {
+          alert("Thực hiện thành công!!!");
+
+          location.reload();
+
+        }
+        else {
+          alert("Không thể thực hiện (**Không thể chọn các điều kiện trùng lặp trong một nhóm) !!!");
+          location.reload();
+        }
+
+      }
+    });
+
+  } else {
+
+    location.reload();
+  }
+};
+let AddTimeSetTable = (Sgroup, x, Ss) => {
+
+
+  var texts = "";
+  if (x == 1) {
+    texts = "Bạn có muốn thêm cài đặt không?";
+  }
+  if (x == 2) {
+    texts = "Bạn có muốn xóa cài đặt không?";
+  }
+  if (x == 3) {
+    texts = "Bạn có muốn chỉnh sửa cài đặt không?";
+  }
+
+  if (confirm(texts)) {
+
+    $.ajax({
+      url: "./AddTimeSetTable.php?switch=" + x,
+      type: "POST",
+      data: {
+        FarmId: '1',
+        LocationId: '1',
+        Sgroup: Sgroup,
+        Status: Ss
+
+      },
+      cache: false,
+      success: function (dataResult) {
+        var dataResult = JSON.parse(dataResult);
+
+        if (dataResult.statusCode == 200) {
+          alert("Thực hiện thành công!!!");
+
+          location.reload();
+
+        }
+        else {
+          alert("Không thể thực hiện !!");
+          location.reload();
+        }
+
+      }
+    });
+
+  } else {
+
+    location.reload();
+  }
+};
+
+
+
+// let DaySet = (Sgroup, x, Ss, tSDats) => {
+
+
+//   var texts = "";
+
+//   texts = "Bạn có muốn chỉnh sửa cài đặt không?";
+
+
+//   if (confirm(texts)) {
+
+//     $.ajax({
+//       url: "./DaySet.php?switch=" + x,
+//       type: "POST",
+//       data: {
+//         FarmId: '1',
+//         LocationId: '1',
+//         Sgroup: Sgroup,
+//         Status: Ss,
+//         SDats: tSDats
+
+//       },
+//       cache: false,
+//       success: function (dataResult) {
+//         var dataResult = JSON.parse(dataResult);
+
+//         if (dataResult.statusCode == 200) {
+//           alert("Thực hiện thành công !!!");
+
+//           location.reload();
+
+//         }
+//         else {
+//           alert("Không thể thực hiện!!!");
+//           location.reload();
+//         }
+
+//       }
+//     });
+
+//   } else {
+
+//     location.reload();
+//   }
+// };
+////////////switch Edit set time
+let submitEdittime = (id, tstart, tend) => {
+
+
+
+  if (confirm('Bạn xác nhận thay đổi ?')) {
+
+    $.ajax({
+      url: "./switch.php?switch=3",
+      type: "POST",
+      data: {
+        Id: id,
+        FarmId: '1',
+        LocationId: '1',
+        tstart: tstart,
+        tend: tend
+      },
+      cache: false,
+      success: function (dataResult) {
+        var dataResult = JSON.parse(dataResult);
+        //alert(dataResult.statusCode);
+        if (dataResult.statusCode == 200) {
+          alert("Thực hiện thành công!!!");
+          location.reload();
+
+        }
+        else {
+          alert("Không thể thực hiện!!!");
+          location.reload();
+        }
+
+      }
+    });
+
+  } else {
+
+    location.reload();
+  }
+};
+
+
+
+///////////////////////////////// //switch Edit set time Autooooooooooooooooooooooooo
+let submitEditAuto = (id, txt) => {
+
+  var tStart = $('#SAuto' + id).val();
+  var tEnd = $('#EAuto' + id).val();
+  var tAllId = $('#arrid' + id).val();
+  if (confirm('Bạn xác nhận thay đổi ?')) {
+
+    $.ajax({
+      url: "./switchAuto.php?switch=1",
+      type: "POST",
+      data: {
+        FarmId: '1',
+        LocationId: '1',
+        VariableId: txt,
+        tstart: tStart,
+        tend: tEnd,
+        tAllId: tAllId,
+      },
+      cache: false,
+      success: function (dataResult) {
+        var dataResult = JSON.parse(dataResult);
+
+        if (dataResult.statusCode == 200) {
+          alert("Thực hiện thành công!!!");
+          location.reload();
+
+        }
+        else {
+          alert("Không thể thực hiện!!!");
+          location.reload();
+        }
+
+      }
+    });
+
+  } else {
+
+    location.reload();
+  }
+};
+///////////////////////////////// //switch del set time Autooooooooooooooooooooooooo
+let submitDelAuto = (id, txt) => {
+
+
+  var tAllId = $('#arrid' + id).val();
+  if (confirm('Bạn có muốn xóa cài đặt không?')) {
+
+    $.ajax({
+      url: "./switchAuto.php?switch=del",
+      type: "POST",
+      data: {
+        tAllId: tAllId
+      },
+      cache: false,
+      success: function (dataResult) {
+        var dataResult = JSON.parse(dataResult);
+
+        if (dataResult.statusCode == 200) {
+          alert("Thực hiện thành công!!!");
+          location.reload();
+
+        }
+        else {
+          alert("Không thể thực hiện !!");
+          location.reload();
+        }
+
+      }
+    });
+
+  } else {
+
+    location.reload();
+  }
+};
+///////////////////////////////// //switch Edit switch Autooooooooooooooooooooooooo
+let submitEditSwitchAuto = (id, txt) => {
+
+
+  var tAllId = $('#arrid' + id).val();
+
+
+  var tswitch = $('.onoff' + id + ':checked').val();
+  if (tswitch == 'on') {
+    tstatus = " bật chế độ tự động ";
+    Pstatus = "1"
+
+  } else {
+    tstatus = " tắt chế độ tự động ";
+    Pstatus = "2"
+  }
+
+
+
+
+  if (confirm('Bạn muốn' + tstatus + '?')) {
+
+    $.ajax({
+      url: "./switchAuto.php?switch=2",
+      type: "POST",
+      data: {
+        tAllId: tAllId,
+        status: Pstatus
+      },
+      cache: false,
+      success: function (dataResult) {
+        var dataResult = JSON.parse(dataResult);
+
+        if (dataResult.statusCode == 200) {
+          alert("Thực hiện thành công");
+          location.reload();
+
+        }
+        else {
+          alert("Không thể thực hiện!!");
+          location.reload();
+        }
+
+      }
+    });
+
+  } else {
+
+    location.reload();
+  }
+
+};
+
+
+
+///////////////////////////////// //switch Edit switch Electric Autooooooooooooooooooooooooo
+// let submitEditElectricAuto = (id, txt, vals) => {
+
+//   //alert(id);
+//   //alert(txt);
+//   //alert(vals);
+
+
+//   if (vals == '') {
+//     tstatus = " chọn ";
+//     Pstatus = "1";
+
+//   } else {
+//     tstatus = "Vô hiệu hóa";
+//     Pstatus = "2";
+//   }
+
+//   //  alert('คุณต้องการ' + tstatus + 'หรือไม่');
+
+
+//   if (confirm('Banj cần' + tstatus + 'hay không?')) {
+
+//     $.ajax({
+//       url: "./switchAuto.php?switch=3",
+//       type: "POST",
+//       data: {
+//         tAllId: txt,
+//         status: Pstatus
+//       },
+//       cache: false,
+//       success: function (dataResult) {
+//         var dataResult = JSON.parse(dataResult);
+
+//         if (dataResult.statusCode == 200) {
+//           alert("Thực hiện thành công!!!");
+//           location.reload();
+
+//         }
+//         else {
+//           alert("Không thể thực hiện !!!");
+//           location.reload();
+//         }
+
+//       }
+//     });
+
+//   } else {
+
+//     location.reload();
+//   }
+
+// };
+
+
+</script>
 </body>
 </html>
