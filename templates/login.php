@@ -65,7 +65,7 @@
                 <div class="card-header register" style="display:none;">
                     <h4>Đăng kí</h4>
                 </div>
-                <form action="phpregister.php" method="post" class="register">
+                <form action="phpregister.php" method="post" class="register" id="form-register">
                     <div class="card-body register" style="display:none;">
 
                         <div class="row">
@@ -87,7 +87,7 @@
                                     <span class="input-group-text br-15">Mật khẩu </i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" id="rPassword" name="rPassword" required />
+                                <input type="password" class="form-control" id="rPassword" name="rPassword" required />
                             </div>
                             <div class="input-group col-sm-6 mt-3">
                                 <select name="Sex" id="Sex" required>
@@ -117,7 +117,7 @@
                     <div class="register" style="display:none;">
                         <a class="btn btn-danger btn-sm" id="close" onclick="$('.register').hide(400);">
                             <i class="fa fa-window-close"></i> Đóng </a>
-                        <button class="btn btn-success btn-sm float-right submit_btn">
+                        <button class="btn btn-success btn-sm float-right submit_btn" id="btnRegister">
                             <i class="fas fa-arrow-alt-circle-right"></i> Xác nhận </button>
                     </div>
                 </form>
@@ -130,7 +130,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -167,6 +167,24 @@
                 const errorMessage = error.message;
                 alert(errorMessage);
 
+            });
+        });
+        const form = document.querySelector('#form-register');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            var email = document.getElementById("rEmail").value;
+            var password = document.getElementById("rPassword").value;
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                window.location.assign('phpregister.php?userid=' + user["uid"]);
+                
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+                    
             });
         });
         

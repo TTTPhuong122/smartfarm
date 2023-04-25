@@ -1,3 +1,17 @@
+<?php
+include("config/config.php");
+include("config/firebaseRDB.php");
+$db = new firebaseRDB($databaseURL);
+
+if(isset($_GET['id_system'])){
+  $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
+  $data = json_decode($data, 1);
+  // $user = $db->retrieve("system", "id_system", null, $_SESSION['userid']);
+  // $user = json_decode($data, 1);
+}
+else{
+}
+?>
 <html lang="vi" class="translated-ltr">
 
 <head>
@@ -39,14 +53,8 @@
           <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Vườn cây thông minh(
               <?php
-                require("config/database.php");
-                require("config/helper.php");
-                session_start();
-                $id_user = $_SESSION['id_user'];
-                $data = get_one('system', 'name_system', 'id_user', $id_user);
-                echo $data['name_system'] ?? '';
-                
-                ?>
+                echo $data['name_system']
+              ?>
             )</font>
           </font>
         </a>
@@ -77,15 +85,15 @@
   </nav>
   <div class="container-fluid">
     <div class="row content">
-      <div class=" content  col-sm-2 sidenav">
+    <div class=" content  col-sm-2 sidenav">
         <img src="./img/iconuser.png" style="width:100%;padding-top: 10%;">
         <hr>
         <!-- <h4>ชื่อ : สวนยาง ฟาร์ม</h4> -->
 
         <hr>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active">
-          <a href="NhanDienSauBenh.php">
+        <li class="active">
+            <a href="NhanDienSauBenh.php?id_system=<?php echo $_GET['id_system']?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
               </font>
@@ -103,7 +111,7 @@
           </li>
 
           <li class="active">
-            <a href="./status.php" >
+            <a href="./status.php?id_system=<?php echo $_GET['id_system'] ?>" >
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Trạng thái</font>
               </font>
@@ -111,7 +119,7 @@
           </li>
 
           <li class="active">
-            <a href="./control.php">
+            <a href="./control.php?id_system=<?php echo $_GET['id_system'] ?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Điều khiển</font>
               </font>
@@ -119,13 +127,12 @@
           </li>
 
           <li class="active">
-            <a href="./system.php">
+            <a href="./system.php?id_system=<?php echo $_GET['id_system'] ?>">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Cài đặt hệ thống</font>
               </font>
             </a>
           </li>
-
           <!-- //////////////////////////////////////////////  Modal run location (in lop) ////////////////////////////////////////////////////-->
 
           <!-- Modal -->
@@ -146,9 +153,6 @@
                     </font>
                   </h4>
                 </div>
-                <div class="modal-body">
-                  <p></p>
-                </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">
                     <font style="vertical-align: inherit;">
@@ -160,6 +164,7 @@
 
             </div>
           </div>
+          
         </ul>
       </div>
         <!-- ################################################################################## -->
