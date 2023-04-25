@@ -12,6 +12,9 @@ if(isset($_GET['id_system'])){
 }
 else{
 }
+$id = $_SESSION['userid'];
+$data1 = $db->retrieve("user/$id");
+$data1 = json_decode($data1,1);
 ?>
 
  <html lang="vi" class="translated-ltr">
@@ -55,7 +58,7 @@ else{
           <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Vườn cây thông minh(
               <?php
-                echo $data['name_system']
+                echo $data1['name_system'] ?? '';
               ?>
             )</font>
           </font>
@@ -68,7 +71,7 @@ else{
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">
               <?php
-              echo $_SESSION['user_name'] ?? '';
+                echo $data1['user_name'] ?? '';
               ?>
             </font>
             </font>
@@ -328,10 +331,7 @@ else{
                     <font style="vertical-align: inherit;">
                       <font style="vertical-align: inherit;">
                       <?php
-                          $id_user = $_SESSION['id_user'];
-                          $data = get_one('user', 'user_name', 'id_user', $id_user);
-                          echo $data['user_name'] ?? '';
-                          
+                        echo $data1['user_name'] ?? '';
                           ?>
                     </font>
                     </font>
@@ -344,9 +344,7 @@ else{
                         <font style="vertical-align: inherit;">
                           <font style="vertical-align: inherit;">
                           <?php
-                            $id_user = $_SESSION['id_user'];
-                            $data = get_one('user', 'address', 'id_user', $id_user);
-                            echo $data['address'] ?? '';
+                            echo $data1['address'] ?? '';
                             
                             ?>
                         
@@ -361,10 +359,9 @@ else{
                             <font style="vertical-align: inherit;">
                               <font style="vertical-align: inherit;">
                               <?php
-                                  $id_user = $_SESSION['id_user'];
-                                  $data = get_one('user', 'phone', 'id_user', $id_user);
-                                  echo $data['phone'] ?? '';
+                                  echo $data1['phone'] ?? '';
                                   
+                                  ?>
                                   ?>
                             </font>
                             </font>
@@ -377,10 +374,7 @@ else{
                                 <font style="vertical-align: inherit;">
                                   <font style="vertical-align: inherit;">
                                   <?php
-                                    
-                                    $id_user = $_SESSION['id_user'];
-                                    $data = get_one('system', 'name_system', 'id_user', $id_user);
-                                    echo $data['name_system'] ?? '';
+                                    echo $data1['name_system'] ?? '';
                                     
                                     ?></font>
                                 </font>

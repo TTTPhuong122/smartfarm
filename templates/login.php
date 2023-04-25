@@ -109,7 +109,13 @@
                                 </div>
                                 <input type="text" class="form-control" id="address" name="address" required />
                             </div>
-            ~                
+                            <div class="input-group px-3 mt-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text br-15">Loại cây trồng</span>
+                                </div>
+                                <input type="text" class="form-control" id="name_system" name="name_system" required />
+                            </div>
+                         
                             
                         </div>
 

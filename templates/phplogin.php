@@ -10,7 +10,7 @@ session_start();
    $data = json_decode($data, 1);
    if(is_array($data)){
 	$id_system = $data['id_system'];
-	header("Location: status.php?id_system={$id_system}");
+	header("Location: status.php?id_system={$_SESSION['id_system']}&{$_SESSION['userid']}");
    }
    
    else{
