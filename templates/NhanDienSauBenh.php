@@ -188,8 +188,8 @@ if(is_array($data1)){
                 <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
               </font>
           </h2>
-          <div class="well">
-            
+            <div class="well">
+              
           <form id="formNhanDien" action="upload.php" method="post" enctype="multipart/form-data">
             
             <br><input type="file" name="fileImg" id="fileImg">
@@ -202,6 +202,7 @@ if(is_array($data1)){
               echo (isset($_SESSION['rsNhanDien']))?$_SESSION['rsNhanDien']:"";
               unset($_SESSION['rsNhanDien']);
             ?>
+            <input type="hidden" name = "url" id = "url">
             <br><br><br>
                         <button type="submit" class="btn btn-default" name="NhanDienAnh" id="NhanDienAnh" >Nhận diện   </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
@@ -210,8 +211,6 @@ if(is_array($data1)){
             
            
           </form>
-          
-          </div>
           
         </div>
 
@@ -334,13 +333,53 @@ if(is_array($data1)){
   </div>
     </div>
     </div>
-  </div>
-  <script>
-    $('#formNhanDien').submit(function(event) {
-      // event.preventDefault();
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+      import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-storage.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
 
-    
-    });
-  </script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBhgjYth2xS9y09F5I7N6j1y4G2h1cLbGA",
+        authDomain: "smart-farm-feeb2.firebaseapp.com",
+        databaseURL: "https://smart-farm-feeb2-default-rtdb.firebaseio.com",
+        projectId: "smart-farm-feeb2",
+        storageBucket: "smart-farm-feeb2.appspot.com",
+        messagingSenderId: "419032023754",
+        appId: "1:419032023754:web:40855cd3b3406c3faf2a33",
+        measurementId: "G-27EG728Y3P"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const storage = getStorage(app);
+      
+      const form = document.querySelector('#formNhanDien');
+      form.addEventListener('submit', (event) =>{
+          event.preventDefault();
+          const file = document.querySelector("#fileImg").files[0];
+          const name = +new Date() + "-" + file.name;
+          const storageRef = ref(storage, name);
+
+          // Upload the file
+          const uploadTask = uploadBytesResumable(storageRef, file);
+          uploadTask.then(snapshot => getDownloadURL(snapshot.ref))
+            .then(url => {
+              console.log(url);
+              document.getElementById("url").value = url;
+              form.submit();
+            })
+            .catch(error => {
+              console.error(error);
+              alert('error uploading image');
+            });
+        })
+
+  </script>   
+  </div>
+   
 </body>
 </html>
