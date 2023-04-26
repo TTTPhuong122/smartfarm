@@ -12,8 +12,16 @@ if(isset($_GET['id_system'])){
 else{
 }
 $id = $_SESSION['userid'];
-$data1 = $db->retrieve("user/$id");
+$data1 = $db->retrieve("user");
 $data1 = json_decode($data1,1);
+if(is_array($data1)){
+  foreach($data1 as $system){
+    if($system['user_id']==$id){
+      $data1 = $system;
+      break;
+    }
+  }
+}
 ?>
 <html lang="vi" class="translated-ltr">
 
@@ -58,7 +66,7 @@ $data1 = json_decode($data1,1);
           <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Vườn cây thông minh(
               <?php
-                echo $data['name_system']
+                echo $data1['name_system']
               ?>
             )</font>
           </font>
@@ -208,6 +216,122 @@ $data1 = json_decode($data1,1);
         </div>
 
       </div>
+      <div id="myModalProfile" class="modal fade" style="display: none;">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">×</font>
+            </font>
+          </button>
+          <h4 class="modal-title">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Thông tin vườn</font>
+            </font>
+          </h4>
+        </div>
+        <div class="modal-body">
+
+          <p>
+
+
+          </p>
+          <div class="container col-sm-12  ">
+
+            <div class="list-group">
+              <a href="#" class="list-group-item active">
+                <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">Vườn trồng cây thông minh</font>
+                </font>
+              </a>
+              <a href="#" class="list-group-item"><b>
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Chủ vườn : </font>
+                  </font><b>
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">
+                      <?php
+                        echo $data1['user_name'] ?? '';
+                          ?>
+                    </font>
+                    </font>
+                  </b>
+                </b></a><b><b>
+                  <a href="#" class="list-group-item"><b>
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Địa chỉ : </font>
+                      </font><b>
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;">
+                          <?php
+                            echo $data1['address'] ?? '';
+                            
+                            ?>
+                        
+                        </font>
+                        </font>
+                      </b>
+                    </b></a><b><b>
+                      <a href="#" class="list-group-item"><b>
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Số điện thoại liên hệ : </font>
+                          </font><b>
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                              <?php
+                                  echo $data1['phone'] ?? '';
+                                  
+                                  ?>
+                                  ?>
+                            </font>
+                            </font>
+                          </b>
+                        </b></a><b><b>
+                          <a href="#" class="list-group-item"><b>
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Loại cây trồng : </font>
+                              </font><b>
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                  <?php
+                                    echo $data1['name_system'] ?? '';
+                                    
+                                    ?></font>
+                                </font>
+                              </b>
+                            </b></a><b><b>
+                              <!-- <a href="#" class="list-group-item"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tin tức cần trình bày:</font></font><b></b></b></a><b><b> -->
+
+
+                            </b></b></b></b></b></b></b></b>
+            </div><b><b><b>
+                </b></b></b>
+          </div><b><b><b>
+
+                <p></p>
+                <hr>
+
+
+
+              </b></b></b>
+        </div><b><b><b>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Tắt</font>
+                  </font>
+                </button>
+              </div>
+            </b></b></b>
+      </div><b><b><b>
+
+          </b></b></b>
+    </div><b><b><b>
+        </b></b></b>
+  </div>
     </div>
     </div>
   </div>

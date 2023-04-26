@@ -103,6 +103,7 @@
                                 </div>
                                 <input type="text" class="form-control" id="phone" name="phone" required />
                             </div>
+                            <input type="text" class="form-control" id="user_id" name="user_id" style="display: none" />
                             <div class="input-group px-3 mt-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text br-15">Địa chỉ</span>
@@ -123,8 +124,7 @@
                     <div class="register" style="display:none;">
                         <a class="btn btn-danger btn-sm" id="close" onclick="$('.register').hide(400);">
                             <i class="fa fa-window-close"></i> Đóng </a>
-                        <button class="btn btn-success btn-sm float-right submit_btn" id="btnRegister">
-                            <i class="fas fa-arrow-alt-circle-right"></i> Xác nhận </button>
+                        <input type="submit" value="Xác nhận" class="btn btn-success btn-sm float-right submit_btn" id="btnRegister">
                     </div>
                 </form>
 
@@ -166,7 +166,6 @@
                 // Signed in 
                 const user = userCredential.user;
                 window.location.assign('phplogin.php?userid=' + user["uid"]);
-               
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -183,13 +182,14 @@
             createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                window.location.assign('phpregister.php?userid=' + user["uid"]);
+                document.getElementById("user_id").value = user.uid;
+                form.submit();
                 
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                alert(errorMessage);
+                alert("Email đã tồn tại");
                     
             });
         });
