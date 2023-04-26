@@ -64,16 +64,15 @@ def DoChinhXac():
             if (rs in file_name_without_ext):
                 sum = sum + 1
     return (sum/len(file_list)*100)
-print(NhanDien("https://firebasestorage.googleapis.com/v0/b/smart-farm-feeb2.appspot.com/o/1682538907114-1.jfif?alt=media&token=73bb3e90-4064-49b9-9b20-676cb6b1c370"))
 
-# # mở file để đọc
-# wf = open('C:/xampp/htdocs/smartFarm/smartfarm/templates/names.txt', 'r')
-# txt = wf.read()
-# if txt!="":
-#     rs = (NhanDien(txt))
-#     print(rs)
-# # đóng file
-# wf.close()
+# mở file để đọc
+wf = open('C:/xampp/htdocs/smartFarm/smartfarm/templates/names.txt', 'r')
+txt = wf.read()
+if txt!="":
+    rs = (NhanDien(txt))
+    print(rs)
+# đóng file
+wf.close()
 
 
 
