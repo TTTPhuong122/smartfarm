@@ -1,13 +1,12 @@
 from keras.models import load_model  # TensorFlow is required for Keras to work
 from PIL import Image, ImageOps  # Install pillow instead of PIL
 import numpy as np
-
+import requests
 import os
-path = 'C:/xampp/htdocs/smartFarm/'
+from io import BytesIO
+path = 'C:/xampp/htdocs/smartFarm/smartFarm/'
 
-def NhanDien(name):
-    url="C:/xampp/htdocs/smartFarm/templates/ImageNhanDien/"
-    url = os.path.join(url, name)
+def NhanDien(url):
     # Disable scientific notation for clarity
     np.set_printoptions(suppress=True)
 
@@ -21,9 +20,8 @@ def NhanDien(name):
     # The 'length' or number of images you can put into the array is
     # determined by the first position in the shape tuple, in this case 1
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-
-    # Replace this with the path to your image
-    image = Image.open(url).convert("RGB")
+    response = requests.get(url)
+    image = Image.open(BytesIO(response.content)).convert("RGB")
 
     # resizing the image to be at least 224x224 and then cropping from the center
     size = (224, 224)
@@ -42,13 +40,13 @@ def NhanDien(name):
     prediction = model.predict(data)
     index = np.argmax(prediction)
     class_name = class_names[index]
-    confidence_score = prediction[0][index]
+    # confidence_score = prediction[0][index]
     rs = class_name[2:]
-    return rs[:len(rs)-1], confidence_score
+    return rs[:len(rs)-1]
 
 
 def DoChinhXac():
-    folder_path = "C:/xampp/htdocs/smartFarm/data/Test"
+    folder_path = "C:/xampp/htdocs/smartFarm/smartFarm/data/Test"
 
     # Lấy danh sách các tệp tin trong thư mục
     file_list = os.listdir(folder_path)
@@ -66,18 +64,16 @@ def DoChinhXac():
             if (rs in file_name_without_ext):
                 sum = sum + 1
     return (sum/len(file_list)*100)
-# print(DoChinhXac())
+print(NhanDien("https://firebasestorage.googleapis.com/v0/b/smart-farm-feeb2.appspot.com/o/1682538907114-1.jfif?alt=media&token=73bb3e90-4064-49b9-9b20-676cb6b1c370"))
 
-# mở file để đọc
-wf = open('C:/xampp/htdocs/smartFarm/templates/names.txt', 'r')
-txt = wf.read()
-if txt!="":
-    rs, percent = (NhanDien(txt))
-    print(rs, end="")
-    print(", độ chính xác:", format(percent*100, ".2f"), "%")
-
-# đóng file
-wf.close()
+# # mở file để đọc
+# wf = open('C:/xampp/htdocs/smartFarm/smartfarm/templates/names.txt', 'r')
+# txt = wf.read()
+# if txt!="":
+#     rs = (NhanDien(txt))
+#     print(rs)
+# # đóng file
+# wf.close()
 
 
 

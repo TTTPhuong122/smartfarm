@@ -13,8 +13,16 @@ else{
 }
 
 $id = $_SESSION['userid'];
-$data1 = $db->retrieve("user/$id");
+$data1 = $db->retrieve("user");
 $data1 = json_decode($data1,1);
+if(is_array($data1)){
+  foreach($data1 as $system){
+    if($system['user_id']==$id){
+      $data1 = $system;
+      break;
+    }
+  }
+}
 ?>
 <html lang="vi" class="translated-ltr">
 

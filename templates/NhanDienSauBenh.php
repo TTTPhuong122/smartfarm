@@ -12,8 +12,16 @@ if(isset($_GET['id_system'])){
 else{
 }
 $id = $_SESSION['userid'];
-$data1 = $db->retrieve("user/$id");
+$data1 = $db->retrieve("user");
 $data1 = json_decode($data1,1);
+if(is_array($data1)){
+  foreach($data1 as $system){
+    if($system['user_id']==$id){
+      $data1 = $system;
+      break;
+    }
+  }
+}
 ?>
 <html lang="vi" class="translated-ltr">
 
@@ -58,7 +66,7 @@ $data1 = json_decode($data1,1);
           <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Vườn cây thông minh(
               <?php
-                echo $data['name_system']
+                echo $data1['name_system']
               ?>
             )</font>
           </font>
@@ -180,8 +188,8 @@ $data1 = json_decode($data1,1);
                 <font style="vertical-align: inherit;">Nhận diện sâu bệnh</font>
               </font>
           </h2>
-          <div class="well">
-            
+            <div class="well">
+              
           <form id="formNhanDien" action="upload.php" method="post" enctype="multipart/form-data">
             
             <br><input type="file" name="fileImg" id="fileImg">
@@ -194,6 +202,7 @@ $data1 = json_decode($data1,1);
               echo (isset($_SESSION['rsNhanDien']))?$_SESSION['rsNhanDien']:"";
               unset($_SESSION['rsNhanDien']);
             ?>
+            <input type="hidden" name = "url" id = "url">
             <br><br><br>
                         <button type="submit" class="btn btn-default" name="NhanDienAnh" id="NhanDienAnh" >Nhận diện   </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
@@ -203,20 +212,174 @@ $data1 = json_decode($data1,1);
            
           </form>
           
-          </div>
-          
         </div>
 
       </div>
-    </div>
-    </div>
-  </div>
-  <script>
-    $('#formNhanDien').submit(function(event) {
-      // event.preventDefault();
+      <div id="myModalProfile" class="modal fade" style="display: none;">
+    <div class="modal-dialog modal-lg">
 
-    
-    });
-  </script>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">×</font>
+            </font>
+          </button>
+          <h4 class="modal-title">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Thông tin vườn</font>
+            </font>
+          </h4>
+        </div>
+        <div class="modal-body">
+
+          <p>
+
+
+          </p>
+          <div class="container col-sm-12  ">
+
+            <div class="list-group">
+              <a href="#" class="list-group-item active">
+                <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">Vườn trồng cây thông minh</font>
+                </font>
+              </a>
+              <a href="#" class="list-group-item"><b>
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Chủ vườn : </font>
+                  </font><b>
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">
+                      <?php
+                        echo $data1['user_name'] ?? '';
+                          ?>
+                    </font>
+                    </font>
+                  </b>
+                </b></a><b><b>
+                  <a href="#" class="list-group-item"><b>
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Địa chỉ : </font>
+                      </font><b>
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;">
+                          <?php
+                            echo $data1['address'] ?? '';
+                            
+                            ?>
+                        
+                        </font>
+                        </font>
+                      </b>
+                    </b></a><b><b>
+                      <a href="#" class="list-group-item"><b>
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Số điện thoại liên hệ : </font>
+                          </font><b>
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                              <?php
+                                  echo $data1['phone'] ?? '';
+                                  
+                                  ?>
+                                  ?>
+                            </font>
+                            </font>
+                          </b>
+                        </b></a><b><b>
+                          <a href="#" class="list-group-item"><b>
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Loại cây trồng : </font>
+                              </font><b>
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                  <?php
+                                    echo $data1['name_system'] ?? '';
+                                    
+                                    ?></font>
+                                </font>
+                              </b>
+                            </b></a><b><b>
+                              <!-- <a href="#" class="list-group-item"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tin tức cần trình bày:</font></font><b></b></b></a><b><b> -->
+
+
+                            </b></b></b></b></b></b></b></b>
+            </div><b><b><b>
+                </b></b></b>
+          </div><b><b><b>
+
+                <p></p>
+                <hr>
+
+
+
+              </b></b></b>
+        </div><b><b><b>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Tắt</font>
+                  </font>
+                </button>
+              </div>
+            </b></b></b>
+      </div><b><b><b>
+
+          </b></b></b>
+    </div><b><b><b>
+        </b></b></b>
+  </div>
+    </div>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+      import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-storage.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBhgjYth2xS9y09F5I7N6j1y4G2h1cLbGA",
+        authDomain: "smart-farm-feeb2.firebaseapp.com",
+        databaseURL: "https://smart-farm-feeb2-default-rtdb.firebaseio.com",
+        projectId: "smart-farm-feeb2",
+        storageBucket: "smart-farm-feeb2.appspot.com",
+        messagingSenderId: "419032023754",
+        appId: "1:419032023754:web:40855cd3b3406c3faf2a33",
+        measurementId: "G-27EG728Y3P"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const storage = getStorage(app);
+      
+      const form = document.querySelector('#formNhanDien');
+      form.addEventListener('submit', (event) =>{
+          event.preventDefault();
+          const file = document.querySelector("#fileImg").files[0];
+          const name = +new Date() + "-" + file.name;
+          const storageRef = ref(storage, name);
+
+          // Upload the file
+          const uploadTask = uploadBytesResumable(storageRef, file);
+          uploadTask.then(snapshot => getDownloadURL(snapshot.ref))
+            .then(url => {
+              console.log(url);
+              document.getElementById("url").value = url;
+              form.submit();
+            })
+            .catch(error => {
+              console.error(error);
+              alert('error uploading image');
+            });
+        })
+
+  </script>   
+  </div>
+   
 </body>
 </html>

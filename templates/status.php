@@ -7,17 +7,21 @@ session_start();
 if(isset($_GET['id_system'])){
   $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
   $data = json_decode($data, 1);
-  // $user = $db->retrieve("system", "id_system", null, $_SESSION['userid']);
-  // $user = json_decode($data, 1);
-}
-else{
+  
 }
 $id = $_SESSION['userid'];
-$data1 = $db->retrieve("user/$id");
+$data1 = $db->retrieve("user");
 $data1 = json_decode($data1,1);
+if(is_array($data1)){
+  foreach($data1 as $system){
+    if($system['user_id']==$id){
+      $data1 = $system;
+      break;
+    }
+  }
+}
 ?>
-
- <html lang="vi" class="translated-ltr">
+<html lang="vi" class="translated-ltr">
 
 <head>
   <title>trang trại thông minh</title>
@@ -65,7 +69,7 @@ $data1 = json_decode($data1,1);
         </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li>
+        <li>  
           <a href="#">
             <span class="glyphicon glyphicon-user"></span>
             <font style="vertical-align: inherit;">
@@ -270,30 +274,9 @@ $data1 = json_decode($data1,1);
           </div>
           
         </div>
-        <!-- ################################################################################## -->
-        <!-- <script>
-        var tapon = '';
-        if (tapon == 'TapSTATUS') {
-            $('.TapSTATUS').show();
-        }
-        else if (tapon == 'TapControl') {
-            $('.TapControl').show();
-        }
-        else if (tapon == 'TapAuto') {
-            $('.TapAuto').show();
-        }
-        else if (tapon == 'TapExport') {
-            $('.TapExport').show();
-        }
-        else if (tapon == '') {
-            $('.TapSTATUS').show();
-        }
-        alert(tapon);
-
-    </script> -->
 
       </div>
-      <div id="myModalProfile" class="modal fade" style="display: none;">
+  <div id="myModalProfile" class="modal fade" style="display: none;">
     <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
@@ -440,3 +423,4 @@ $data1 = json_decode($data1,1);
   
 </body>
 </html> 
+ 
