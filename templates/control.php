@@ -13,16 +13,8 @@ else{
 }
 
 $id = $_SESSION['userid'];
-$data1 = $db->retrieve("user");
+$data1 = $db->retrieve("user/$id");
 $data1 = json_decode($data1,1);
-if(is_array($data1)){
-  foreach($data1 as $system){
-    if($system['user_id']==$id){
-      $data1 = $system;
-      break;
-    }
-  }
-}
 ?>
 <html lang="vi" class="translated-ltr">
 
@@ -189,7 +181,7 @@ if(is_array($data1)){
               </font>
             </small>
           </h2>
-          <h6 style="color:red;"> Nếu kích hoạt bơm nước, quạt, phun sương một trong hai hệ thống
+          <h6 style="color:red;"> Nếu kích hoạt bơm nước, quạt, bật đèn một trong hai hệ thống
             "Thiết lập thời gian làm việc" và "Thiết lập tự động hóa" sẽ không hoạt động. </h6>
           <h6>
           </h6>
@@ -212,8 +204,7 @@ if(is_array($data1)){
               </div>
               <div class="col-sm-12">
                 <label class="switch">
-                  <input type="checkbox" id="StatusWater" name="StatusWater" class="StatusWater"
-                    onchange="submit('StatusWater','máy bơm nước')">
+                  <input type="checkbox" id="StatusWater" name="StatusWater" class="StatusWater">
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -230,8 +221,7 @@ if(is_array($data1)){
               </div>
               <div class="col-sm-12">
                 <label class="switch">
-                  <input type="checkbox" id="StatusFan" name="StatusFan" class="StatusFan"
-                    onchange="submit('StatusFan','Quạt')">
+                  <input type="checkbox" id="StatusFan" name="StatusFan" class="StatusFan">
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -243,12 +233,12 @@ if(is_array($data1)){
             </div>
             <div class="col-sm-6">
               <div class="col-sm-12">
-                <h3> Tạo sương: Tắt/Bật </h3>
+              <br>
+                <h3> Đèn: Tắt/Bật </h3>
               </div>
               <div class="col-sm-12">
                 <label class="switch">
-                  <input type="checkbox" id="StatusAir" name="StatusAir" class="StatusAir"
-                    onchange="submit('StatusAir','máy tạo sương mù')">
+                  <input type="checkbox" id="StatusAir" name="StatusAir" class="StatusAir">
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -397,114 +387,128 @@ if(is_array($data1)){
   </div>
     </div>
     </div>
-  </div>
-  <script type="text/javascript">
-              <script>
-                var StatusWater = '2';
-                var StatusFan = '2';
-                var StatusAir = '2';
+  </div>              
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
+    import { getDatabase, ref, set, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-                var onSetWater = '2';
-                var onSetFan = '2';
-                var onSetAir = '2';
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBhgjYth2xS9y09F5I7N6j1y4G2h1cLbGA",
+      authDomain: "smart-farm-feeb2.firebaseapp.com",
+      databaseURL: "https://smart-farm-feeb2-default-rtdb.firebaseio.com",
+      projectId: "smart-farm-feeb2",
+      storageBucket: "smart-farm-feeb2.appspot.com",
+      messagingSenderId: "419032023754",
+      appId: "1:419032023754:web:40855cd3b3406c3faf2a33",
+      measurementId: "G-27EG728Y3P"
+    };
 
-                if (StatusWater == '1') {
-                  $('#StatusWater').attr('checked', true);
-                } else {
-                  $('#StatusWater').attr('checked', false);
-                }
-                if (StatusFan == '1') {
-                  $('#StatusFan').attr('checked', true);
-                } else {
-                  $('#StatusFan').attr('checked', false);
-                }
-                if (StatusAir == '1') {
-                  $('#StatusAir').attr('checked', true);
-                } else {
-                  $('#StatusAir').attr('checked', false);
-                }
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    var checkbox1 = document.getElementById("StatusWater");
+    var checkbox2 = document.getElementById("StatusFan");
+    var checkbox3 = document.getElementById("StatusAir");
 
-                if (onSetWater == '1') {
-                  $('#onSetWater').attr('checked', true);
-                } else {
-                  $('#onSetWater').attr('checked', false);
-                }
-                if (onSetFan == '1') {
-                  $('#onSetFan').attr('checked', true);
-                } else {
-                  $('#onSetFan').attr('checked', false);
-                }
-                if (onSetAir == '1') {
-                  $('#onSetAir').attr('checked', true);
-                } else {
-                  $('#onSetAir').attr('checked', false);
-                }
+    function insert1(){
+        set(ref(db, "device/device1"),{
+            id_device: 1,
+            device_name: "Máy bơm nước",
+            state: checkbox1.checked
+        }).then(()=>{
+          if(checkbox1.checked == true){
+              alert("Bật máy bơm nước thành công");
+            }
+            else{
+              alert("Tắt máy bơm nước thành công");
+            }
+        }).catch((error)=>{
+          alert("Không thực hiện!!!");
+        });
+    }
+    
+    checkbox1.addEventListener("change", insert1);
 
-              </script>
-              <script>
+    function insert2(){
+        set(ref(db, "device/device2"),{
+            id_device: 2,
+            device_name: "Quạt",
+            state: checkbox2.checked
+        }).then(()=>{
+          if(checkbox2.checked == true){
+              alert("Bật quạt thành công");
+            }
+            else{
+              alert("Tắt quạt thành công");
+            }
+        }).catch((error)=>{
+          alert("Không thực hiện!!!");
+        });
+    }
+    
+    checkbox2.addEventListener("change", insert2);
 
-//////////////////////////////////////////////////////////////// //switch on/off
-let submit = (id, txt) => {
-  var Elet = "";
-  var tswitch = $('.' + id + ':checked').val();
-  var tstatus = "";
-  var Pstatus = "";
-
-  if (tswitch == 'on') {
-    tstatus = "bật ";
-    Pstatus = "1"
-
-  } else {
-    tstatus = "tắt ";
-    Pstatus = "2"
-  }
-
-  if (id == "StatusWater") {
-    Elet = "5"
-  } else if (id == "StatusFan") {
-    Elet = "4"
-  } else {
-    Elet = "6"
-  }
-  //alert('Pstatus' + " : " + Elet);
-  //alert('FarmId' + " : " + '1');
-  //alert('LocationId' + " : " +'1');
-  //alert('status' + " : " +Pstatus);
-  if (confirm('Bạn muốn ' + tstatus + txt + ' ?')) {
-
-    $.ajax({
-      url: "./switch.php?switch=1",
-      type: "POST",
-      data: {
-        EletricId: Elet,
-        FarmId: '1',
-        LocationId: '1',
-        status: Pstatus
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-        //alert(dataResult.statusCode);		
-        if (dataResult.statusCode == 200) {
-          alert("Thực hiện thành công!!!");
+    function insert3(){
+        set(ref(db, "device/device3"),{
+            id_device: 1,
+            device_name: "Đèn",
+            state: checkbox3.checked
+        }).then(()=>{
+            if(checkbox3.checked == true){
+              alert("Bật đèn thành công");
+            }
+            else{
+              alert("Tắt đèn thành công");
+            }
+        }).catch((error)=>{
+            alert("Không thực hiện!!!");
+        });
+    }
+    
+    checkbox3.addEventListener("change", insert3);
 
 
+    var firebaseRef1 = ref(db, "device/device1/state");
+      onValue(firebaseRef1, (snapshot) => {
+        const state = snapshot.val();
+        const checkbox = document.getElementById("StatusWater");
+        if (state == true) {
+          checkbox.checked = true;
+        } else {
+          checkbox.checked = false;
         }
-        else {
-          alert("Không thể thực hiện !!");
-          location.reload();
+      });
+
+
+      var firebaseRef2 = ref(db, "device/device2/state");
+      onValue(firebaseRef2, (snapshot) => {
+        const state = snapshot.val();
+        const checkbox = document.getElementById("StatusFan");
+        if (state == true) {
+          checkbox.checked = true;
+        } else {
+          checkbox.checked = false;
         }
+      });
 
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-
-</script>
+      var firebaseRef3 = ref(db, "device/device3/state");
+      onValue(firebaseRef3, (snapshot) => {
+        const state = snapshot.val();
+        const checkbox = document.getElementById("StatusAir");
+        if (state == true) {
+          checkbox.checked = true;
+        } else {
+          checkbox.checked = false;
+        }
+      });
+  
+  </script>
   
 </body>
 </html>
