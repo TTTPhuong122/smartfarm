@@ -12,16 +12,8 @@ if(isset($_GET['id_system'])){
 else{
 }
 $id = $_SESSION['userid'];
-$data1 = $db->retrieve("user");
+$data1 = $db->retrieve("user/$id");
 $data1 = json_decode($data1,1);
-if(is_array($data1)){
-  foreach($data1 as $system){
-    if($system['user_id']==$id){
-      $data1 = $system;
-      break;
-    }
-  }
-}
 ?>
 <html lang="vi" class="translated-ltr">
 
@@ -967,59 +959,6 @@ let submitEditSwitchAuto = (id, txt) => {
 
 
 ///////////////////////////////// //switch Edit switch Electric Autooooooooooooooooooooooooo
-// let submitEditElectricAuto = (id, txt, vals) => {
-
-//   //alert(id);
-//   //alert(txt);
-//   //alert(vals);
-
-
-//   if (vals == '') {
-//     tstatus = " chọn ";
-//     Pstatus = "1";
-
-//   } else {
-//     tstatus = "Vô hiệu hóa";
-//     Pstatus = "2";
-//   }
-
-//   //  alert('คุณต้องการ' + tstatus + 'หรือไม่');
-
-
-//   if (confirm('Banj cần' + tstatus + 'hay không?')) {
-
-//     $.ajax({
-//       url: "./switchAuto.php?switch=3",
-//       type: "POST",
-//       data: {
-//         tAllId: txt,
-//         status: Pstatus
-//       },
-//       cache: false,
-//       success: function (dataResult) {
-//         var dataResult = JSON.parse(dataResult);
-
-//         if (dataResult.statusCode == 200) {
-//           alert("Thực hiện thành công!!!");
-//           location.reload();
-
-//         }
-//         else {
-//           alert("Không thể thực hiện !!!");
-//           location.reload();
-//         }
-
-//       }
-//     });
-
-//   } else {
-
-//     location.reload();
-//   }
-
-// };
-
-
 </script>
 </body>
 </html>

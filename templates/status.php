@@ -7,21 +7,17 @@ session_start();
 if(isset($_GET['id_system'])){
   $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
   $data = json_decode($data, 1);
-  
+  // $user = $db->retrieve("system", "id_system", null, $_SESSION['userid']);
+  // $user = json_decode($data, 1);
+}
+else{
 }
 $id = $_SESSION['userid'];
-$data1 = $db->retrieve("user");
+$data1 = $db->retrieve("user/$id");
 $data1 = json_decode($data1,1);
-if(is_array($data1)){
-  foreach($data1 as $system){
-    if($system['user_id']==$id){
-      $data1 = $system;
-      break;
-    }
-  }
-}
 ?>
-<html lang="vi" class="translated-ltr">
+
+ <html lang="vi" class="translated-ltr">
 
 <head>
   <title>trang trại thông minh</title>
@@ -69,7 +65,7 @@ if(is_array($data1)){
         </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li>  
+        <li>
           <a href="#">
             <span class="glyphicon glyphicon-user"></span>
             <font style="vertical-align: inherit;">
@@ -221,10 +217,9 @@ if(is_array($data1)){
                       </a>
                       <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">
-                          Nhiệt độ không khí: 
-                          <span id="humidity"></span> 
-                          <?php echo $data['hummidity'] ?> C
-                        
+                          Nhiệt độ không khí:
+                          <span id="temparature"></span> 
+                          <?php echo $data['temparature'] ?> C
                         </font>
                       </font>
                     </h4>
@@ -239,12 +234,29 @@ if(is_array($data1)){
                       </a>
                         <font style="vertical-align: inherit;">
                          <font style="vertical-align: inherit;">
-                            Độ ẩm của đất:
-                            <span id="temparature"></span> 
-                            <?php echo $data['temparature'] ?> %
+                            Độ ẩm không khí:
+                            <span id="humidity"></span> 
+                            <?php echo $data['hummidity'] ?> %RH
+                        </font>
+                        </font>
+                    </h4>
+                  </td>
 
+                </tr>
+                <tr>
+                  <td>
+                    <h4 class="responsive-font-example">
+                      <a href="#" class="btn btn-success btn-md ">
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </a>
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">
+                          Độ ẩm đất: 
+                          <span id="soil_moisture"></span> 
+                          <?php echo $data['soil_moisture'] ?> %
+                        
                         </font>
-                        </font>
+                      </font>
                     </h4>
                   </td>
 
@@ -274,9 +286,10 @@ if(is_array($data1)){
           </div>
           
         </div>
+        <!-- ################################################################################## -->
 
       </div>
-  <div id="myModalProfile" class="modal fade" style="display: none;">
+      <div id="myModalProfile" class="modal fade" style="display: none;">
     <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
@@ -344,7 +357,6 @@ if(is_array($data1)){
                               <?php
                                   echo $data1['phone'] ?? '';
                                   
-                                  ?>
                                   ?>
                             </font>
                             </font>
@@ -423,4 +435,3 @@ if(is_array($data1)){
   
 </body>
 </html> 
- 
