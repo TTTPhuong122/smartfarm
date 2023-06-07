@@ -432,6 +432,11 @@ $data1 = json_decode($data1,1);
     </div>
   </div>
   <script src="./js.firebase.js"></script>
+  <script>
+    setTimeout(function() {
+      location.reload();
+    }, 5000);
+  </script>
   
 </body>
 </html> 

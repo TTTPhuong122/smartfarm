@@ -177,6 +177,9 @@ $data1 = json_decode($data1,1);
             <p>
             </p>
             <h4 class="col-sm-12 alert alert-danger">Cài đặt hệ thống</h4>
+            <h6 style="color:red;"> * Nếu chế độ thiết lập thời gian đang bật thì chế độ tự động hóa sẽ không hoạt động và ngược lại </h6>
+            <h6>
+            </h6>
 
           </div>
 
@@ -217,34 +220,34 @@ $data1 = json_decode($data1,1);
                       onclick="submitEdittime('75',$('#TS1').val(),$('#TE1').val())">Xác nhận</button>
                   </div> -->
 
-                  <div class="form-group col-sm-1">
-                  Thứ 2<input type="checkbox" id="Day1" name="Day1" class="Day1" 
+                  <!-- <div class="form-group col-sm-1">
+                  Thứ 2<input type="checkbox" id="monday1" name="Day1" class="Day1" 
                       >
                   </div>
                   <div class="form-group col-sm-1">
-                  Thứ 3<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                  Thứ 3<input type="checkbox" id="tuesday1" name="Day1" class="Day1"
                       >
                   </div>
                   <div class="form-group col-sm-1">
-                  Thứ 4<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                  Thứ 4<input type="checkbox" id="tuesday1" name="Day1" class="Day1"
                       >
                   </div>
                   <div class="form-group col-sm-1">
-                  Thứ 5<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                  Thứ 5<input type="checkbox" id="thursday1" name="Day1" class="Day1"
                       >
                   </div>
                   <div class="form-group col-sm-1">
-                  Thứ 6<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                  Thứ 6<input type="checkbox" id="friday1" name="Day1" class="Day1"
                       >
                   </div>
                   <div class="form-group col-sm-1">
-                  Thứ 7<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                  Thứ 7<input type="checkbox" id="saturday1" name="Day1" class="Day1"
                       >
                   </div>
                   <div class="form-group col-sm-1">
-                  Chủ nhật<input type="checkbox" id="Day1" name="Day1" class="Day1"
+                  Chủ nhật<input type="checkbox" id="sunday1" name="Day1" class="Day1"
                       >
-                  </div>
+                  </div> -->
 
                 </div>
               </div>
@@ -253,9 +256,7 @@ $data1 = json_decode($data1,1);
                 <div class="col-sm-12 alert alert-warning">
                   <h4 class="col-sm-10">Máy bơm nước</h4>
                   <label class="switch col-sm-2">
-                    <input type="checkbox" id="onSet2" name="onSet2" class="onSet2"
-                      onchange="AddTimeSetTable('82','3','2')">
-
+                    <input type="checkbox" id="onSet2" name="onSet2" class="onSet2">
 
                     <span class="slider round"></span>
                   </label>
@@ -276,34 +277,33 @@ $data1 = json_decode($data1,1);
                       onclick="submitEdittime('82',$('#TS2').val(),$('#TE2').val())">Xác nhận</button>
                   </div> -->
 
-                  <div class="form-group col-sm-1">
-                    Thứ 2<input type="checkbox" id="Day2" name="Day2" class="Day2"
-                      onchange="DaySet('82','4','2','Monday')">
+                  <!-- <div class="form-group col-sm-1">
+                    Thứ 2<input type="checkbox" id="monday2" name="Day2" class="Day2">
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 3<input type="checkbox" id="Day2" name="Day2" class="Day2"
-                      onchange="DaySet('82','4','2','Tuesday')">
+                    Thứ 3<input type="checkbox" id="tuesday2" name="Day2" class="Day2"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 4<input type="checkbox" id="Day2" name="Day2" class="Day2"
-                      onchange="DaySet('82','4','2','Wednesday')">
+                    Thứ 4<input type="checkbox" id="wednesday2" name="Day2" class="Day2"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 5<input type="checkbox" id="Day2" name="Day2" class="Day2"
-                      onchange="DaySet('82','4','2','Thursday')">
+                    Thứ 5<input type="checkbox" id="thursday2" name="Day2" class="Day2"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 6<input type="checkbox" id="Day2" name="Day2" class="Day2"
-                      onchange="DaySet('82','4','2','Friday')">
+                    Thứ 6<input type="checkbox" id="friday" name="Day2" class="Day2"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 7<input type="checkbox" id="Day2" name="Day2" class="Day2"
-                      onchange="DaySet('82','4','2','Saturday')">
+                    Thứ 7<input type="checkbox" id="saturday2" name="Day2" class="Day2"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Chủ nhật<input type="checkbox" id="Day2" name="Day2" class="Day2"
-                      onchange="DaySet('82','4','2','Sunday')">
-                  </div>
+                    Chủ nhật<input type="checkbox" id="sunday2" name="Day2" class="Day2"
+                      >
+                  </div> -->
 
                 </div>
               </div>
@@ -312,8 +312,7 @@ $data1 = json_decode($data1,1);
                 <div class="col-sm-12 alert alert-success">
                   <h4 class="col-sm-10">Đèn</h4>
                   <label class="switch col-sm-2">
-                    <input type="checkbox" id="onSet3" name="onSet3" class="onSet3"
-                      onchange="AddTimeSetTable('2','3','2')">
+                    <input type="checkbox" id="onSet3" name="onSet3" class="onSet3">
 
 
                     <span class="slider round"></span>
@@ -335,34 +334,34 @@ $data1 = json_decode($data1,1);
                       onclick="submitEdittime('2',$('#TS3').val(),$('#TE3').val())">Xác nhận</button>
                   </div> -->
 
-                  <div class="form-group col-sm-1">
-                    Thứ 2<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Monday')"
-                      checked="">
+                  <!-- <div class="form-group col-sm-1">
+                    Thứ 2<input type="checkbox" id="monday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Monday')"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 3<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Tuesday')"
-                      checked="">
+                    Thứ 3<input type="checkbox" id="tuesday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Tuesday')"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 4<input type="checkbox" id="Day3" name="Day3" class="Day3"
-                      onchange="DaySet('2','4','1','Wednesday')" checked="">
+                    Thứ 4<input type="checkbox" id="wednesday3" name="Day3" class="Day3"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 5<input type="checkbox" id="Day3" name="Day3" class="Day3"
-                      onchange="DaySet('2','4','1','Thursday')" checked="">
+                    Thứ 5<input type="checkbox" id="thursday3" name="Day3" class="Day3"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 6<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Friday')"
-                      checked="">
+                    Thứ 6<input type="checkbox" id="friday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Friday')"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Thứ 7<input type="checkbox" id="Day3" name="Day3" class="Day3"
-                      onchange="DaySet('2','4','1','Saturday')" checked="">
+                    Thứ 7<input type="checkbox" id="saturday3" name="Day3" class="Day3"
+                      >
                   </div>
                   <div class="form-group col-sm-1">
-                    Chủ nhật<input type="checkbox" id="Day3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Sunday')"
-                      checked="">
-                  </div>
+                    Chủ nhật<input type="checkbox" id="sunday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Sunday')"
+                      >
+                  </div> -->
 
                 </div>
               </div>
@@ -382,19 +381,12 @@ $data1 = json_decode($data1,1);
                 <div class="col-sm-12 alert alert-danger">
                   <h4 class="col-sm-6 " style=" padding-top: 10px;">Thiết lập tự động hóa</h4>
                 </div>
-                <h6 style="color:red;"> * Giá trị mặc định luôn lớn hơn giá trị kết thúc, ngoại trừ độ ẩm đất và giá trị độ ẩm không khí </h6>
-                <h6>
-                </h6>
               </div>
 
               <div class="col-sm-12">
-
-
                 <h4 class="col-sm-10">Bộ 1</h4>
-
-
                 <div class=" col-sm-12 alert alert-info">
-                  <h4 class="col-sm-10">Điều kiện nhiệt độ không khí</h4>
+                  <h4 class="col-sm-10">Điều kiện nhiệt độ không khí (Quạt)</h4>
                   <label class="switch col-sm-2">
                     <input type="checkbox" id="onoff1" name="onoff1" class="onoff1">
 
@@ -673,7 +665,7 @@ $data1 = json_decode($data1,1);
     }
 
 
-  const humidityRef = ref(db, "system/humidity");
+  const hummidityRef = ref(db, "system/hummidity");
   const stateRef = ref(db, "state/state1/state");
   const startRef = ref(db, "state/state1/start");
   const endRef = ref(db, "state/state1/end");
@@ -701,8 +693,8 @@ $data1 = json_decode($data1,1);
     $('#EAuto1').attr('value', end);
   });
 
-  onValue(humidityRef, (humiditySnapshot) => {
-  const humidity = humiditySnapshot.val();
+  onValue(hummidityRef, (hummiditySnapshot) => {
+  const hummidity = hummiditySnapshot.val();
 
   onValue(startRef, (startSnapshot) => {
     const start = startSnapshot.val();
@@ -713,21 +705,30 @@ $data1 = json_decode($data1,1);
       onValue(stateRef, (stateSnapshot) => {
         const state = stateSnapshot.val();
 
-        if (start < humidity && humidity < end && state == true) {
-          update(ref(db, "device/device2"), {
-            state: true
+        const stateRef444 = ref(db, "state/state4/state");
+
+          onValue(stateRef444, (stateSnapshot444) => {
+            const state444 = stateSnapshot444.val();
+        
+            if (state444 == false){
+
+              if (start < hummidity && hummidity < end && state == true) {
+                update(ref(db, "device/device2"), {
+                  state: 1
+                });
+              } else {
+                update(ref(db, "device/device2"), {
+                  state: 0
+                });
+              }
+            }
           });
-        } else {
-          update(ref(db, "device/device2"), {
-            state: false
-          });
-        }
 
       });
     });
   });
 });
-
+//======================================================== máy bơm nước ================================
 
 function insert2() {
       if (checkbox2.checked == true) {
@@ -799,21 +800,31 @@ function insert2() {
 
       onValue(stateRef2, (stateSnapshot2) => {
         const state2 = stateSnapshot2.val();
+        const stateRef555 = ref(db, "state/state5/state");
 
-        if (start2 < soil_moisture && soil_moisture < end2 && state2 == true) {
-          update(ref(db, "device/device1"), {
-            state: true
+          onValue(stateRef555, (stateSnapshot555) => {
+            const state555 = stateSnapshot555.val();
+        
+            if (state555 == false){
+
+              if (start2 < soil_moisture && soil_moisture < end2 && state2 == true) {
+                update(ref(db, "device/device1"), {
+                  state: 1
+                });
+              } else {
+                update(ref(db, "device/device1"), {
+                  state: 0
+                });
+              }
+            }
           });
-        } else {
-          update(ref(db, "device/device1"), {
-            state: false
-          });
-        }
 
       });
     });
   });
 });
+
+//=================================================== đèn==================================
 
 function insert3() {
   if (checkbox3.checked == true) {
@@ -884,16 +895,27 @@ function insert3() {
 
       onValue(stateRef3, (stateSnapshot3) => {
         const state3 = stateSnapshot3.val();
+        const stateRef666 = ref(db, "state/state6/state");
 
-        if (start3 < light && light < end3 && state3 == true) {
-          update(ref(db, "device/device3"), {
-            state: true
+          onValue(stateRef666, (stateSnapshot666) => {
+            const state666 = stateSnapshot666.val();
+        
+            if (state666 == false){
+              if (start3 < light && light < end3 && state3 == true) {
+                update(ref(db, "device/device3"), {
+                  state: 1
+                });
+              } else {
+                update(ref(db, "device/device3"), {
+                  state: 0
+                });
+              }
+            }
+
+            else{
+              // alert("Bạn đang bật chế độ thiết lập theo thời gian");
+            }
           });
-        } else {
-          update(ref(db, "device/device3"), {
-            state: false
-          });
-        }
 
       });
     });
@@ -914,8 +936,12 @@ function insert3() {
 
   function insert4() {
   if (checkbox4.checked == true) {
-    update(ref(db, "state"), {
-        state4: true,
+    const startInput = document.getElementById("TS1").value;
+    const endInput = document.getElementById("TE1").value;
+    update(ref(db, "state/state4"), {
+        state: true,
+        start: getTimeValue(startInput),
+        end: getTimeValue(endInput)
       });
 
     alert("Bạn muốn bật chế độ tự động");
@@ -925,15 +951,15 @@ function insert3() {
 
   } else {
     alert("Bạn muốn tắt chế độ tự động");
-    update(ref(db, "state"), {
-        state4: false,
+    update(ref(db, "state/state4"), {
+        state: false,
       });
     $('#TS1').attr('disabled', false);
     $('#TE1').attr('disabled', false);
   }
 }
 
-const state4 = ref(db, "state/state4");
+const state4 = ref(db, "state/state4/state");
 
 onValue(state4, (snapshot4) => {
     const state4 = snapshot4.val();
@@ -950,26 +976,52 @@ onValue(state4, (snapshot4) => {
 checkbox4.addEventListener("change", insert4);
 
 function checkTimeRange() {
-  const currentDateTime = new Date();
-  const currentDayOfWeek = currentDateTime.getDay();
-  const currentTime = currentDateTime.getTime();
+  return new Promise((resolve, reject) => {
+    const currentDateTime = new Date();
+    const currentDayOfWeek = currentDateTime.getDay();
+    const currentTime = currentDateTime.getTime();
 
 
-  const startInput = document.getElementById("TS1").value;
-  const endInput = document.getElementById("TE1").value;
+    const monday1 = document.getElementById('monday1');
+    const tuesday1 = document.getElementById('tuesday1');
+    const wednesday1 = document.getElementById('wednesday1');
+    const thursday1 = document.getElementById('thursday1');
+    const friday1 = document.getElementById('friday1');
+    const saturday1 = document.getElementById('saturday1');
+    const sunday1 = document.getElementById('sunday1');
+    
+    // const selectedDays1 = [
+    //   0,
+    //   monday1.checked,
+    //   tuesday1.checked,
+    //   wednesday1.checked,
+    //   thursday1.checked,
+    //   friday1.checked,
+    //   saturday1.checked,
+    //   sunday1.checked
+    // ];
 
-  // if ((currentDayOfWeek === 1 || currentDayOfWeek === 2)){
+    const startRef4 = ref(db, "state/state4/start");
+    const endRef4 = ref(db, "state/state4/end");
 
-    if (currentTime >= getTimeValue(startInput) && currentTime < getTimeValue(endInput)) {
-    return true; // Nằm trong khoảng thời gian cài đặt
-  }
-  else{
-    // alert("a");
-  }
-
-// }
-
-  return false; // Không nằm trong khoảng thời gian cài đặt
+    onValue(startRef4, (startSnapshot4) => {
+      const start4 = startSnapshot4.val();
+      $('#TS1').attr('value', convertTimeValueToTimeString(start4));
+      onValue(endRef4, (endSnapshot4) => {
+        const end4 = endSnapshot4.val();
+        $('#TE1').attr('value', convertTimeValueToTimeString(end4));
+        // if (selectedDays1[currentDayOfWeek] == false){
+        //   resolve(false);
+        // }else{
+          if (currentTime >= start4 && currentTime < end4) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        // }
+      });
+    });
+  });
 }
 
 //===========================================================máy bơm nước===================================
@@ -977,9 +1029,13 @@ function checkTimeRange() {
 var checkbox5 = document.getElementById("onSet2");
 
   function insert5() {
+  const startInput = document.getElementById("TS2").value;
+  const endInput = document.getElementById("TE2").value;
   if (checkbox5.checked == true) {
-    update(ref(db, "state"), {
-        state5: true,
+    update(ref(db, "state/state5"), {
+        state: true,
+        start: getTimeValue(startInput),
+        end: getTimeValue(endInput)
       });
 
     alert("Bạn muốn bật chế độ tự động");
@@ -989,15 +1045,15 @@ var checkbox5 = document.getElementById("onSet2");
 
   } else {
     alert("Bạn muốn tắt chế độ tự động");
-    update(ref(db, "state"), {
-        state5: false,
+    update(ref(db, "state/state5"), {
+        state: false,
       });
     $('#TS2').attr('disabled', false);
     $('#TE2').attr('disabled', false);
   }
 }
 
-const state5 = ref(db, "state/state5");
+const state5 = ref(db, "state/state5/state");
 
 onValue(state5, (snapshot5) => {
     const state5 = snapshot5.val();
@@ -1014,29 +1070,53 @@ onValue(state5, (snapshot5) => {
 checkbox5.addEventListener("change", insert5);
 
 function checkTimeRange2() {
-  const currentDateTime = new Date();
-  const currentDayOfWeek = currentDateTime.getDay();
-  const currentTime = currentDateTime.getTime();
+  return new Promise((resolve, reject) => {
+    const currentDateTime = new Date();
+    const currentDayOfWeek = currentDateTime.getDay();
+    const currentTime = currentDateTime.getTime();
 
 
-  const startInput = document.getElementById("TS2").value;
-  const endInput = document.getElementById("TE2").value;
+    const monday = document.getElementById('monday2');
+    const tuesday = document.getElementById('tuesday2');
+    const wednesday = document.getElementById('wednesday2');
+    const thursday = document.getElementById('thursday2');
+    const friday = document.getElementById('friday2');
+    const saturday = document.getElementById('saturday2');
+    const sunday = document.getElementById('sunday2');
+    
+    // const selectedDays = [
+    //   0,
+    //   monday.checked,
+    //   tuesday.checked,
+    //   wednesday.checked,
+    //   thursday.checked,
+    //   friday.checked,
+    //   saturday.checked,
+    //   sunday.checked
+    // ];
 
-  // if ((currentDayOfWeek === 1 || currentDayOfWeek === 2)){
+    const startRef5 = ref(db, "state/state5/start");
+    const endRef5 = ref(db, "state/state5/end");
 
-    if (currentTime >= getTimeValue(startInput) && currentTime < getTimeValue(endInput)) {
-    return true; // Nằm trong khoảng thời gian cài đặt
-  }
-  else{
-    // alert("a");
-  }
-
-// }
-
-  return false; // Không nằm trong khoảng thời gian cài đặt
+    onValue(startRef5, (startSnapshot5) => {
+      const start5 = startSnapshot5.val();
+      $('#TS2').attr('value', convertTimeValueToTimeString(start5));
+      onValue(endRef5, (endSnapshot5) => {
+        const end5 = endSnapshot5.val();
+        $('#TE2').attr('value', convertTimeValueToTimeString(end5));
+        // if (selectedDays[currentDayOfWeek] == false){
+        //   resolve(false);
+        // }else{
+          if (currentTime >= start5 && currentTime < end5) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        // }
+      });
+    });
+  });
 }
-
-
 
 
 //================================================== đèn===============================================
@@ -1045,9 +1125,15 @@ function checkTimeRange2() {
 var checkbox6 = document.getElementById("onSet3");
 
   function insert6() {
+
+  const startInput = document.getElementById("TS3").value;
+  const endInput = document.getElementById("TE3").value;
+
   if (checkbox6.checked == true) {
-    update(ref(db, "state"), {
-        state6: true,
+    update(ref(db, "state/state6"), {
+        state: true,
+        start: getTimeValue(startInput),
+        end: getTimeValue(endInput)
       });
 
     alert("Bạn muốn bật chế độ tự động");
@@ -1057,15 +1143,15 @@ var checkbox6 = document.getElementById("onSet3");
 
   } else {
     alert("Bạn muốn tắt chế độ tự động");
-    update(ref(db, "state"), {
-        state6: false,
+    update(ref(db, "state/state6"), {
+        state: false,
       });
     $('#TS3').attr('disabled', false);
     $('#TE3').attr('disabled', false);
   }
 }
 
-const state6 = ref(db, "state/state6");
+const state6 = ref(db, "state/state6/state");
 
 onValue(state6, (snapshot6) => {
     const state6 = snapshot6.val();
@@ -1082,46 +1168,55 @@ onValue(state6, (snapshot6) => {
 checkbox6.addEventListener("change", insert6);
 
 function checkTimeRange3() {
-  const currentDateTime = new Date();
-  const currentDayOfWeek = currentDateTime.getDay();
-  const currentTime = currentDateTime.getTime();
+  return new Promise((resolve, reject) => {
+    const currentDateTime = new Date();
+    const currentDayOfWeek = currentDateTime.getDay();
+    const currentTime = currentDateTime.getTime();
 
 
-  const startInput = document.getElementById("TS3").value;
-  const endInput = document.getElementById("TE3").value;
+    const monday3 = document.getElementById('monday3');
+    const tuesday3 = document.getElementById('tuesday3');
+    const wednesday3 = document.getElementById('wednesday3');
+    const thursday3 = document.getElementById('thursday3');
+    const friday3 = document.getElementById('friday3');
+    const saturday3 = document.getElementById('saturday3');
+    const sunday3 = document.getElementById('sunday3');
+    
+    // const selectedDays3 = [
+    //   0,
+    //   monday3.checked,
+    //   tuesday3.checked,
+    //   wednesday3.checked,
+    //   thursday3.checked,
+    //   friday3.checked,
+    //   saturday3.checked,
+    //   sunday3.checked
+    // ];
 
+    // console.log(selectedDays[currentDayOfWeek]);
 
-  // update(ref(db, "state"), {
-  //   start: getTimeValue(startInput),
-  //   end: getTimeValue(endInput)
-  // });
+    const startRef6 = ref(db, "state/state6/start");
+    const endRef6 = ref(db, "state/state6/end");
 
-  // const startRef4 = ref(db, "state/start");
-  // onValue(startRef4, (startSnapshot4) => {
-  //   const start4 = startSnapshot4.val();
-  //   $('#TS1').attr('value', convertTimeValueToTimeString(start4));
-  //   });
-
-
-  // const startRef4 = ref(db, "state/end");
-  // onValue(endRef4, (endSnapshot4) => {
-  // const end4 = endSnapshot4.val();
-  // $('#TS1').attr('value', convertTimeValueToTimeString(end4));
-  // });
-
-
-  // if ((currentDayOfWeek === 1 || currentDayOfWeek === 2)){
-
-    if (currentTime >= getTimeValue(startInput) && currentTime < getTimeValue(endInput)) {
-    return true; // Nằm trong khoảng thời gian cài đặt
-  }
-  else{
-    // alert("a");
-  }
-
-// }
-
-  return false; // Không nằm trong khoảng thời gian cài đặt
+    onValue(startRef6, (startSnapshot6) => {
+      const start6 = startSnapshot6.val();
+      $('#TS3').attr('value', convertTimeValueToTimeString(start6));
+      onValue(endRef6, (endSnapshot6) => {
+        const end6 = endSnapshot6.val();
+        $('#TE3').attr('value', convertTimeValueToTimeString(end6));
+        // if (selectedDays3[currentDayOfWeek] == false){
+        //   resolve(false);
+        // }
+        // else{
+          if (currentTime >= start6 && currentTime < end6) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        // }
+      });
+    });
+  });
 }
 
 function getTimeValue(timeString) {
@@ -1153,362 +1248,82 @@ function convertTimeValueToTimeString(timeValue) {
 }
 
 
-function performActionBasedOnTimeRange() {
-  const isWithinTimeRange = checkTimeRange();
-  const isWithinTimeRange2 = checkTimeRange2();
-  const isWithinTimeRange3 = checkTimeRange3();
+async function performActionBasedOnTimeRange() {
+  const isWithinTimeRange = await checkTimeRange();
+
+  const isWithinTimeRange2 = await checkTimeRange2();
+
+  const isWithinTimeRange3 = await checkTimeRange3();
+
   var checkbox = document.getElementById("onSet1");
+
+  const stateRef111 = ref(db, "state/state1/state");
+  onValue(stateRef111, (stateSnapshot111) => {
+  const state111 = stateSnapshot111.val();
+
+  if (state111 == false){
 
   if (isWithinTimeRange && checkbox.checked == true) {
     update(ref(db, "device/device2"), {
-      state: true
+      state: 1
     });
   } else {
     update(ref(db, "device/device2"), {
-      state: false
+      state: 0
     });
   }
+  }
+});
 
   var checkbox2 = document.getElementById("onSet2");
 
-  if (isWithinTimeRange2 && checkbox2.checked == true) {
-    update(ref(db, "device/device1"), {
-      state: true
-    });
-  } else {
-    update(ref(db, "device/device1"), {
-      state: false
-    });
+  const stateRef222 = ref(db, "state/state2/state");
+  onValue(stateRef222, (stateSnapshot222) => {
+  const state222= stateSnapshot222.val();
+
+  if (state222 == false){
+    if (isWithinTimeRange2 && checkbox2.checked == true) {
+      update(ref(db, "device/device1"), {
+        state: 1
+      });
+    } else {
+      update(ref(db, "device/device1"), {
+        state: 0
+      });
+    }
   }
+    });
 
 
 var checkbox3 = document.getElementById("onSet3");
 
-  if (isWithinTimeRange3 && checkbox3.checked == true) {
-    update(ref(db, "device/device3"), {
-      state: true
-    });
-  } else {
-    update(ref(db, "device/device3"), {
-      state: false
-    });
+const stateRef333 = ref(db, "state/state3/state");
+onValue(stateRef333, (stateSnapshot333) => {
+  const state333 = stateSnapshot333.val();
+
+  if (state333 == false){
+    if (isWithinTimeRange3 && checkbox3.checked == true) {
+      update(ref(db, "device/device3"), {
+        state: 1
+      });
+    } else {
+      update(ref(db, "device/device3"), {
+        state: 0
+      });
   }
+
+  }
+
+});
+
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   performActionBasedOnTimeRange();
   // Cập nhật trạng thái của nút on/off sau mỗi 1 phút (hoặc khoảng thời gian tùy chọn)
-  setInterval(performActionBasedOnTimeRange, 10000); 
+  setInterval(performActionBasedOnTimeRange, 1000); 
 });
     
   </script>
-  <!-- <script>
-    let AddAutoTable = (Sgroup, Scondi) => {
-
-  if (confirm('Bạn có muốn thêm cài đặt không?')) {
-
-    $.ajax({
-      url: "./AddAuto.php?switch=1",
-      type: "POST",
-      data: {
-        FarmId: '1',
-        LocationId: '1',
-        Sgroup: Sgroup,
-        Scondi: Scondi
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("Thực hiện thành công!!!");
-
-          location.reload();
-
-        }
-        else {
-          alert("Không thể thực hiện (**Không thể chọn các điều kiện trùng lặp trong một nhóm) !!!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-let AddTimeSetTable = (Sgroup, x, Ss) => {
-
-
-  var texts = "";
-  if (x == 1) {
-    texts = "Bạn có muốn thêm cài đặt không?";
-  }
-  if (x == 2) {
-    texts = "Bạn có muốn xóa cài đặt không?";
-  }
-  if (x == 3) {
-    texts = "Bạn có muốn chỉnh sửa cài đặt không?";
-  }
-
-  if (confirm(texts)) {
-
-    $.ajax({
-      url: "./AddTimeSetTable.php?switch=" + x,
-      type: "POST",
-      data: {
-        FarmId: '1',
-        LocationId: '1',
-        Sgroup: Sgroup,
-        Status: Ss
-
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("Thực hiện thành công!!!");
-
-          location.reload();
-
-        }
-        else {
-          alert("Không thể thực hiện !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-
-
-
-// let DaySet = (Sgroup, x, Ss, tSDats) => {
-
-
-//   var texts = "";
-
-//   texts = "Bạn có muốn chỉnh sửa cài đặt không?";
-
-
-//   if (confirm(texts)) {
-
-//     $.ajax({
-//       url: "./DaySet.php?switch=" + x,
-//       type: "POST",
-//       data: {
-//         FarmId: '1',
-//         LocationId: '1',
-//         Sgroup: Sgroup,
-//         Status: Ss,
-//         SDats: tSDats
-
-//       },
-//       cache: false,
-//       success: function (dataResult) {
-//         var dataResult = JSON.parse(dataResult);
-
-//         if (dataResult.statusCode == 200) {
-//           alert("Thực hiện thành công !!!");
-
-//           location.reload();
-
-//         }
-//         else {
-//           alert("Không thể thực hiện!!!");
-//           location.reload();
-//         }
-
-//       }
-//     });
-
-//   } else {
-
-//     location.reload();
-//   }
-// };
-////////////switch Edit set time
-let submitEdittime = (id, tstart, tend) => {
-
-
-
-  if (confirm('Bạn xác nhận thay đổi ?')) {
-
-    $.ajax({
-      url: "./switch.php?switch=3",
-      type: "POST",
-      data: {
-        Id: id,
-        FarmId: '1',
-        LocationId: '1',
-        tstart: tstart,
-        tend: tend
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-        //alert(dataResult.statusCode);
-        if (dataResult.statusCode == 200) {
-          alert("Thực hiện thành công!!!");
-          location.reload();
-
-        }
-        else {
-          alert("Không thể thực hiện!!!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-
-
-
-///////////////////////////////// //switch Edit set time Autooooooooooooooooooooooooo
-let submitEditAuto = (id, txt) => {
-
-  var tStart = $('#SAuto' + id).val();
-  var tEnd = $('#EAuto' + id).val();
-  var tAllId = $('#arrid' + id).val();
-  if (confirm('Bạn xác nhận thay đổi ?')) {
-
-    $.ajax({
-      url: "./switchAuto.php?switch=1",
-      type: "POST",
-      data: {
-        FarmId: '1',
-        LocationId: '1',
-        VariableId: txt,
-        tstart: tStart,
-        tend: tEnd,
-        tAllId: tAllId,
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("Thực hiện thành công!!!");
-          location.reload();
-
-        }
-        else {
-          alert("Không thể thực hiện!!!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-///////////////////////////////// //switch del set time Autooooooooooooooooooooooooo
-let submitDelAuto = (id, txt) => {
-
-
-  var tAllId = $('#arrid' + id).val();
-  if (confirm('Bạn có muốn xóa cài đặt không?')) {
-
-    $.ajax({
-      url: "./switchAuto.php?switch=del",
-      type: "POST",
-      data: {
-        tAllId: tAllId
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("Thực hiện thành công!!!");
-          location.reload();
-
-        }
-        else {
-          alert("Không thể thực hiện !!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-};
-///////////////////////////////// //switch Edit switch Autooooooooooooooooooooooooo
-let submitEditSwitchAuto = (id, txt) => {
-
-
-  var tAllId = $('#arrid' + id).val();
-
-
-  var tswitch = $('.onoff' + id + ':checked').val();
-  if (tswitch == 'on') {
-    tstatus = " bật chế độ tự động ";
-    Pstatus = "1"
-
-  } else {
-    tstatus = " tắt chế độ tự động ";
-    Pstatus = "2"
-  }
-
-
-
-
-  if (confirm('Bạn muốn' + tstatus + '?')) {
-
-    $.ajax({
-      url: "./switchAuto.php?switch=2",
-      type: "POST",
-      data: {
-        tAllId: tAllId,
-        status: Pstatus
-      },
-      cache: false,
-      success: function (dataResult) {
-        var dataResult = JSON.parse(dataResult);
-
-        if (dataResult.statusCode == 200) {
-          alert("Thực hiện thành công");
-          location.reload();
-
-        }
-        else {
-          alert("Không thể thực hiện!!");
-          location.reload();
-        }
-
-      }
-    });
-
-  } else {
-
-    location.reload();
-  }
-
-};
-
-
-
-///////////////////////////////// //switch Edit switch Electric Autooooooooooooooooooooooooo
-</script> -->
 </body>
 </html>
