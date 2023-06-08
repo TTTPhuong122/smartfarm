@@ -4,6 +4,8 @@ include("config/firebaseRDB.php");
 $db = new firebaseRDB($databaseURL);
 session_start();
 
+$_SESSION['id_system'] = $_GET['id_system'];
+
 if(isset($_GET['id_system'])){
   $data = $db->retrieve("system", "id_system", null, $_GET['id_system']);
   $data = json_decode($data, 1);
@@ -219,7 +221,7 @@ $data1 = json_decode($data1,1);
                         <font style="vertical-align: inherit;">
                           Nhiệt độ không khí:
                           <span id="temparature"></span> 
-                          <?php echo $data['temparature'] ?> C
+                           C
                         </font>
                       </font>
                     </h4>
@@ -236,7 +238,7 @@ $data1 = json_decode($data1,1);
                          <font style="vertical-align: inherit;">
                             Độ ẩm không khí:
                             <span id="humidity"></span> 
-                            <?php echo $data['hummidity'] ?> %RH
+                             %RH
                         </font>
                         </font>
                     </h4>
@@ -253,7 +255,7 @@ $data1 = json_decode($data1,1);
                         <font style="vertical-align: inherit;">
                           Độ ẩm đất: 
                           <span id="soil_moisture"></span> 
-                          <?php echo $data['soil_moisture'] ?> %
+                           %
                         
                         </font>
                       </font>
@@ -271,7 +273,7 @@ $data1 = json_decode($data1,1);
                         <font style="vertical-align: inherit;">
                         Cường độ sáng: 
                         <span id="light"></span> 
-                          <?php echo $data['light'] ?>
+                          
 
                          Lux
                         </font>
@@ -433,9 +435,51 @@ $data1 = json_decode($data1,1);
   </div>
   <script src="./js.firebase.js"></script>
   <script>
-    setTimeout(function() {
-      location.reload();
-    }, 5000);
+
+  $(document).ready(function(){
+      setInterval(function(){
+          $.ajax({
+              url: "get_temparature.php", 
+              success: function(data){
+                  $("#temparature").text(data); 
+              }
+          });
+      }, 500); 
+  });
+
+  $(document).ready(function(){
+      setInterval(function(){
+          $.ajax({
+              url: "get_hummidity.php", 
+              success: function(data){
+                  $("#humidity").text(data); 
+              }
+          });
+      }, 500); 
+  });
+
+  $(document).ready(function(){
+      setInterval(function(){
+          $.ajax({
+              url: "get_soil_moisture.php", 
+              success: function(data){
+                  $("#soil_moisture").text(data); 
+              }
+          });
+      }, 500); 
+  });
+
+  $(document).ready(function(){
+      setInterval(function(){
+          $.ajax({
+              url: "get_light.php", 
+              success: function(data){
+                  $("#light").text(data); 
+              }
+          });
+      }, 500); // Thời gian 0.5 giây
+  });
+    
   </script>
   
 </body>

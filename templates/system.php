@@ -176,7 +176,12 @@ $data1 = json_decode($data1,1);
           <div class="col-sm-12">
             <p>
             </p>
-            <h4 class="col-sm-12 alert alert-danger">Cài đặt hệ thống</h4>
+            <h4 class="col-sm-12 alert alert-danger">
+            <!-- </br> -->
+              Cài đặt hệ thống
+            <!-- <br> </br> -->
+            </h4>
+            
             <h6 style="color:red;"> * Nếu chế độ thiết lập thời gian đang bật thì chế độ tự động hóa sẽ không hoạt động và ngược lại </h6>
             <h6>
             </h6>
@@ -211,43 +216,6 @@ $data1 = json_decode($data1,1);
                     <label for="usr">Dừng:</label>
                     <input type="time" class="form-control" name="TE1" id="TE1" value="" disabled="">
                   </div>
-                  <!-- <div class="form-group col-sm-12">
-                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('75','2','')">Xóa bỏ</button>
-                    <button type="button" class="btn btn-warning"
-                      onclick=" $('#TS1').attr( 'disabled', false );$('#TE1').attr( 'disabled', false );">Thay đổi
-                    </button>
-                    <button type="button" class="btn btn-success"
-                      onclick="submitEdittime('75',$('#TS1').val(),$('#TE1').val())">Xác nhận</button>
-                  </div> -->
-
-                  <!-- <div class="form-group col-sm-1">
-                  Thứ 2<input type="checkbox" id="monday1" name="Day1" class="Day1" 
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                  Thứ 3<input type="checkbox" id="tuesday1" name="Day1" class="Day1"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                  Thứ 4<input type="checkbox" id="tuesday1" name="Day1" class="Day1"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                  Thứ 5<input type="checkbox" id="thursday1" name="Day1" class="Day1"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                  Thứ 6<input type="checkbox" id="friday1" name="Day1" class="Day1"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                  Thứ 7<input type="checkbox" id="saturday1" name="Day1" class="Day1"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                  Chủ nhật<input type="checkbox" id="sunday1" name="Day1" class="Day1"
-                      >
-                  </div> -->
 
                 </div>
               </div>
@@ -268,42 +236,7 @@ $data1 = json_decode($data1,1);
                     <label for="usr">Dừng:</label>
                     <input type="time" class="form-control" name="TE2" id="TE2" value="" disabled="">
                   </div>
-                  <!-- <div class="form-group col-sm-12">
-                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('82','2','')">Xóa bỏ</button>
-                    <button type="button" class="btn btn-warning"
-                      onclick=" $('#TS2').attr( 'disabled', false );$('#TE2').attr( 'disabled', false );">Thay đổi
-                    </button>
-                    <button type="button" class="btn btn-success"
-                      onclick="submitEdittime('82',$('#TS2').val(),$('#TE2').val())">Xác nhận</button>
-                  </div> -->
-
-                  <!-- <div class="form-group col-sm-1">
-                    Thứ 2<input type="checkbox" id="monday2" name="Day2" class="Day2">
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 3<input type="checkbox" id="tuesday2" name="Day2" class="Day2"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 4<input type="checkbox" id="wednesday2" name="Day2" class="Day2"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 5<input type="checkbox" id="thursday2" name="Day2" class="Day2"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 6<input type="checkbox" id="friday" name="Day2" class="Day2"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 7<input type="checkbox" id="saturday2" name="Day2" class="Day2"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Chủ nhật<input type="checkbox" id="sunday2" name="Day2" class="Day2"
-                      >
-                  </div> -->
+                  
 
                 </div>
               </div>
@@ -325,43 +258,7 @@ $data1 = json_decode($data1,1);
                     <label for="usr">Dừng:</label>
                     <input type="time" class="form-control" name="TE3" id="TE3" value="" disabled="">
                   </div>
-                  <!-- <div class="form-group col-sm-12">
-                    <button type="button" class="btn btn-danger" onclick="AddTimeSetTable('2','2','')">Xóa bỏ</button>
-                    <button type="button" class="btn btn-warning"
-                      onclick=" $('#TS3').attr( 'disabled', false );$('#TE3').attr( 'disabled', false );">Thay đổi
-                    </button>
-                    <button type="button" class="btn btn-success"
-                      onclick="submitEdittime('2',$('#TS3').val(),$('#TE3').val())">Xác nhận</button>
-                  </div> -->
-
-                  <!-- <div class="form-group col-sm-1">
-                    Thứ 2<input type="checkbox" id="monday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Monday')"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 3<input type="checkbox" id="tuesday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Tuesday')"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 4<input type="checkbox" id="wednesday3" name="Day3" class="Day3"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 5<input type="checkbox" id="thursday3" name="Day3" class="Day3"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 6<input type="checkbox" id="friday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Friday')"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Thứ 7<input type="checkbox" id="saturday3" name="Day3" class="Day3"
-                      >
-                  </div>
-                  <div class="form-group col-sm-1">
-                    Chủ nhật<input type="checkbox" id="sunday3" name="Day3" class="Day3" onchange="DaySet('2','4','1','Sunday')"
-                      >
-                  </div> -->
+                  
 
                 </div>
               </div>
@@ -384,7 +281,7 @@ $data1 = json_decode($data1,1);
               </div>
 
               <div class="col-sm-12">
-                <h4 class="col-sm-10">Bộ 1</h4>
+                <!-- <h4 class="col-sm-10">Bộ 1</h4> -->
                 <div class=" col-sm-12 alert alert-info">
                   <h4 class="col-sm-10">Điều kiện nhiệt độ không khí (Quạt)</h4>
                   <label class="switch col-sm-2">
@@ -406,7 +303,7 @@ $data1 = json_decode($data1,1);
 
                 </div>
 
-                <h4 class="col-sm-10">Bộ 2</h4>
+                <!-- <h4 class="col-sm-10">Bộ 2</h4> -->
 
 
                 <div class="col-sm-12 alert alert-warning">
@@ -430,7 +327,7 @@ $data1 = json_decode($data1,1);
                   <input type="hidden" name="arrid2" id="arrid2" class="arrid2" value="\'145\',\'146\',\'147\'">
                 </div>
 
-                <h4 class="col-sm-10">Bộ 3</h4>
+                <!--  <h4 class="col-sm-10">Bộ 3</h4> -->
 
 
                 <div class="col-sm-12 alert alert-success">
@@ -450,7 +347,6 @@ $data1 = json_decode($data1,1);
                     <label for="usr">Dừng:</label>
                     <input type="number" class="form-control EAuto3" name="EAuto3" id="EAuto3" value="" disabled="">
                   </div>
-
 
                   <input type="hidden" name="arrid3" id="arrid3" class="arrid3" value="\'145\',\'146\',\'147\'">
                 </div>
@@ -714,11 +610,11 @@ $data1 = json_decode($data1,1);
 
               if (start < hummidity && hummidity < end && state == true) {
                 update(ref(db, "device/device2"), {
-                  state: 1
+                  state: true
                 });
               } else {
                 update(ref(db, "device/device2"), {
-                  state: 0
+                  state: false
                 });
               }
             }
@@ -809,11 +705,11 @@ function insert2() {
 
               if (start2 < soil_moisture && soil_moisture < end2 && state2 == true) {
                 update(ref(db, "device/device1"), {
-                  state: 1
+                  state: true
                 });
               } else {
                 update(ref(db, "device/device1"), {
-                  state: 0
+                  state: false
                 });
               }
             }
@@ -903,11 +799,11 @@ function insert3() {
             if (state666 == false){
               if (start3 < light && light < end3 && state3 == true) {
                 update(ref(db, "device/device3"), {
-                  state: 1
+                  state: true
                 });
               } else {
                 update(ref(db, "device/device3"), {
-                  state: 0
+                  state: false
                 });
               }
             }
@@ -990,16 +886,6 @@ function checkTimeRange() {
     const saturday1 = document.getElementById('saturday1');
     const sunday1 = document.getElementById('sunday1');
     
-    // const selectedDays1 = [
-    //   0,
-    //   monday1.checked,
-    //   tuesday1.checked,
-    //   wednesday1.checked,
-    //   thursday1.checked,
-    //   friday1.checked,
-    //   saturday1.checked,
-    //   sunday1.checked
-    // ];
 
     const startRef4 = ref(db, "state/state4/start");
     const endRef4 = ref(db, "state/state4/end");
@@ -1010,15 +896,13 @@ function checkTimeRange() {
       onValue(endRef4, (endSnapshot4) => {
         const end4 = endSnapshot4.val();
         $('#TE1').attr('value', convertTimeValueToTimeString(end4));
-        // if (selectedDays1[currentDayOfWeek] == false){
-        //   resolve(false);
-        // }else{
-          if (currentTime >= start4 && currentTime < end4) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        // }
+        
+        if (currentTime >= start4 && currentTime < end4) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+        
       });
     });
   });
@@ -1028,7 +912,15 @@ function checkTimeRange() {
 
 var checkbox5 = document.getElementById("onSet2");
 
-  function insert5() {
+var monday = document.getElementById('monday2');
+var tuesday = document.getElementById('tuesday2');
+var wednesday = document.getElementById('wednesday2');
+var thursday = document.getElementById('thursday2');
+var friday = document.getElementById('friday2');
+var saturday = document.getElementById('saturday2');
+var sunday = document.getElementById('sunday2');
+
+function insert5() {
   const startInput = document.getElementById("TS2").value;
   const endInput = document.getElementById("TE2").value;
   if (checkbox5.checked == true) {
@@ -1069,31 +961,12 @@ onValue(state5, (snapshot5) => {
 
 checkbox5.addEventListener("change", insert5);
 
+
 function checkTimeRange2() {
   return new Promise((resolve, reject) => {
     const currentDateTime = new Date();
     const currentDayOfWeek = currentDateTime.getDay();
     const currentTime = currentDateTime.getTime();
-
-
-    const monday = document.getElementById('monday2');
-    const tuesday = document.getElementById('tuesday2');
-    const wednesday = document.getElementById('wednesday2');
-    const thursday = document.getElementById('thursday2');
-    const friday = document.getElementById('friday2');
-    const saturday = document.getElementById('saturday2');
-    const sunday = document.getElementById('sunday2');
-    
-    // const selectedDays = [
-    //   0,
-    //   monday.checked,
-    //   tuesday.checked,
-    //   wednesday.checked,
-    //   thursday.checked,
-    //   friday.checked,
-    //   saturday.checked,
-    //   sunday.checked
-    // ];
 
     const startRef5 = ref(db, "state/state5/start");
     const endRef5 = ref(db, "state/state5/end");
@@ -1104,15 +977,13 @@ function checkTimeRange2() {
       onValue(endRef5, (endSnapshot5) => {
         const end5 = endSnapshot5.val();
         $('#TE2').attr('value', convertTimeValueToTimeString(end5));
-        // if (selectedDays[currentDayOfWeek] == false){
-        //   resolve(false);
-        // }else{
-          if (currentTime >= start5 && currentTime < end5) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        // }
+        
+        if (currentTime >= start5 && currentTime < end5) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      
       });
     });
   });
@@ -1174,26 +1045,14 @@ function checkTimeRange3() {
     const currentTime = currentDateTime.getTime();
 
 
-    const monday3 = document.getElementById('monday3');
-    const tuesday3 = document.getElementById('tuesday3');
-    const wednesday3 = document.getElementById('wednesday3');
-    const thursday3 = document.getElementById('thursday3');
-    const friday3 = document.getElementById('friday3');
-    const saturday3 = document.getElementById('saturday3');
-    const sunday3 = document.getElementById('sunday3');
+    var monday3 = document.getElementById('monday3');
+    var tuesday3 = document.getElementById('tuesday3');
+    var wednesday3 = document.getElementById('wednesday3');
+    var thursday3 = document.getElementById('thursday3');
+    var friday3 = document.getElementById('friday3');
+    var saturday3 = document.getElementById('saturday3');
+    var sunday3 = document.getElementById('sunday3');
     
-    // const selectedDays3 = [
-    //   0,
-    //   monday3.checked,
-    //   tuesday3.checked,
-    //   wednesday3.checked,
-    //   thursday3.checked,
-    //   friday3.checked,
-    //   saturday3.checked,
-    //   sunday3.checked
-    // ];
-
-    // console.log(selectedDays[currentDayOfWeek]);
 
     const startRef6 = ref(db, "state/state6/start");
     const endRef6 = ref(db, "state/state6/end");
@@ -1204,16 +1063,12 @@ function checkTimeRange3() {
       onValue(endRef6, (endSnapshot6) => {
         const end6 = endSnapshot6.val();
         $('#TE3').attr('value', convertTimeValueToTimeString(end6));
-        // if (selectedDays3[currentDayOfWeek] == false){
-        //   resolve(false);
-        // }
-        // else{
-          if (currentTime >= start6 && currentTime < end6) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        // }
+        if (currentTime >= start6 && currentTime < end6) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+    
       });
     });
   });
@@ -1235,9 +1090,9 @@ function getTimeValue(timeString) {
 
 
 function convertTimeValueToTimeString(timeValue) {
-  const currentTime = new Date(timeValue);
-  const hours = currentTime.getHours();
-  const minutes = currentTime.getMinutes();
+  const currentTime1 = new Date(timeValue);
+  const hours = currentTime1.getHours();
+  const minutes = currentTime1.getMinutes();
 
   const formattedHours = hours < 10 ? "0" + hours : hours;
   const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
@@ -1265,11 +1120,11 @@ async function performActionBasedOnTimeRange() {
 
   if (isWithinTimeRange && checkbox.checked == true) {
     update(ref(db, "device/device2"), {
-      state: 1
+      state: true
     });
   } else {
     update(ref(db, "device/device2"), {
-      state: 0
+      state: false
     });
   }
   }
@@ -1284,11 +1139,11 @@ async function performActionBasedOnTimeRange() {
   if (state222 == false){
     if (isWithinTimeRange2 && checkbox2.checked == true) {
       update(ref(db, "device/device1"), {
-        state: 1
+        state: true
       });
     } else {
       update(ref(db, "device/device1"), {
-        state: 0
+        state: false
       });
     }
   }
@@ -1304,11 +1159,11 @@ onValue(stateRef333, (stateSnapshot333) => {
   if (state333 == false){
     if (isWithinTimeRange3 && checkbox3.checked == true) {
       update(ref(db, "device/device3"), {
-        state: 1
+        state: true
       });
     } else {
       update(ref(db, "device/device3"), {
-        state: 0
+        state: false
       });
   }
 

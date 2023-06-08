@@ -181,9 +181,6 @@ $data1 = json_decode($data1,1);
               </font>
             </small>
           </h2>
-          <h6 style="color:red;"> Nếu kích hoạt bơm nước, quạt, bật đèn một trong hai hệ thống
-            "Thiết lập thời gian làm việc" và "Thiết lập tự động hóa" sẽ không hoạt động. </h6>
-          <h6>
           </h6>
           <h5>
             <span class="glyphicon glyphicon-time"></span> Thời gian: 
@@ -200,7 +197,7 @@ $data1 = json_decode($data1,1);
             <div class="col-sm-6">
               <div class="col-sm-12">
                 <br>
-                <h3> Máy bơm nước: Tắt/Bật </h3>
+                <h3> Máy bơm nước: Bật/Tắt </h3>
               </div>
               <div class="col-sm-12">
                 <label class="switch">
@@ -217,7 +214,7 @@ $data1 = json_decode($data1,1);
             <div class="col-sm-6">
               <div class="col-sm-12">
                 <br>
-                <h3> Quạt: Tắt/Mở </h3>
+                <h3> Quạt: Bật/Tắt </h3>
               </div>
               <div class="col-sm-12">
                 <label class="switch">
@@ -234,7 +231,7 @@ $data1 = json_decode($data1,1);
             <div class="col-sm-6">
               <div class="col-sm-12">
               <br>
-                <h3> Đèn: Tắt/Bật </h3>
+                <h3> Đèn: Bật/Tắt </h3>
               </div>
               <div class="col-sm-12">
                 <label class="switch">
@@ -332,9 +329,7 @@ $data1 = json_decode($data1,1);
                                 </font>
                               </b>
                             </b></a><b><b>
-                              <!-- <a href="#" class="list-group-item"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tin tức cần trình bày:</font></font><b></b></b></a><b><b> -->
-
-
+                             
                             </b></b></b></b></b></b></b></b>
             </div><b><b><b>
                 </b></b></b>
@@ -417,9 +412,7 @@ $data1 = json_decode($data1,1);
     var checkbox3 = document.getElementById("StatusAir");
 
     function insert1(){
-        set(ref(db, "device/device1"),{
-            id_device: 1,
-            device_name: "Máy bơm nước",
+        update(ref(db, "device/device1"),{
             state: checkbox1.checked
         }).then(()=>{
           if(checkbox1.checked == true){
@@ -436,9 +429,7 @@ $data1 = json_decode($data1,1);
     checkbox1.addEventListener("change", insert1);
 
     function insert2(){
-        set(ref(db, "device/device2"),{
-            id_device: 2,
-            device_name: "Quạt",
+        update(ref(db, "device/device2"),{
             state: checkbox2.checked
         }).then(()=>{
           if(checkbox2.checked == true){
@@ -455,9 +446,7 @@ $data1 = json_decode($data1,1);
     checkbox2.addEventListener("change", insert2);
 
     function insert3(){
-        set(ref(db, "device/device3"),{
-            id_device: 1,
-            device_name: "Đèn",
+        update(ref(db, "device/device3"),{
             state: checkbox3.checked
         }).then(()=>{
             if(checkbox3.checked == true){
